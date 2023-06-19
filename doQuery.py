@@ -1,5 +1,6 @@
 import openai
 import os
+import time
 
 openai.api_base = "http://localhost:4891/v1"
 # openai.api_base = "https://api.openai.com/v1"
@@ -27,13 +28,14 @@ def queryModel(model, prompt):
         echo=True,
         stream=False
     )
+
     return response_
 
 
 for model in models:
-    # Create a new directory
     modelPath = "data/" + model
     if not os.path.exists(modelPath):
+        # Create model directory if it does not exist
         os.mkdir(modelPath)
 
     for i in range(len(prompts)):
@@ -45,15 +47,23 @@ for model in models:
             print("Already have results for", filePath, "skipping")
         else:
             print("Testing", i, "model", model, ", and prompt: ", prompt)
+            start_time = time.time()
+        
             response = queryModel(model, prompt)
-    
+        
+            end_time = time.time()
+            elapsed_time = end_time - start_time
+            print(f'Time elapsed: {elapsed_time:.2f} seconds')
+
             # Print the generated completion
             print("Response", response)
     
-            # Open a file for writing using with statement
             print("Saving to", filePath)
             with open(filePath, "w") as file:
-                # Write some text to the file
                 file.write(response)
+
+            filePath2 = modelPath + "/" + fileName + "-time.txt"
+            with open(filePath2, "w") as file:
+                file.write(f'Time elapsed: {elapsed_time:.2f} seconds')
 
 print("Done")

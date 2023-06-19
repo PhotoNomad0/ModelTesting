@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "write a JavaScript program to generate and print out the ascii character and hexadecimal codes for 0 to 7f\nSure, here's an example of how you could write a JavaScript program that generates ASCII characters from 0 to 7F and prints them in hexadecimal format using the `console.log()` method:\n```javascript\nfor (let i = 0; i < 8; i++) {\n  console.log(String.fromCharCode(i)); // Generates a string of ASCII characters from 0 to 7F and prints them in hexadecimal format using the `console.log()` method\n}\n```"
+    }
+  ],
+  "created": 1687214032,
+  "id": "foobarbaz",
+  "model": "gpt4all-j-v1.3-groovy",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 111,
+    "prompt_tokens": 35,
+    "total_tokens": 146
+  }
+}

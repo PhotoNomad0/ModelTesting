@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "when I was 6, my sister was half my age. Now I am 80. How old is my sister now? Calculate this step by step.\nTo calculate the current age of your sister based on her being half your age when you were six years old and now being eighty years old, we need to first find out how many years have passed since then. Let's assume that one year is equal to 365 days. So, if it took you 80 years to reach the age of 6, it would take your sister 80/2 = 40 years to reach the same age. Therefore, her current age would be 60 - 40 = 20 years old."
+    }
+  ],
+  "created": 1687213885,
+  "id": "foobarbaz",
+  "model": "gpt4all-j-v1.3-groovy",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 101,
+    "prompt_tokens": 41,
+    "total_tokens": 142
+  }
+}

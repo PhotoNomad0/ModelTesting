@@ -1,0 +1,13 @@
+in ax^3+bx^2+c*x+d=0, write a python program to solve for all possible values of x
+def solve_ax3(a, b, c, d): 
+    # Check if the discriminant is negative 
+    if (b**2 - 4*a*c) < 0: 
+        print("No real solutions") 
+    else: 
+        # Get the roots of the quadratic equation 
+        x1, x2 = (-b + sqrt(b**2 - 4*a*c)) / (2*a), (-b - sqrt(b**2 - 4*a*c)) / (2*a) 
+        
+        # Print the roots of the equation 
+        print("x = ", x1, "or", x2) 
+    return None
+```

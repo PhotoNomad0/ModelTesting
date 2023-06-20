@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "write a JavaScript program to generate and print out the ascii character and hexadecimal codes for 0 to 7f\n```python\nfor i in range(128):\n    if i <= 7F:\n        print(\"ASCII Character Code: {}\".format(i))\n    elif i <= 0xFF:\n        print(\"Hexadecimal Code: {}\".format(i))\n```"
+    }
+  ],
+  "created": 1687269039,
+  "id": "foobarbaz",
+  "model": "stable-vicuna-13B.q4_2",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 66,
+    "prompt_tokens": 39,
+    "total_tokens": 105
+  }
+}

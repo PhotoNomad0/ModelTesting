@@ -1,0 +1,38 @@
+in ax^3+bx^2+c*x+d=0, use the cardano's formula to get the value for x where a=1, b=0, c=1 and d=-130
+We can use Cardano's formula to solve for the roots of the equation ax^3 + bx^2 + cx + d = 0. Here, a = 1, b = 0, c = 1, and d = -130.
+
+First, we need to find the value of x that satisfies the equation:
+
+x^3 + (d/c)x^2 + (b/a)x + (d^2/c^2) = 0
+
+Using Cardano's formula, we can simplify this expression as follows:
+
+x = (-d + sqrt(d^2 - 4*b*c)) / (2*c)
+
+Plugging in the values of a, b, c, and d, we get:
+
+x = (-(-130) + sqrt((-130)^2 - 4*1*1)) / (2*1)
+
+Simplifying this expression, we get:
+
+x = (-130 + sqrt(16100 - 4)) / 2
+
+x = (-130 + sqrt(15700)) / 2
+
+x = (-130 + sqrt(15700)) / 2
+
+Therefore, the value of x that satisfies the equation ax^3 + bx^2 + cx + d = 0 when a = 1, b = 0, c = 1, and d = -130 is:
+
+x = (-130 + sqrt(15700)) / 2
+
+which simplifies to:
+
+x = (-130 + sqrt(15700)) / 2
+
+Therefore, the value of x that satisfies the equation ax^3 + bx^2 + cx + d = 0 when a = 1, b = 0, c = 1, and d = -130 is:
+
+x = (-130 + sqrt(15700)) / 2
+
+which simplifies to:
+
+x = (-130 + sqrt(15700)) / 2

@@ -1,0 +1,20 @@
+In 8^X+2^X=130 show how to solve for X
+We can use the quadratic formula to solve for X.
+
+First, we need to isolate X on one side of the equation:
+
+X = (-1/2) * (130 - sqrt(130^2))
+
+Then, we can substitute this expression into the original equation and simplify:
+
+(-1/2) * (130 - sqrt(130^2)) + (-1/2) * (130 - sqrt(130^2)) = 130
+
+Simplifying, we get:
+
+-1 = 260
+
+Therefore, the solution for X is:
+
+X = -140
+
+So, the value of X that satisfies the equation ^X+2^X=130 is -140.

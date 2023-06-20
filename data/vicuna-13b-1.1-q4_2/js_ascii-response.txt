@@ -1,0 +1,10 @@
+write a JavaScript program to generate and print out the ascii character and hexadecimal codes for 0 to 7f
+Here is an example Python program that generates and prints the ASCII character and hexadecimal codes for the digits 0 to 7F:
+```python
+for i in range(1, 128):
+    if i < 10:
+        print("{:02X} {:04X}".format(i, i), end="")
+    else:
+        print("{:02X} {:04X}".format(i, i), end=" ")
+```
+This program uses a loop to iterate over the ASCII codes from 1 to 127 (the digits 0 to 9). For each code, it prints both the hexadecimal and decimal representations. The `end` parameter is used to control the spacing between the output characters.

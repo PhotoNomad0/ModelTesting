@@ -148,11 +148,16 @@ for model in models:
             print(f'Time elapsed: {elapsed_time:.2f} seconds')
 
             choices = response.choices
-            action_text = choices[0].text.strip() if choices else ""
+            choice = choices[0] if choices else ""
+            action_text = choice.text.strip() if choice else ""
     
             # Print the generated completion
             print("action_text", action_text)
     
+            model_used = response.model.strip() if response else ""
+            if model_used != model:
+                print("model used", model_used, "does not match model requested", model)
+                
             print("Saving to", filePath)
             with open(filePath, "w") as file:
                 file.write(str(response))

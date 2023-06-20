@@ -5,16 +5,16 @@
       "index": 0,
       "logprobs": null,
       "references": [],
-      "text": "write a JavaScript program to generate and print out the ascii character and hexadecimal codes for 0 to 7f\nSure, here's an example code snippet that generates and prints out ASCII characters from 0 to 7F in JavaScript:\n```javascript\nfor (let i = 32; i <= 127; i++) {\n  console.log(`${i.toString(16)} ${charCodeToName(i)}`);\n}\nfunction charCodeToName(code) {\n  const table = '0123456789abcdefghijklmnopqrstuvwxyz';\n  let index = code - 32;\n  if (index < 0 || index > 26) return ''; // ASCII codes must be between 33 and 126, inclusive.\n  return table.charAt(index);\n}\n```\nThis program uses a `for` loop to iterate over the range of ASCII characters from 0x30 to 0x7F (inclusive). For each character, it prints out its decimal code as well as its corresponding name or description using the `charCodeToName()` function. The output will look like this:\n```\n31 ., 32!, 33 \", 34 #, 35 $, 36 %, 37 &, 38 ' (, 39 ) ), 40 *, 41 + -, 42,., 43 ; :, 44 < =, 45 >?, 46 @, 47 ^ ~, 48 | v t, 49 } }, 50 shift, 51 tab, 52 enter key, 53 backspace key, 54 delete key\n```"
+      "text": "write a JavaScript program to generate and print out the ascii character and hexadecimal codes for 0 to 7f\nSure, here's an example code snippet that generates and prints out ASCII characters from 0 to 7F in JavaScript:\n```javascript\nfor (let i = 32; i <= 127; i++) {\n  console.log(`${i.toString().padStart(2, '0', '0')} ${hex(i)}`);\n}\nfunction hex(code) {\n  return code.charCodeAt(0).toString(16);\n}\n```\nThis program uses a `for` loop to iterate over the ASCII codes from 32 (which corresponds to character space) to 127 (which corresponds to character tilde), and prints out each character's ASCII value along with its hexadecimal representation. The `hex()` function simply returns the first character of a string in hexadecimal format, using the `charCodeAt()` method to get the code point for that character."
     }
   ],
-  "created": 1687214067,
+  "created": 1687257670,
   "id": "foobarbaz",
   "model": "mpt-7b-chat",
   "object": "text_completion",
   "usage": {
-    "completion_tokens": 301,
+    "completion_tokens": 187,
     "prompt_tokens": 35,
-    "total_tokens": 336
+    "total_tokens": 222
   }
 }

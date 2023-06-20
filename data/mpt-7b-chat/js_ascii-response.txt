@@ -1,0 +1,11 @@
+write a JavaScript program to generate and print out the ascii character and hexadecimal codes for 0 to 7f
+Sure, here's an example code snippet that generates and prints out ASCII characters from 0 to 7F in JavaScript:
+```javascript
+for (let i = 32; i <= 127; i++) {
+  console.log(`${i.toString().padStart(2, '0', '0')} ${hex(i)}`);
+}
+function hex(code) {
+  return code.charCodeAt(0).toString(16);
+}
+```
+This program uses a `for` loop to iterate over the ASCII codes from 32 (which corresponds to character space) to 127 (which corresponds to character tilde), and prints out each character's ASCII value along with its hexadecimal representation. The `hex()` function simply returns the first character of a string in hexadecimal format, using the `charCodeAt()` method to get the code point for that character.

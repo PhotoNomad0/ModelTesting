@@ -5,16 +5,16 @@
       "index": 0,
       "logprobs": null,
       "references": [],
-      "text": "Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?\nTo determine how long it will take for Tom to dry the remaining seven pairs of socks, we need more information about the weather conditions and the drying time of each pair of socks. However, if we assume that the weather conditions remain constant and the drying time of each pair of socks is also constant, then we can estimate the time it will take for Tom to dry the remaining seven pairs of socks by multiplying the number of pairs by the total drying time.\nIf the first 10 pairs of socks took 10 hours to dry and the weather conditions remained constant, then the total drying time would be 10 hours per pair of socks. Therefore, it would take Tom approximately 70 hours (10 hours x 7 pairs) to dry the remaining seven pairs of socks under the same conditions."
+      "text": "Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?\nIf the 10 pairs of socks dried in 10 hours, then we can assume that the rate at which the socks were drying was constant throughout that period. Therefore, if it took 10 hours to dry 10 pairs of socks, then it should take 1 hour to dry 7 pairs of socks under the same conditions."
     }
   ],
-  "created": 1687226764,
+  "created": 1687260007,
   "id": "foobarbaz",
   "model": "nous-hermes-13b.ggmlv3.q4_0",
   "object": "text_completion",
   "usage": {
-    "completion_tokens": 176,
+    "completion_tokens": 77,
     "prompt_tokens": 112,
-    "total_tokens": 288
+    "total_tokens": 189
   }
 }

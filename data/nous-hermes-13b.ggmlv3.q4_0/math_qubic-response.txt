@@ -1,0 +1,12 @@
+in ax^3+bx^2+c*x+d=0, use the cardano's formula to get the value for x where a=1, b=0, c=1 and d=-130
+Cardano's formula is used to solve cubic equations, but in this case we have a quadratic equation. To find the value of x, we can use the quadratic formula:
+x = (-b ± sqrt(b^2 - 4ac)) / 2a
+In this case, a = 1, b = 0, c = 1, and d = -130. Plugging these values into the formula, we get:
+x = (-0 ± sqrt(0^2 - 4(1)(1)(-130))) / 2(1)
+Simplifying this expression gives us:
+x = (130 ± sqrt(-520)) / 2
+Since the discriminant is negative, we will have complex solutions. We can rewrite the square root of a negative number as the imaginary unit times the square root of the number:
+x = (130 ± i * sqrt(520)) / 2
+So the two complex solutions are:
+x = (130 + i * sqrt(520)) / 2
+x = (130 - i * sqrt(520)) / 2

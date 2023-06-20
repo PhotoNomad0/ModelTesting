@@ -1,0 +1,21 @@
+in ax^3+bx^2+c*x+d=0, use the cardano's formula to get the value for x where a=1, b=0, c=1 and d=-130
+To find the value of x in the equation ax^3+bx^2+c\*x+d = 0 using Cardano's formula, we need to substitute the given values into the formula. Here is the calculation:
+
+a = 1
+b = 0
+c = 1
+d = -130
+
+Solving for x, we get:
+
+x = (-b + sqrt(b^2-4ac)) / (2*a)
+
+Now, to find the value of x where a=1, b=0, c=1 and d=-130, we need to substitute these values into the formula. Here is the calculation:
+
+x = (-0 + sqrt(0^2-4(1\*1)(1\*1)-4(1\*1)(1\*1)))/(2\*1)
+
+This simplifies to:
+
+x = -130 / 2
+
+Therefore, the value of x where a=1, b=0, c=1 and d=-130 is -130/2.

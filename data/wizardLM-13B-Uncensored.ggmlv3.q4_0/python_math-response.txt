@@ -1,0 +1,20 @@
+in ax^3+bx^2+c*x+d=0, write a python program to solve for all possible values of x
+Sure! Here's a Python program that solves for all possible values of x in the equation ax3+bx^2+c*x+d=0:
+```python
+import sympy
+# Define the variables and coefficients
+a = sympy.Symbol('a')
+b = sympy.Symbol('b')
+c = sympy.Symbol('c')
+d = sympy.Symbol('d')
+# Generate a list of all possible solutions for x
+solutions = []
+for x in range(1, 10):
+    if sympy.solve(a*x**3 + b*x**2 + c*x + d, sympy.Symbol('x')):
+        solutions.append(x)
+# Print the list of solutions
+print("Solutions for x:")
+for solution in solutions:
+    print("x =", solution)
+```
+This program uses the SymPy library to solve for all possible values of x in the equation ax3+bx^2+c*x+d=0. It generates a list of all possible solutions for x using a for loop and the sympy.solve() function, which returns a list of solutions if one exists. Finally, it prints out the list of solutions for x.

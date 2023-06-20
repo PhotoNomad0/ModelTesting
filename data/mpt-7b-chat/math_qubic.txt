@@ -5,16 +5,16 @@
       "index": 0,
       "logprobs": null,
       "references": [],
-      "text": "in ax^3+bx^2+c*x+d=0, use the cardano's formula to get the value for x where a=1, b=0, c=1 and d=-130\nSure, I can help you with that. Can you please provide me with the values of 'a', 'b', 'c' and 'd'?"
+      "text": "in ax^3+bx^2+c*x+d=0, use the cardano's formula to get the value for x where a=1, b=0, c=1 and d=-130\nSure, I can help you with that. Can you please provide me with the values of a, b, c, and d?"
     }
   ],
-  "created": 1687217574,
+  "created": 1687258426,
   "id": "foobarbaz",
   "model": "mpt-7b-chat",
   "object": "text_completion",
   "usage": {
-    "completion_tokens": 31,
+    "completion_tokens": 27,
     "prompt_tokens": 55,
-    "total_tokens": 86
+    "total_tokens": 82
   }
 }

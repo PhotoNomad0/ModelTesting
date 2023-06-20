@@ -1,0 +1,17 @@
+in ax^3+bx^2+c*x+d=0, write a python program to solve for all possible values of x
+Sure! Here's an example Python program that uses the `numpy` library to find all possible solutions (i.e., roots) of the equation ax^3 + bx^2 + cx + d = 0 in the range [0, 1]. The program assumes that you have already defined constants a, b, c, and d:
+```python
+import numpy as np
+
+# Define constants
+a = 2.5
+b = 3.5
+c = -1.5
+d = 0.5
+
+# Solve for all possible values of x in [0, 1]
+roots = np.roots(np.array([[a**3 + b*x**2 + cx + d], [x]]))
+print("All roots:")
+for root in roots:
+    print(root)
+```

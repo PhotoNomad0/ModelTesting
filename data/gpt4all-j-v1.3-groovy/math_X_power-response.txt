@@ -1,0 +1,8 @@
+In 8^X+2^X=130 show how to solve for X
+To find the value of X, we need to use algebra. Let's start by simplifying the equation:
+8^X + 2^X = 130
+4^X + 2^X = 130/4
+2^X(2^X+1) = 130/4
+2^X = 65
+X = log\_2(65)
+Therefore, X ≈ 4.5

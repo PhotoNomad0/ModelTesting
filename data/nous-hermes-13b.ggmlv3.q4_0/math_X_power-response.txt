@@ -1,0 +1,6 @@
+In 8^X+2^X=130 show how to solve for X
+To solve the equation, we can follow these steps:
+1. Start by isolating the variable (X) on one side of the equation. To do this, subtract 2 from both sides of the equation:
+    X + 2 - 2 = 130 - 2
+    X = 128
+2. The solution to the equation is X = 128.

@@ -1,0 +1,43 @@
+in x^3+x-130=0, use the cardano's formula to get the value for x
+To solve this equation using Cardano's formula, we need to first rewrite it in the form of a cubic equation:
+x3 + x - 130 = 0
+We can do this by adding 130 to both sides of the equation:
+x3 + (130 - 130) - 130 = 0
+This simplifies to:
+x3 - 0 = 0
+Now we can use Cardano's formula to find the solutions for x. We start by defining three variables:
+a = 1
+b = -1
+c = 0
+These values correspond to the coefficients of the cubic equation:
+x3 + x - 130 = 0
+Next, we calculate the discriminant using Cardano's formula:
+Δ = b2 - 4ac
+Δ = (-1)2 - 4(1)(0)
+Δ = 1 - 4
+Δ = -3
+Now we can use the formula to find the solutions for x:
+x = (-b ± sqrt(Δ)) / (2a)
+x = (-(-1) ± sqrt(-3)) / (2(1))
+x = (1 ± sqrt(-3)) / (2)
+Simplifying, we get:
+x = (1 ± sqrt(-3)) / 2
+To find all three solutions, we need to solve for the positive and negative square roots separately. We can do this using the formula:
+sqrt(a) = (positive/negative)
+For the first solution, we have:
+sqrt(-3) = (-1/sqrt(-3))
+Simplifying, we get:
+sqrt(-3) = 1/sqrt(-1)
+This equals -1, so we can write:
+x1 = (1 + sqrt(-3)) / 2
+To find the second solution, we repeat the same process with the negative square root:
+sqrt(-3) = (-1/sqrt(-3))
+Simplifying, we get:
+sqrt(-3) = -1/sqrt(-1)
+This equals 1, so we can write:
+x2 = (1 - sqrt(-3)) / 2
+Finally, to find the third solution, we simply take the average of x1 and x2:
+x3 = (x1 + x2) / 2
+Simplifying, we get:
+x3 = (1 + 1) / 2
+To find all three solutions, we can repeat this process with the positive and negative square roots separately.

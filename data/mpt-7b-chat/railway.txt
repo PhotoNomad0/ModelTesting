@@ -5,16 +5,16 @@
       "index": 0,
       "logprobs": null,
       "references": [],
-      "text": "Explain origin of standard gauge for railways\nThe standard gauge for railways was developed in the early 19th century. At that time, there were many different gauges used across Europe and North America. This led to a need for a standardized gauge that could be used throughout the continent. In 1825, the first standard gauge line opened between Stockton and Darlington in England. The track was built to a distance of 6 feet (1.8288 meters) between the rails, which is still the standard today. Since then, standard gauge railways have become the most widely used type of railway in the world."
+      "text": "Explain origin of standard gauge for railways\nThe standard gauge for railways was developed in the United Kingdom during the Industrial Revolution. Prior to this, different countries had developed their own gauges and track systems, making it difficult for goods and people to move between nations. The UK government encouraged the development of a single standard gauge to promote trade and industry across the country. This led to the adoption of a track system with a distance of 4 feet 8 1/2 inches (1.42 meters) between the rails. Today, this standard gauge is used throughout much of the world, making international rail travel more efficient and cost-effective."
     }
   ],
-  "created": 1687217559,
+  "created": 1687258392,
   "id": "foobarbaz",
   "model": "mpt-7b-chat",
   "object": "text_completion",
   "usage": {
-    "completion_tokens": 116,
+    "completion_tokens": 119,
     "prompt_tokens": 19,
-    "total_tokens": 135
+    "total_tokens": 138
   }
 }

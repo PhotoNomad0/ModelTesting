@@ -1,4 +1,5 @@
 import openai
+import gpt4all
 import os
 import time
 from urllib.request import urlopen
@@ -9,23 +10,23 @@ openai.api_base = "http://localhost:4891/v1"
 
 openai.api_key = "not needed for a local LLM"
 
-# fetch the models
-response = urlopen(openai.api_base + '/models')
-data_json = json.loads(response.read())
-
-# print the json response
-print("models=", data_json)
-
-models = []
-for item in data_json['data']:
-    model = item['id']
-    root_ = item['root']
-    print("id", model, ", root", root_)
-    
-    if model != 'chatgpt-gpt-3.5-turbo' and model != 'chatgpt-gpt-4':
-        models.append(model)
-    if model != root_:
-        print("differs!")
+# # fetch the models
+# response = urlopen(openai.api_base + '/models')
+# data_json = json.loads(response.read())
+# 
+# # print the json response
+# print("models=", data_json)
+# 
+# models = []
+# for item in data_json['data']:
+#     model = item['id']
+#     root_ = item['root']
+#     print("id", model, ", root", root_)
+#     
+#     if model != 'chatgpt-gpt-3.5-turbo' and model != 'chatgpt-gpt-4':
+#         models.append(model)
+#     if model != root_:
+#         print("differs!")
 
 
 # Set up the prompt and other parameters for the API request
@@ -68,51 +69,52 @@ prompts = [
     },
 ]
 
-my_dictionary = {
-    "Lion": "Animal",
-    "Parrot": "Bird",
-    "Cobra": "Reptile",
-    "Human": "Mammals"
-}
 # model = "gpt-3.5-turbo"
 # model = "mpt-7b-chat"
-# models = [
-#     "nous-hermes-13b.ggmlv3.q4_0",
-#     "gpt4all-j-v1.3-groovy",
-#     "mpt-7b-chat",
-# #     "wizardLM-7B.ggmlv3.q8_0",
-# #     "vic7b-q5_1",
+models = [
+    # "nous-hermes-13b.ggmlv3.q4_0",
+    # "gpt4all-j-v1.3-groovy",
+    "ggml-mpt-7b-chat.bin",
+#     "wizardLM-7B.ggmlv3.q8_0",
+#     "vic7b-q5_1",
 #     "ggml-vic13b-q8_0",
 #     "nous-gpt4-vicuna-13b",
-# #     "nous-hermes-13b.ggmlv3.q6_K"
-# #     "30b-Lazarus.ggmlv3.q5_1",
-# #     "airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
-# ]
+#     "nous-hermes-13b.ggmlv3.q6_K"
+#     "30b-Lazarus.ggmlv3.q5_1",
+#     "airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
+]
 
-# path = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
-# files = os.listdir(path)
+modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
+
+# files = os.listdir(modelPath_)
 # models = []
 # for file in files:
-#     if (file.find('.bin') >= 0) and (file.find('ggml-') == 0):
-#         a, b = file.split('.bin')
-#         a, model = a.split('ggml-')
-#         models.append(model)
+#     if (file.find('.bin') >= 0):
+#         models.append(file)
 # print("Models found", models)
 
 def queryModel(model, prompt):
-    # Make the API request
-    # NOTE: only seems to work with bundled models, not any side-loaded
-    response_ = openai.Completion.create(
-        model=model,
-        prompt=prompt,
-        max_tokens=4096,
-        temperature=0.28,
-        top_p=0.95,
-        n=1, # this does not seem to be number of cores
-        echo=True,
-        stream=False,
-        timeout=650 # seconds
+    gptj = gpt4all.GPT4All(
+        model_name=model,
+        model_path=modelPath_,
+        allow_download=False,
     )
+    messages = [{"role": "user", "content": prompt}]
+    response_ = gptj.chat_completion(messages)
+
+    # # Make the API request
+    # # NOTE: only seems to work with bundled models, not any side-loaded
+    # response_ = openai.Completion.create(
+    #     model=model,
+    #     prompt=prompt,
+    #     max_tokens=4096,
+    #     temperature=0.28,
+    #     top_p=0.95,
+    #     n=1, # this does not seem to be number of cores
+    #     echo=True,
+    #     stream=False,
+    #     timeout=650 # seconds
+    # )
 
     return response_
 
@@ -137,11 +139,12 @@ for model in models:
             print("Testing", i, "model", model, ", and prompt: ", prompt)
             start_time = time.time()
         
-            try:
-                response = queryModel(model, prompt)
-            except:
-                response = 'Error'
-                print("Error")
+            # try:
+            response = queryModel(model, prompt)
+            # except:
+            #     response = 'Error'
+            #     print("Error")
+            #     exit(0)
                 
             end_time = time.time()
             elapsed_time = end_time - start_time

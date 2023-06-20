@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?\nTo determine how long it will take for Tom to dry the remaining seven pairs of socks, we need more information about the weather conditions and the drying time of each pair of socks. However, if we assume that the weather conditions remain constant and the drying time of each pair of socks is also constant, then we can estimate the time it will take for Tom to dry the remaining seven pairs of socks by multiplying the number of pairs by the total drying time.\nIf the first 10 pairs of socks took 10 hours to dry and the weather conditions remained constant, then the total drying time would be 10 hours per pair of socks. Therefore, it would take Tom approximately 70 hours (10 hours x 7 pairs) to dry the remaining seven pairs of socks under the same conditions."
+    }
+  ],
+  "created": 1687226764,
+  "id": "foobarbaz",
+  "model": "nous-hermes-13b.ggmlv3.q4_0",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 176,
+    "prompt_tokens": 112,
+    "total_tokens": 288
+  }
+}

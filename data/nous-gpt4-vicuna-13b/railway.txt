@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "Explain origin of standard gauge for railways\nStandard gauge is a width of 1,435 millimeters (4 feet 8.5 inches) used in railways to ensure consistency and compatibility in track design and train operations. It was first established in the early 19th century as a compromise between wider and narrower gauges, and has since become the most widely used railway gauge worldwide. Standard gauge allows for smooth and efficient transportation of goods and passengers, while also ensuring safety and cost-effectiveness in the construction and maintenance of railways."
+    }
+  ],
+  "created": 1687222564,
+  "id": "foobarbaz",
+  "model": "nous-gpt4-vicuna-13b",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 112,
+    "prompt_tokens": 22,
+    "total_tokens": 134
+  }
+}

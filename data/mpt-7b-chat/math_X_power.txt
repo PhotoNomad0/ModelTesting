@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "In 8^X+2^X=130 show how to solve for X\nTo solve this equation, we need to use the rules of exponents. First, let's simplify the left side of the equation by combining like terms: \n8^X + 2^X = (8^(X+1)) + (2^(X+1)) \nNext, we can substitute these combined terms for 8^X and 2^X on the right side of the equation. Then, we simplify using the rules of exponents again to isolate X: \n(8^(X+1)) + (2^(X+1)) = 4*3^(X+1) \nFinally, we can solve for 3^(X+1) and substitute back into the original equation to find X. \nSo, how does that sound?"
+    }
+  ],
+  "created": 1687217570,
+  "id": "foobarbaz",
+  "model": "mpt-7b-chat",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 155,
+    "prompt_tokens": 25,
+    "total_tokens": 180
+  }
+}

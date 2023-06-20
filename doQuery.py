@@ -23,20 +23,31 @@ prompts = [
 # model = "gpt-3.5-turbo"
 # model = "mpt-7b-chat"
 models = [
+    "nous-hermes-13b.ggmlv3.q4_0",
     "gpt4all-j-v1.3-groovy",
     "mpt-7b-chat",
-    "ggml-wizardLM-7B.ggmlv3.q8_0",
-    "ggml-vic7b-q5_1",
+#     "wizardLM-7B.ggmlv3.q8_0",
+#     "vic7b-q5_1",
     "ggml-vic13b-q8_0",
-    "ggml-nous-gpt4-vicuna-13b",
-    "ggml-nous-hermes-13b.ggmlv3.q6_K"
-    "ggml-30b-Lazarus.ggmlv3.q5_1",
-    "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
+    "nous-gpt4-vicuna-13b",
+#     "nous-hermes-13b.ggmlv3.q6_K"
+#     "30b-Lazarus.ggmlv3.q5_1",
+#     "airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
 ]
 
+# path = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
+# files = os.listdir(path)
+# models = []
+# for file in files:
+#     if (file.find('.bin') >= 0) and (file.find('ggml-') == 0):
+#         a, b = file.split('.bin')
+#         a, model = a.split('ggml-')
+#         models.append(model)
+# print("Models found", models)
 
 def queryModel(model, prompt):
     # Make the API request
+    # NOTE: only seems to work with bundled models, not any side-loaded
     response_ = openai.Completion.create(
         model=model,
         prompt=prompt,
@@ -45,7 +56,8 @@ def queryModel(model, prompt):
         top_p=0.95,
         n=1, # this does not seem to be number of cores
         echo=True,
-        stream=False
+        stream=False,
+        timeout=650 # seconds
     )
 
     return response_
@@ -58,7 +70,7 @@ for model in models:
         os.mkdir(modelPath)
 
     for i in range(len(prompts)):
-        parts = prompts[i].split(": ")
+        parts = prompts[i].split(": ", 1)
         fileName, prompt = parts
         filePath = modelPath + "/" + fileName + ".txt"
 

@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "Explain origin of standard gauge for railways\nThe standard gauge for railway tracks was first established in 1835 by the British government. It is a 4-foot (1.2 m) wide track that is commonly used around the world, including in North America and Europe. The standard gauge has become an international standard due to its widespread use and popularity among railways worldwide.\n\nThe standard gauge was chosen based on several factors such as ease of maintenance, cost-effectiveness, and compatibility with existing infrastructure. It also allowed for easy conversion between different gauges if needed in the future. In addition, it provided a consistent track width that could be used by multiple railway companies without any issues.\n\nThe standard gauge has been adopted by many countries around the world due to its reliability and ease of maintenance. The UK is one such country where the standard gauge was first established for railways. It quickly became popular among other European countries, including France, Germany, and Italy. Today, it remains an essential part of railway infrastructure worldwide."
+    }
+  ],
+  "created": 1687220226,
+  "id": "foobarbaz",
+  "model": "gpt4all-j-v1.3-groovy",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 198,
+    "prompt_tokens": 18,
+    "total_tokens": 216
+  }
+}

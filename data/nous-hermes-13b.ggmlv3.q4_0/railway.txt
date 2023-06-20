@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "Explain origin of standard gauge for railways\nStandard gauge is a widely used international railway track gauge. It is defined as the distance between the inner faces of the rails, which measures 1435 millimeters or 4 feet 8.5 inches. The standard gauge was first adopted in Great Britain in the early 19th century and has since become the most common rail track width used worldwide. There are several reasons why this gauge became popular, including its compatibility with existing infrastructure, ease of maintenance, and cost-effectiveness. Today, standard gauge railways can be found in many countries, including the United States, where it is commonly referred to as \"four-foot-eight-and-a-half.\""
+    }
+  ],
+  "created": 1687226838,
+  "id": "foobarbaz",
+  "model": "nous-hermes-13b.ggmlv3.q4_0",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 143,
+    "prompt_tokens": 22,
+    "total_tokens": 165
+  }
+}

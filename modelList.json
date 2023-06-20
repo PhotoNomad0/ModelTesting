@@ -1,0 +1,173 @@
+{
+  "data": [
+    {
+      "created": "who can keep track?",
+      "id": "mpt-7b-chat",
+      "object": "model",
+      "owned_by": "humanity",
+      "parent": null,
+      "permissions": [
+        {
+          "allow_create_engine": false,
+          "allow_fine_tuning": false,
+          "allow_logprobs": false,
+          "allow_sampling": false,
+          "allow_search_indices": false,
+          "allow_view": true,
+          "created": "does it really matter?",
+          "group": null,
+          "id": "foobarbaz",
+          "is_blocking": false,
+          "object": "model_permission",
+          "organization": "*"
+        }
+      ],
+      "root": "mpt-7b-chat"
+    },
+    {
+      "created": "who can keep track?",
+      "id": "gpt4all-j-v1.3-groovy",
+      "object": "model",
+      "owned_by": "humanity",
+      "parent": null,
+      "permissions": [
+        {
+          "allow_create_engine": false,
+          "allow_fine_tuning": false,
+          "allow_logprobs": false,
+          "allow_sampling": false,
+          "allow_search_indices": false,
+          "allow_view": true,
+          "created": "does it really matter?",
+          "group": null,
+          "id": "foobarbaz",
+          "is_blocking": false,
+          "object": "model_permission",
+          "organization": "*"
+        }
+      ],
+      "root": "gpt4all-j-v1.3-groovy"
+    },
+    {
+      "created": "who can keep track?",
+      "id": "chatgpt-gpt-3.5-turbo",
+      "object": "model",
+      "owned_by": "humanity",
+      "parent": null,
+      "permissions": [
+        {
+          "allow_create_engine": false,
+          "allow_fine_tuning": false,
+          "allow_logprobs": false,
+          "allow_sampling": false,
+          "allow_search_indices": false,
+          "allow_view": true,
+          "created": "does it really matter?",
+          "group": null,
+          "id": "foobarbaz",
+          "is_blocking": false,
+          "object": "model_permission",
+          "organization": "*"
+        }
+      ],
+      "root": "chatgpt-gpt-3.5-turbo"
+    },
+    {
+      "created": "who can keep track?",
+      "id": "chatgpt-gpt-4",
+      "object": "model",
+      "owned_by": "humanity",
+      "parent": null,
+      "permissions": [
+        {
+          "allow_create_engine": false,
+          "allow_fine_tuning": false,
+          "allow_logprobs": false,
+          "allow_sampling": false,
+          "allow_search_indices": false,
+          "allow_view": true,
+          "created": "does it really matter?",
+          "group": null,
+          "id": "foobarbaz",
+          "is_blocking": false,
+          "object": "model_permission",
+          "organization": "*"
+        }
+      ],
+      "root": "chatgpt-gpt-4"
+    },
+    {
+      "created": "who can keep track?",
+      "id": "nous-gpt4-vicuna-13b",
+      "object": "model",
+      "owned_by": "humanity",
+      "parent": null,
+      "permissions": [
+        {
+          "allow_create_engine": false,
+          "allow_fine_tuning": false,
+          "allow_logprobs": false,
+          "allow_sampling": false,
+          "allow_search_indices": false,
+          "allow_view": true,
+          "created": "does it really matter?",
+          "group": null,
+          "id": "foobarbaz",
+          "is_blocking": false,
+          "object": "model_permission",
+          "organization": "*"
+        }
+      ],
+      "root": "nous-gpt4-vicuna-13b"
+    },
+    {
+      "created": "who can keep track?",
+      "id": "nous-hermes-13b.ggmlv3.q4_0",
+      "object": "model",
+      "owned_by": "humanity",
+      "parent": null,
+      "permissions": [
+        {
+          "allow_create_engine": false,
+          "allow_fine_tuning": false,
+          "allow_logprobs": false,
+          "allow_sampling": false,
+          "allow_search_indices": false,
+          "allow_view": true,
+          "created": "does it really matter?",
+          "group": null,
+          "id": "foobarbaz",
+          "is_blocking": false,
+          "object": "model_permission",
+          "organization": "*"
+        }
+      ],
+      "root": "nous-hermes-13b.ggmlv3.q4_0"
+    },
+    {
+      "created": "who can keep track?",
+      "id": "wizardLM-13B-Uncensored.ggmlv3.q4_0",
+      "object": "model",
+      "owned_by": "humanity",
+      "parent": null,
+      "permissions": [
+        {
+          "allow_create_engine": false,
+          "allow_fine_tuning": false,
+          "allow_logprobs": false,
+          "allow_sampling": false,
+          "allow_search_indices": false,
+          "allow_view": true,
+          "created": "does it really matter?",
+          "group": null,
+          "id": "foobarbaz",
+          "is_blocking": false,
+          "object": "model_permission",
+          "organization": "*"
+        }
+      ],
+      "root": "wizardLM-13B-Uncensored.ggmlv3.q4_0"
+    }
+  ],
+  "object": "list"
+}

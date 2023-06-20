@@ -1,11 +1,32 @@
 import openai
 import os
 import time
+from urllib.request import urlopen
+import json
 
 openai.api_base = "http://localhost:4891/v1"
 # openai.api_base = "https://api.openai.com/v1"
 
 openai.api_key = "not needed for a local LLM"
+
+# fetch the models
+response = urlopen(openai.api_base + '/models')
+data_json = json.loads(response.read())
+
+# print the json response
+print("models=", data_json)
+
+models = []
+for item in data_json['data']:
+    model = item['id']
+    root_ = item['root']
+    print("id", model, ", root", root_)
+    
+    if model != 'chatgpt-gpt-3.5-turbo' and model != 'chatgpt-gpt-4':
+        models.append(model)
+    if model != root_:
+        print("differs!")
+
 
 # Set up the prompt and other parameters for the API request
 prompts = [
@@ -22,18 +43,18 @@ prompts = [
 
 # model = "gpt-3.5-turbo"
 # model = "mpt-7b-chat"
-models = [
-    "nous-hermes-13b.ggmlv3.q4_0",
-    "gpt4all-j-v1.3-groovy",
-    "mpt-7b-chat",
-#     "wizardLM-7B.ggmlv3.q8_0",
-#     "vic7b-q5_1",
-    "ggml-vic13b-q8_0",
-    "nous-gpt4-vicuna-13b",
-#     "nous-hermes-13b.ggmlv3.q6_K"
-#     "30b-Lazarus.ggmlv3.q5_1",
-#     "airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
-]
+# models = [
+#     "nous-hermes-13b.ggmlv3.q4_0",
+#     "gpt4all-j-v1.3-groovy",
+#     "mpt-7b-chat",
+# #     "wizardLM-7B.ggmlv3.q8_0",
+# #     "vic7b-q5_1",
+#     "ggml-vic13b-q8_0",
+#     "nous-gpt4-vicuna-13b",
+# #     "nous-hermes-13b.ggmlv3.q6_K"
+# #     "30b-Lazarus.ggmlv3.q5_1",
+# #     "airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
+# ]
 
 # path = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
 # files = os.listdir(path)
@@ -91,15 +112,22 @@ for model in models:
             elapsed_time = end_time - start_time
             print(f'Time elapsed: {elapsed_time:.2f} seconds')
 
+            choices = response.choices
+            action_text = choices[0].text.strip() if choices else ""
+    
             # Print the generated completion
-            print("Response", response)
+            print("action_text", action_text)
     
             print("Saving to", filePath)
             with open(filePath, "w") as file:
                 file.write(str(response))
 
-            filePath2 = modelPath + "/" + fileName + "-time.txt"
+            filePath2 = modelPath + "/" + fileName + "-response.txt"
             with open(filePath2, "w") as file:
+                file.write(str(action_text))
+
+            filePath3 = modelPath + "/" + fileName + "-time.txt"
+            with open(filePath3, "w") as file:
                 file.write(f'Time elapsed: {elapsed_time:.2f} seconds')
 
 print("Done")

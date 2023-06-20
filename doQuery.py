@@ -30,17 +30,50 @@ for item in data_json['data']:
 
 # Set up the prompt and other parameters for the API request
 prompts = [
-    "sisters_age: when I was 6, my sister was half my age. Now I am 80. How old is my sister now? Calculate this step by step.",
-    "js_ascii: write a JavaScript program to generate and print out the ascii character and hexadecimal codes for 0 to 7f",
-    "dry_socks: Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?" ,
-    "TOT_socks: Three experts with exceptional logical thinking skills are collaboratively answering a question using a Tree of Thoughts method. Each expert will share their thought process in detail, taking into account the previous thoughts of others and emitting any errors. They will iteratively refine and expand upon each other's ideas, giving credit where it's due. The process continues until a conclusive answer is found. Organize the entire response in a markdown format. The question is, \"Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?\"",
-    "railway: Explain origin of standard gauge for railways",
-    "math_X_power: In 8^X+2^X=130 show how to solve for X",
-    "math_qubic: in ax^3+bx^2+c*x+d=0, use the cardano's formula to get the value for x where a=1, b=0, c=1 and d=-130",
-    "math_qubic_simple: in x^3+x-130=0, use the cardano's formula to get the value for x"
-    "python_math: in ax^3+bx^2+c*x+d=0, write a python program to solve for all possible values of x",
+    {
+        "id": "sisters_age",
+        "prompt": "when I was 6, my sister was half my age. Now I am 80. How old is my sister now? Calculate this step by step.",
+    },
+    {
+        "id": "js_ascii",
+        "prompt": "write a JavaScript program to generate and print out the ascii character and hexadecimal codes for 0 to 7f",
+    },
+    {
+        "id": "dry_socks",
+        "prompt": "Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?" ,
+    },
+    {
+        "id": "TOT_socks",
+        "prompt": "Three experts with exceptional logical thinking skills are collaboratively answering a question using a Tree of Thoughts method. Each expert will share their thought process in detail, taking into account the previous thoughts of others and emitting any errors. They will iteratively refine and expand upon each other's ideas, giving credit where it's due. The process continues until a conclusive answer is found. Organize the entire response in a markdown format. The question is, \"Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?\"",
+    },
+    {
+        "id": "railway",
+        "prompt": "Explain origin of standard gauge for railways",
+    },
+    {
+        "id": "math_X_power",
+        "prompt": "In 8^X+2^X=130 show how to solve for X",
+    },
+    {
+        "id": "math_qubic",
+        "prompt": "in ax^3+bx^2+c*x+d=0, use the cardano's formula to get the value for x where a=1, b=0, c=1 and d=-130",
+    },
+    {
+        "id": "math_qubic_simple",
+        "prompt": "in x^3+x-130=0, use the cardano's formula to get the value for x"
+    },
+    {
+        "id": "python_math",
+        "prompt": "in ax^3+bx^2+c*x+d=0, write a python program to solve for all possible values of x",
+    },
 ]
 
+my_dictionary = {
+    "Lion": "Animal",
+    "Parrot": "Bird",
+    "Cobra": "Reptile",
+    "Human": "Mammals"
+}
 # model = "gpt-3.5-turbo"
 # model = "mpt-7b-chat"
 # models = [
@@ -91,8 +124,10 @@ for model in models:
         os.mkdir(modelPath)
 
     for i in range(len(prompts)):
-        parts = prompts[i].split(": ", 1)
-        fileName, prompt = parts
+        prompt_ = prompts[i]
+        id_ = prompt_['id']
+        fileName = id_
+        prompt = prompt_['prompt']
         filePath = modelPath + "/" + fileName + ".txt"
 
         if os.path.exists(filePath):

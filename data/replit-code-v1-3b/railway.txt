@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "Explain origin of standard gauge for railways\nThe original design was based on the \"standard\" or base line. The first two lines were designed to be used as a reference point, and then subsequently modified by adding additional features such that they would not interfere with each other in any way\n\n## [](#header-2)Questions for Discussion:\n1. What are some of your thought processes when designing this project? How did you come up on the idea to make it a reality, and how do these things affect or change what we think about ourselves as human being."
+    }
+  ],
+  "created": 1687313155,
+  "id": "foobarbaz",
+  "model": "replit-code-v1-3b",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 114,
+    "prompt_tokens": 23,
+    "total_tokens": 137
+  }
+}

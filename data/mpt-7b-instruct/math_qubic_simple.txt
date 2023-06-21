@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "in x^3+x-130=0, use the cardano's formula to get the value for x\nSure, here is how you can do that. First of all we need to factorize this polynomial into a product of two linear factors and one quadratic term. The factorization will be done in such way so that each coefficient from the resulting terms would have its absolute value equal or less than 130 (because it's the maximum possible value for x). Then, using Cardano\u2019s formula you can find out what is the value of variable \u201cx\" which satisfies this equation:\nx^3 + x - 130 = 0"
+    }
+  ],
+  "created": 1687313303,
+  "id": "foobarbaz",
+  "model": "mpt-7b-instruct",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 105,
+    "prompt_tokens": 33,
+    "total_tokens": 138
+  }
+}

@@ -1,0 +1,2 @@
+when I was 6, my sister was half my age. Now I am 80. How old is my sister now? Calculate this step by step.
+Your Sister's Age = (80 -6) / 2

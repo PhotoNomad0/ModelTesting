@@ -1,0 +1,10 @@
+write a JavaScript program to generate and print out the ascii character and hexadecimal codes for 0 to 7f
+Here's one way to do it in Python:
+```python
+# Define a list of ASCII characters from 0 to 7f
+characters = [chr(i) for i in range(8) if i <= 0x7f]
+
+# Print out the ASCII and hexadecimal codes for each character
+for char in characters:
+    print(char, hex())
+```

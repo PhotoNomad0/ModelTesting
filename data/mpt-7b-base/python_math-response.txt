@@ -1,0 +1,4 @@
+in ax^3+bx^2+c*x+d=0, write a python program to solve for all possible values of x
+import math 
+def f(a,b): 
+    return (pow((1/a),(4))*((-1)**b)*(math.sqrt(((a**3)/abs(f(a,b))))+2*c) +d

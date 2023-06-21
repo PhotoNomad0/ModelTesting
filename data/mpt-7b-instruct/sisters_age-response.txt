@@ -1,0 +1,3 @@
+when I was 6, my sister was half my age. Now I am 80. How old is my sister now? Calculate this step by step.
+I understand that you want to calculate the current age of your younger sibling, who is currently six years old. You are currently eighty years old and have been alive for a total of sixty-six years since birth (6 + 6 +... + 66). The formula for calculating how long an individual has lived in terms of whole numbers can be expressed as:
+Age = Years Alive / Number of Whole Numbers

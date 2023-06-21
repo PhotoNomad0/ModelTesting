@@ -1,0 +1,29 @@
+in ax^3+bx^2+c*x+d=0, use the cardano's formula to get the value for x where a=1, b=0, c=1 and d=-130
+To find the root of the equation `ax^3 + bx^2 + cx + d = 0` using Cardano's formula, we need to first calculate the discriminant `D` of the quadratic polynomial `a*x^2 + b*x + c`. The value of `D` can be calculated as follows:
+```scss
+D = (b**2 - 4ac) / 2
+```
+In this case, we have:
+```makefile
+a = 1
+b = 0
+c = 1
+d = -130
+
+D = ((0^2 - 4*1*1) / 2) = (0 - 4) / 2 = -8/2 = -4
+```
+The value of `D` is negative, so the equation has one real root and one complex conjugate root. To find the real root, we can use Cardano's formula:
+```scss
+x = (-b +/- sqrt(b**2 - 4ac)) / (2a)
+
+x = (-0 +/- sqrt((0)^2 - 4*1*1)) / (2*1)
+= (-0 +/- sqrt(-8 - 4*1)) / (2*1)
+= (-0 +/- sqrt(8 - 4*1)) / (2*1)
+= (-0 +/- sqrt(8 - 4*1)) / (2\*(1+sqrt(2)))
+= (-0 +/- sqrt(-8 + 4*sqrt(2))) / (2\*(1+sqrt(2)))
+```
+Since the square root of a negative number is not defined, we need to take the positive root. Therefore, we have:
+```makefile
+x = (-0 + sqrt(-8 + 4*sqrt(2))) / (2*(1+sqrt(2))) ≈ -0.5369/2 ≈ -0.2684
+```
+Therefore, the root of `ax^3 + bx^2 + cx + d = 0` with a=1, b=0, c=1 and d=-130 is approximately `-0.2684`.

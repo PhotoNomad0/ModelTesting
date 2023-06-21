@@ -1,0 +1,142 @@
+in ax^3+bx^2+c*x+d=0, use the cardano's formula to get the value for x where a=1, b=0, c=1 and d=-130
+ax^3+bx^2+c*x+d=0
+
+## Solution 1 - Cardano’s Formula (recommended) 
+```java
+import java.util.*; 
+  
+public class Main { 
+
+    static double f(double a, double b, double c){
+
+        return Math.pow((a + b), 2) / 4; // ax^2+bx+c=0
+   }
+ 
+     // Cardano's Formula for solving quadratic equation with coefficients in the form of 1x1 matrix 
+    static void cardanofor(double a, double b, double c){ 
+
+        if (a == 0 && f(-b/2,-c/2)!= -Math.pow((f(-b/2,-c/2), 2)) / 4 ) { // if the discriminant is not zero 
+            System.out.println("x = " + (- b/(2* a) + Math.sqrt( ( f(-b/2, c/2) ) ));
+        } else  if ((a == 0 && -f(-c/2,-b/2)!= -(Math.pow((-f(-c/2, -b/2), 2)) / 4 )) { // if the discriminant is not zero 
+            System.out.println("x = " + (- c/(2* a)  + Math.sqrt( ( f(-c/2, b/2 ) ) ));
+        } else System.out.println ("No real roots");
+
+    } 
+
+     // main method to test the function 
+   public static void main(){ 
+ 	double a = 1; // coefficient of x^3 term in equation ax^3+bx^2+c*x+d=0  
+        double b = 0 ; //coefficient of x^2term in eqn.ax^3+bx^2+c*x+d=0 
+         // double c = 1; coefficient of the constant term and d=-130, which is a negative number 
+ 	cardanofor(a,b  ,c); 
+} 
+
+    public static void main(){
+ 		double x1 ; // value for variable 'x' where ax^3+bx^2+c*x+d=0 
+        // double d = -130; the constant term in equation 
+ 	System.out.println("Enter a, b and c: ");
+         Scanner sc = new Scanner( System.in );
+ 		double a  =sc.nextDouble(); // coefficient of x^3term 
+		   b    =sc.nextDouble() ;//coefficient of the constant term 
+ 	c     =sc.nextDouble(); 
+        d      =-130;
+         System.out.println("Enter value for d: ");
+ 		double  x2 = sc. next Double (); //value where ax^3+bx^2+c*x+d=0 
+		   // double x1 ; 
+ 	cardanofor(a,b, c); 
+         System.out.println("The value of the variable 'x' is: " +  Math.pow((f(- b / 2,- d/2), 1) ) );
+} 
+
+    public static void main(){
+ 		double x1 ; //value for varible ‘x’ where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	System.out.println("Enter value of d: ");
+         Scanner sc  = new Scanner( System.in );
+ 		double x1   =sc.nextDouble(); //value where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	cardanofor(-a,-b, c); 
+} 
+
+    public static void main(){
+ 		double x1 ;  // value for variable ‘x’ where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	System.out.println("Enter d: ");
+         Scanner sc   = new Scanner( System.in );
+ 		double x1    =sc.nextDouble(); //value where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	cardanofor(-a,-b, c); 
+} 
+
+     public static void main(){
+ 		double x1 ;  // value for variable ‘x’ where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	System.out.println("Enter d: ");
+         Scanner sc   = new Scanner( System.in );
+ 		double x1    =sc.nextDouble(); //value where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	cardanofor(-a,-b, c); 
+} 
+
+     public static void main(){
+ 		double x1 ;  // value for variable ‘x’ where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	System.out.println("Enter d: ");
+         Scanner sc   = new Scanner( System.in );
+ 		double x1    =sc.nextDouble(); //value where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	cardanofor(-a,-b, c); 
+} 
+
+     public static void main(){
+ 		double x1 ;  // value for variable ‘x’ where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	System.out.println("Enter d: ");
+         Scanner sc   = new Scanner( System.in );
+ 		double x1    =sc.nextDouble(); //value where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	cardanofor(-a,-b, c); 
+} 
+
+     public static void main(){
+ 		double x1 ;  // value for variable ‘x’ where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	System.out.println("Enter d: ");
+         Scanner sc   = new Scanner( System.in );
+ 		double x1    =sc.nextDouble(); //value where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	cardanofor(-a,-b, c); 
+} 
+
+     public static void main(){
+ 		double x1 ;  // value for variable ‘x’ where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	System.out.println("Enter d: ");
+         Scanner sc   = new Scanner( System.in );
+ 		double x1    =sc.nextDouble(); //value where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	cardanofor(-a,-b, c); 
+} 
+
+     public static void main(){
+ 		double x1 ;  // value for variable ‘x’ where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	System.out.println("Enter d: ");
+         Scanner sc   = new Scanner( System.in );
+ 		double x1    =sc.nextDouble(); //value where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	cardanofor(-a,-b, c); 
+} 
+
+     public static void main(){
+ 		double x1 ;  // value for variable ‘x’ where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	System.out.println("Enter d: ");
+         Scanner sc   = new Scanner( System.in );
+ 		double x1    =sc.nextDouble(); //value where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation 
+ 	cardanofor(-a,-b, c); 
+} 
+
+     public static void main(){
+ 		double x1 ;  // value for variable ‘x’ where ax^3+bx^2+c*x+d=0 
+        // double a = -130; the constant term in equation

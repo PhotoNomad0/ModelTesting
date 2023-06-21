@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "when I was 6, my sister was half my age. Now I am 80. How old is my sister now? Calculate this step by step.\nTo calculate the current age of your sister, we need to first determine how many years have passed since she was half your age. Let's call that number \"x\" years.\n\nAt the time when you were 6 and your sister was half your age (let's call that year \"y\"), your sister was 6 / 2 = <<6/2=3>>3 years old, while you were 6.\n\nNow, let's say it is currently the year x + y. You are now 80 years old and your sister is (x + y) - 6 = 80 - 6 = 74 years old.\n\nTherefore, your sister is currently 74 years old."
+    }
+  ],
+  "created": 1687313488,
+  "id": "foobarbaz",
+  "model": "vicuna-7b-1.1-q4_2",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 156,
+    "prompt_tokens": 47,
+    "total_tokens": 203
+  }
+}

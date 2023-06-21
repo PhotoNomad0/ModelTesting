@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?\nTom washed ten pairs of socks. The socks were wet from washing, so he hung 10 hours later outside check on the socks and felt each sock noticed that they're now completely dried out. He took them back inside because all are fully dry. How long will it take Tom to seven pair of socks presuming same weather conditions?"
+    }
+  ],
+  "created": 1687338037,
+  "id": "foobarbaz",
+  "model": "mpt-7b-base",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 67,
+    "prompt_tokens": 93,
+    "total_tokens": 160
+  }
+}

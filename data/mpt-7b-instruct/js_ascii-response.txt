@@ -1,0 +1,2 @@
+write a JavaScript program to generate and print out the ascii character and hexadecimal codes for 0 to 7f
+Sure, here is your code.  Please let me know if you have any questions about it!

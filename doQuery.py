@@ -5,32 +5,45 @@ import time
 from urllib.request import urlopen
 import json
 
-openai.api_base = "http://localhost:4891/v1"
+# for GPT4ALL Chat UI
+openai.api_base = "http://localhost:8000/v1"
+# for GPT4ALL Chat UI
+# openai.api_base = "http://localhost:4891/v1"
+# for OpenAI servers
 # openai.api_base = "https://api.openai.com/v1"
 
 openai.api_key = "not needed for a local LLM"
 
-# fetch the models
-response = urlopen(openai.api_base + '/models')
-data_json = json.loads(response.read())
-
-# print the json response
-print("models=", data_json)
-
-models = []
-for item in data_json['data']:
-    model = item['id']
-    root_ = item['root']
-    print("id", model, ", root", root_)
-
-    if model != 'chatgpt-gpt-3.5-turbo' and model != 'chatgpt-gpt-4':
-        models.append(model)
-    if model != root_:
-        print("differs!")
+# # fetch the models
+# response = urlopen(openai.api_base + '/models')
+# data_json = json.loads(response.read())
+# 
+# # print the json response
+# print("models=", data_json)
+# 
+# models = []
+# for item in data_json['data']:
+#     if 'filename' in item:
+#         model = item['filename']
+#         root_ = model
+#     else:
+#         model = item['id']
+#         root_ = item['root']
+# 
+#     print("id", model, ", root", root_)
+# 
+#     if model != 'chatgpt-gpt-3.5-turbo' and model != 'chatgpt-gpt-4':
+#         models.append(model)
+#     if model != root_:
+#         print("differs!")
 
 
 # Set up the prompt and other parameters for the API request
 prompts = [
+    {
+        "id": "define_llm",
+        "prompt": "explain use of LLM's in AI research",
+    },
     {
         "id": "sisters_age",
         "prompt": "when I was 6, my sister was half my age. Now I am 80. How old is my sister now? Calculate this step by step.",
@@ -87,18 +100,19 @@ prompts = [
 
 # model = "gpt-3.5-turbo"
 # model = "mpt-7b-chat"
-# models = [
-#     # "nous-hermes-13b.ggmlv3.q4_0",
-#     # "gpt4all-j-v1.3-groovy",
-#     "ggml-mpt-7b-chat.bin",
-# #     "wizardLM-7B.ggmlv3.q8_0",
-# #     "vic7b-q5_1",
-# #     "ggml-vic13b-q8_0",
-# #     "nous-gpt4-vicuna-13b",
-# #     "nous-hermes-13b.ggmlv3.q6_K"
-# #     "30b-Lazarus.ggmlv3.q5_1",
-# #     "airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
-# ]
+models = [
+    "nous-hermes-13b.ggmlv3.q4_0.bin"
+    # "nous-hermes-13b.ggmlv3.q4_0",
+    # "gpt4all-j-v1.3-groovy",
+    # "ggml-mpt-7b-chat.bin",
+#     "wizardLM-7B.ggmlv3.q8_0",
+#     "vic7b-q5_1",
+#     "ggml-vic13b-q8_0",
+#     "nous-gpt4-vicuna-13b",
+#     "nous-hermes-13b.ggmlv3.q6_K"
+#     "30b-Lazarus.ggmlv3.q5_1",
+#     "airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
+]
 
 modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
 
@@ -135,8 +149,21 @@ def queryModel(model, prompt):
     return response_
 
 
+def trimModel(model):
+    name = model
+    length = len(name)
+    
+    if (name.find('.bin') > 0):
+        name = name[0:length-4]
+
+    if (name.find('ggml-') == 0):
+        name = name[5:]
+        
+    return name
+
+
 for model in models:
-    modelPath = "data/" + model
+    modelPath = "data/" + trimModel(model)
     if not os.path.exists(modelPath):
         # Create model directory if it does not exist
         os.mkdir(modelPath)
@@ -154,7 +181,7 @@ for model in models:
             response = ''
             print("Testing", i, "model", model, ", and prompt: ", prompt)
             start_time = time.time()
-        
+ 
             # try:
             response = queryModel(model, prompt)
             # except:
@@ -176,7 +203,7 @@ for model in models:
             model_used = response.model.strip() if response else ""
             if model_used != model:
                 print("model used", model_used, "does not match model requested", model)
-                
+
             print("Saving to", filePath)
             with open(filePath, "w") as file:
                 file.write(str(response))

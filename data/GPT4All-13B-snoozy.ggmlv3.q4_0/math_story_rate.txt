@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "Before Cam broke his right arm, he was able to type 9 words per minute on his phone.  After he broke his arm, he had to use his left hand for a while, and he could only type 6 words per minute. What is the difference between the number of words he could type in 5 minutes before and after he broke his arm\nThe difference between the number of words Cam could type in 5 minutes before and after he broke his arm is 3 words per minute."
+    }
+  ],
+  "created": 1687342889,
+  "id": "foobarbaz",
+  "model": "GPT4All-13B-snoozy.ggmlv3.q4_0",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 28,
+    "prompt_tokens": 86,
+    "total_tokens": 114
+  }
+}

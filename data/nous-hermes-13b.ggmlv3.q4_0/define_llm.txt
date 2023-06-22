@@ -1,0 +1,22 @@
+{
+  "id": "445572c49970463ea0fc88569e4f95b1",
+  "object": "text_completion",
+  "created": 1687475055.5319538,
+  "model": "nous-hermes-13b.ggmlv3.q4_0.bin",
+  "choices": [
+    {
+      "text": "Legal Language Machines (LLM) are being used increasingly in Artificial Intelligence (AI) research. These machines can analyze and understand legal language, which is often complex and difficult to interpret for computers. They can also identify patterns within the law that may not be immediately apparent to human analysts. By using LLM's in AI research, we can gain a deeper understanding of how laws are structured and how they interact with each other. This can lead to more accurate predictions about legal outcomes and help automate certain aspects of legal work.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 91,
+    "total_tokens": 114,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "In Science class, Sara needed 8 test tubes for 3 different experiments. The first experiment required 2 test tubes and the other two experiments required the same number of test tubes. How many test tubes were needed for each of the other two experiments?\nFor the second experiment, Sara needed 2 more test tubes than she used for the first experiment. Since she used 2 test tubes for the first experiment, she needed 2 + 2 = <<2+2=4>>4 test tubes for the second experiment.\nFor the third experiment, Sara needed the same number of test tubes as she used for the first experiment. Since she used 2 test tubes for the first experiment, she needed the same number of test tubes as 2, which is 2 test tubes.\nTherefore, Sara needed a total of 4 + 2 = <<4+2=6>>6 test tubes for all three experiments."
+    }
+  ],
+  "created": 1687341599,
+  "id": "foobarbaz",
+  "model": "vicuna-13b-1.1-q4_2",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 149,
+    "prompt_tokens": 69,
+    "total_tokens": 218
+  }
+}

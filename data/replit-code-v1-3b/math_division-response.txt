@@ -1,0 +1,4 @@
+In the morning, Emily decided to create some designs with her cereal bits. In total, she created 9 designs and used 63 cereal bits. About how many cereal bits were in each design? Do you think she used an equal number of cereal bits in each design?
+Emily's first thought was that the answer is yes because there are a total amount to be distributed amongst all her created piece. In other words, we can say "63/9 = 6" and so on...
+
+## [Question 4](https

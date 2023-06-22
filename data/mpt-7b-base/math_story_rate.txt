@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "Before Cam broke his right arm, he was able to type 9 words per minute on his phone.  After he broke his arm, he had to use his left hand for a while, and he could only type 6 words per minute. What is the difference between the number of words he could type in 5 minutes before and after he broke his arm\nBefore Cam was able to type 9 wpm on phone with right-hand. After breaking, it became possible use left hand for a while but then typing speed decreased by 6wpm. What is average time required complete task?"
+    }
+  ],
+  "created": 1687340809,
+  "id": "foobarbaz",
+  "model": "mpt-7b-base",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 46,
+    "prompt_tokens": 79,
+    "total_tokens": 125
+  }
+}

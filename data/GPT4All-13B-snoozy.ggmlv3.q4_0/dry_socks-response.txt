@@ -1,0 +1,21 @@
+Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?
+To answer this question, we need to use a formula that relates time and temperature for drying clothes in the sun. The formula is:
+
+Time = (1/T) + (1/S)
+
+where T is the temperature in degrees Celsius and S is the speed of drying in degrees per hour.
+
+We can use this formula to calculate how long it will take for seven pairs of socks to dry under the same weather conditions as before, assuming a constant temperature and wind speed.
+
+First, we need to find the average temperature and wind speed from the previous problem:
+
+Average Temperature = (20 + 15) / 2 = 17.5 degrees Celsius
+Wind Speed = 10 mph
+
+Next, we can use these values to calculate the speed of drying for a single pair of socks:
+
+Speed of Drying = (1/T) + (1/S)
+= (1/17.5) + (1/10)
+= 0.24 hours per pair
+
+Therefore, it will take Tom approximately 1.68 hours to dry seven pairs of socks under the same weather conditions as before.

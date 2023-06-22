@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "Harmony used discarded paper to make notepads for her friends. She would fold five letter size pieces of paper three times then cut along the lines. She would then stack the smaller note papers and staple them together. How long would one notepad last if someone wrote ten notes per day?\nIf someone writes ten notes per day, and one notepad lasts for 5 months, then the duration of the notepad will be:\n5 months x 30 days/month = 150 days\nTherefore, one notepad would last for 150 days if someone writes ten notes per day."
+    }
+  ],
+  "created": 1687341029,
+  "id": "foobarbaz",
+  "model": "nous-gpt4-vicuna-13b",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 71,
+    "prompt_tokens": 78,
+    "total_tokens": 149
+  }
+}

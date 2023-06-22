@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "Before Cam broke his right arm, he was able to type 9 words per minute on his phone.  After he broke his arm, he had to use his left hand for a while, and he could only type 6 words per minute. What is the difference between the number of words he could type in 5 minutes before and after he broke his arm\nCam was able to type 9 words/minute with both hands. After breaking right wrist, Cam had to use left hand for a while which reduced typing speed by 33%. So total reduction in wpm is 66% or 6wpm"
+    }
+  ],
+  "created": 1687340964,
+  "id": "foobarbaz",
+  "model": "mpt-7b-instruct",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 47,
+    "prompt_tokens": 79,
+    "total_tokens": 126
+  }
+}

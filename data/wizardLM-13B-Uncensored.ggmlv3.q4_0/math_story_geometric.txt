@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "Harmony used discarded paper to make notepads for her friends. She would fold five letter size pieces of paper three times then cut along the lines. She would then stack the smaller note papers and staple them together. How long would one notepad last if someone wrote ten notes per day?\nIf someone writes ten notes per day, they will go through one notepad every 10 days (assuming they don't use both sides of the paper). Therefore, Harm's notepads would last for 10 days."
+    }
+  ],
+  "created": 1687341917,
+  "id": "foobarbaz",
+  "model": "wizardLM-13B-Uncensored.ggmlv3.q4_0",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 51,
+    "prompt_tokens": 78,
+    "total_tokens": 129
+  }
+}

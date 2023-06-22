@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "In Science class, Sara needed 8 test tubes for 3 different experiments. The first experiment required 2 test tubes and the other two experiments required the same number of test tubes. How many test tubes were needed for each of the other two experiments?\nSara could use 4 or 5 test tubes in her second experiment. In both cases, she would have one extra tube left over from the first experiment that was not used up by either of those 2nd and 3rd tests."
+    }
+  ],
+  "created": 1687340952,
+  "id": "foobarbaz",
+  "model": "mpt-7b-instruct",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 46,
+    "prompt_tokens": 57,
+    "total_tokens": 103
+  }
+}

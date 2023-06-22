@@ -1,0 +1,2 @@
+Harmony used discarded paper to make notepads for her friends. She would fold five letter size pieces of paper three times then cut along the lines. She would then stack the smaller note papers and staple them together. How long would one notepad last if someone wrote ten notes per day?
+Assuming that each folded piece of paper can hold a single note, Harmony's note pad should last for approximately 10 days. This is because there are 365 days in a year minus the time it takes to make and use the note pads (which we don't know), which would give us ten days worth of notes.

@@ -1,0 +1,20 @@
+In Science class, Sara needed 8 test tubes for 3 different experiments. The first experiment required 2 test tubes and the other two experiments required the same number of test tubes. How many test tubes were needed for each of the other two experiments?
+Let's start by using algebra to represent the problem. Let x be the number of test tubes needed for the first experiment, y be the number of test tubes needed for the second experiment, and z be the number of test tubes needed for the third experiment. 
+According to the problem, we know that:
+x + y + z = 8 (because Sara needed a total of 8 test tubes)
+2x + y + z = 3 (because the first experiment required 2 test tubes and the other two experiments required the same number of test tubes)
+We can use these equations to solve for y and z. 
+From the second equation, we can isolate y:
+y = 3 - x - z
+Substituting this into the first equation, we get:
+x + (3 - x - z) + z = 8
+Simplifying, we get:
+4 - x - z = 5
+Adding x to both sides, we get:
+4 = 5 + x + z
+Subtracting 5 from both sides, we get:
+x + z = 1
+We can use trial and error or a numerical solver to find integer solutions for x and z that satisfy this equation. One such solution is x = 1 and z = 6. 
+Using the second equation, we can now solve for y:
+y = 3 - x - z = 3 - (1 - 6) = 2
+Therefore, Sara needed 8 test tubes in total, with 2 test tubes required for the first experiment, 6 test tubes required for the second experiment, and 1 test tube required for the third experiment.

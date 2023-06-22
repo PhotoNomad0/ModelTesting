@@ -1,0 +1,20 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "Explain origin of standard gauge for railways\nStandard gauge is a railway track width that is commonly used in many countries. It measures 1,435 millimeters or 4 feet and 8 inches between the rails. This measurement was adopted as a standard to ensure compatibility between different railway systems around the world. The use of standard gauge allows for easy interchangeability of rolling stock, such as trains, across borders without requiring costly conversions or modifications. Standard gauge is also more efficient in terms of track maintenance and construction, as it requires less effort to maintain than narrower gauges."
+    }
+  ],
+  "created": 1687343226,
+  "id": "foobarbaz",
+  "model": "GPT4All-13B-snoozy.ggmlv3.q4_0",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 114,
+    "prompt_tokens": 22,
+    "total_tokens": 136
+  }
+}

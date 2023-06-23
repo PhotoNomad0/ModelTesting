@@ -1,11 +1,11 @@
 {
-  "id": "7d518d4a9d7a4b0ba25fd2c6ab1d1c98",
+  "id": "e3b0d5b55dbd4b519045d8e2410d6ab4",
   "object": "text_completion",
-  "created": 1687486660.145597,
-  "model": "nous-hermes-13b.ggmlv3.q4_0",
+  "created": 1687518888.334025,
+  "model": "wizardLM-13B-Uncensored.ggmlv3.q4_0.bin",
   "choices": [
     {
-      "text": "What is the role and importance of using Lawyers as Legal Managers (LLM) in Artificial Intelligence (AI) research?",
+      "text": "provide an explanation of how legal linguistics is used in artificial intelligence research.",
       "index": 0,
       "logprobs": null,
       "finish_reason": "stop",
@@ -13,9 +13,9 @@
     }
   ],
   "usage": {
-    "prompt_tokens": 200,
-    "completion_tokens": 18,
-    "total_tokens": 41,
+    "prompt_tokens": 4096,
+    "completion_tokens": 13,
+    "total_tokens": 36,
     "thread_count": 4,
     "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
   }

@@ -1,0 +1,22 @@
+{
+  "id": "72ed6b8abb1c42e4a016ccb3fe76c959",
+  "object": "text_completion",
+  "created": 1687515074.08467,
+  "model": "ggml-mpt-7b-chat.bin",
+  "choices": [
+    {
+      "text": "LLMs, or language-based models, are a type of artificial intelligence that is used extensively for natural language processing and machine learning. They work by analyzing patterns within human speech to understand how people communicate with one another through written text. In the field of Artificial Intelligence (AI) Research LLM's have become increasingly popular due in part to their ability to generate coherent responses based on input data, making them ideal tools for tasks such as chatbots and virtual assistants that require a high level of natural language understanding capabilities",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 200,
+    "completion_tokens": 91,
+    "total_tokens": 114,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -14,29 +14,6 @@ openai.api_base = "http://localhost:8000/v1"
 
 openai.api_key = "not needed for a local LLM"
 
-# # fetch the models
-# response = urlopen(openai.api_base + '/models')
-# data_json = json.loads(response.read())
-# 
-# # print the json response
-# print("models=", data_json)
-# 
-# models = []
-# for item in data_json['data']:
-#     if 'filename' in item:
-#         model = item['filename']
-#         root_ = model
-#     else:
-#         model = item['id']
-#         root_ = item['root']
-# 
-#     print("id", model, ", root", root_)
-# 
-#     if model != 'chatgpt-gpt-3.5-turbo' and model != 'chatgpt-gpt-4':
-#         models.append(model)
-#     if model != root_:
-#         print("differs!")
-
 
 # Set up the prompt and other parameters for the API request
 prompts = [
@@ -98,21 +75,37 @@ prompts = [
     },
 ]
 
+ignoredModels = [
+    {
+        "model": "gpt4all-j-v1.3-groovy",
+        "reason": "out of memory on reload, or redownloads",
+    },
+    {
+        "model": "mpt-7b",
+        "reason": "same?"
+    },
+    # {
+    #     'model': "replit-code-v1-3b",
+    #     "reason": "out of memory?"
+    # }
+]
+
 # model = "gpt-3.5-turbo"
 # model = "mpt-7b-chat"
-models = [
-    "nous-hermes-13b.ggmlv3.q4_0.bin"
-    # "nous-hermes-13b.ggmlv3.q4_0",
-    # "gpt4all-j-v1.3-groovy",
-    # "ggml-mpt-7b-chat.bin",
-#     "wizardLM-7B.ggmlv3.q8_0",
-#     "vic7b-q5_1",
-#     "ggml-vic13b-q8_0",
-#     "nous-gpt4-vicuna-13b",
-#     "nous-hermes-13b.ggmlv3.q6_K"
-#     "30b-Lazarus.ggmlv3.q5_1",
-#     "airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
-]
+# models = [
+#     # "nous-hermes-13b.ggmlv3.q4_0.bin"
+#     "nous-hermes-13b.ggmlv3.q4_0",
+#     # "ggml-gpt4all-j-v1.3-groovy.bin",
+#     "ggml-mpt-7b-chat.bin",
+#     "GPT4All-13B-snoozy.ggmlv3.q4_0.bin",
+# #     "wizardLM-7B.ggmlv3.q8_0",
+# #     "vic7b-q5_1",
+# #     "ggml-vic13b-q8_0",
+# #     "nous-gpt4-vicuna-13b",
+# #     "nous-hermes-13b.ggmlv3.q6_K"
+# #     "30b-Lazarus.ggmlv3.q5_1",
+# #     "airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
+# ]
 
 modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
 
@@ -123,7 +116,7 @@ modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
 #         models.append(file)
 # print("Models found", models)
 
-def queryModel(model, prompt):
+def runModelQuery(model, prompt, reload):
     # gptj = gpt4all.GPT4All(
     #     model_name=model,
     #     model_path=modelPath_,
@@ -137,16 +130,43 @@ def queryModel(model, prompt):
     response_ = openai.Completion.create(
         model=model,
         prompt=prompt,
+        # reload=reload,
         max_tokens=4096,
         temperature=0.28,
         top_p=0.95,
         n=1, # this does not seem to be number of cores
         echo=True,
         stream=False,
-        timeout=650 # seconds
+        timeout=600, # seconds
+        allow_download=False,
     )
 
     return response_
+
+
+def getModels():
+    # fetch the models
+    response = urlopen(openai.api_base + '/models')
+    data_json = json.loads(response.read())
+    # print the json response
+    print("models=", data_json)
+    models = []
+    for item in data_json['data']:
+        if 'filename' in item:
+            model = item['filename']
+            root_ = model
+        else:
+            model = item['id']
+            root_ = item['root']
+
+        print("id", model, ", root", root_)
+
+        if model != 'chatgpt-gpt-3.5-turbo' and model != 'chatgpt-gpt-4':
+            models.append(model)
+        if model != root_:
+            print("differs!")
+    
+    return models
 
 
 def trimModel(model):
@@ -162,7 +182,28 @@ def trimModel(model):
     return name
 
 
+def filter(models):
+    list = []
+    for model in models:
+        found = False
+        for ignore in ignoredModels:
+            if model.find(ignore['model']) >= 0:
+                found = True
+        
+        if not found:
+            list.append(model)
+        else:
+            print("Skipping model", model)
+            
+    return list
+
+
+models = getModels()
+
+models = filter(models)
+
 for model in models:
+    reload = False
     modelPath = "data/" + trimModel(model)
     if not os.path.exists(modelPath):
         # Create model directory if it does not exist
@@ -179,11 +220,11 @@ for model in models:
             print("Already have results for", filePath, "skipping")
         else:
             response = ''
-            print("Testing", i, "model", model, ", and prompt: ", prompt)
+            print("Testing", i, "reload", reload, ", model", model, ", and prompt: ", prompt)
             start_time = time.time()
  
             # try:
-            response = queryModel(model, prompt)
+            response = runModelQuery(model, prompt, reload)
             # except:
             #     response = 'Error'
             #     print("Error")
@@ -193,6 +234,7 @@ for model in models:
             elapsed_time = end_time - start_time
             print(f'Time elapsed: {elapsed_time:.2f} seconds')
 
+            reload = False
             choices = response.choices
             choice = choices[0] if choices else ""
             action_text = choice.text.strip() if choice else ""

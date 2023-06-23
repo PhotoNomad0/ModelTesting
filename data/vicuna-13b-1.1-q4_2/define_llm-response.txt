@@ -1,0 +1,1 @@
+LLM (Language Model) is a type of artificial intelligence that can process and generate human-like language. It has been widely used in various fields such as natural language processing, machine translation

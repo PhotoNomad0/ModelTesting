@@ -5,10 +5,15 @@ import time
 from urllib.request import urlopen
 import json
 
-# for GPT4ALL Chat UI
-openai.api_base = "http://localhost:8000/v1"
-# for GPT4ALL Chat UI
-# openai.api_base = "http://localhost:4891/v1"
+usePythonBinding = False
+
+if usePythonBinding:
+    # for GPT4ALL Chat UI
+    openai.api_base = "http://localhost:8000/v1"
+else:
+    # for GPT4ALL Chat UI
+    openai.api_base = "http://localhost:4891/v1"
+
 # for OpenAI servers
 # openai.api_base = "https://api.openai.com/v1"
 

@@ -1,0 +1,22 @@
+{
+  "id": "5cc30ceaed37452a9a3a04f69ff5c7ee",
+  "object": "text_completion",
+  "created": 1687545539.989877,
+  "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
+  "choices": [
+    {
+      "text": "The standard gauge for railway tracks is 4 feet, 8.5 inches (1435 mm). The origins of this measurement can be traced back to ancient Roman roads and British tramways from the early 19th century. However, there are various theories about how it became the most widely used gauge worldwide:\n\n1. One theory suggests that the standard gauge was derived from the width between ruts in a cart track dating back to Ancient Rome. The Romans built their roads with grooves cut into stone or wood called \"rutted\" tracks, which allowed wheels to",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 93,
+    "total_tokens": 115,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

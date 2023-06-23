@@ -1,0 +1,22 @@
+{
+  "id": "c9a78dfb298145f1aa3abad3017bc3b5",
+  "object": "text_completion",
+  "created": 1687545867.9874449,
+  "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
+  "choices": [
+    {
+      "text": "Cardano's Formula is used to solve cubic equations of the form ax^3 + bx^2 + cx + d = 0. In this case, our equation has coefficients a = 1, b = 0, c = 1 and d = -130.\n\nFirst, let's rewrite the equation in standard form:\n\nx^3 - x^2 - (1/4) * (-130) = 0\n\nNow, we can apply Cardano's Formula to solve for x. The steps are as follows:\n\nStep 1:",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 70,
+    "total_tokens": 115,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

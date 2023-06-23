@@ -1,0 +1,8 @@
+Here's a simple JavaScript program that generates and prints ASCII characters along with their corresponding hexadecimal values from 0 to 7F.
+
+```javascript
+for (let i = 0; i <= 256; i++) {
+    console.log(`${i} : ${String.fromCharCode(i)}`); // Print ASCII character and its value
+    console.log(`Hexadecimal: ${i.toString(16).toUpperCase()}`); // Convert decimal to hexadecimal
+}
+```

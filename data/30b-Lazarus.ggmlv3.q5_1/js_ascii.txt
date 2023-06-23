@@ -1,0 +1,22 @@
+{
+  "id": "fd3b5662b9c447698f81c32988de11dd",
+  "object": "text_completion",
+  "created": 1687549880.8846982,
+  "model": "ggml-30b-Lazarus.ggmlv3.q5_1.bin",
+  "choices": [
+    {
+      "text": "Sure! Here's a rephrased version of your instruction in the form of a code snippet that generates and prints ASCII characters and their corresponding hexadecimal codes from 0 to 7F using JavaScript:\n```javascript\nfor (let i = 0; i <= 7f; i++) {\n    let charCode = String.fromCharCode(i);\n    console.log(`${charCode} -> ${hexadecimal(i)}`);\n}\nfunction hexadecimal(n) {\n    return n.toString(16).toUpperCase();\n",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 59,
+    "total_tokens": 93,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

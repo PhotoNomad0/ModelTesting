@@ -1,0 +1,5 @@
+To solve this cubic equation using Cardano's method, we need to follow these steps:
+
+Step 1: Find two consecutive real numbers (roots) r₁ and r₂ such that f(r₁)=f(r₂). In our case, the function is ax^3+bx^2+c*x+d=0. We can set x = -1 to get a value for y (-a), which will be equal to another value of y when we set x = 1 (since b and c are both zero).
+
+Step 2: Find the third root r

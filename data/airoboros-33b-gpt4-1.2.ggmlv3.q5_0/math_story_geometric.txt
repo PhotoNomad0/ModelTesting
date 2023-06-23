@@ -1,0 +1,22 @@
+{
+  "id": "673156a1e7c641edbfd2c2d008d420c5",
+  "object": "text_completion",
+  "created": 1687528268.26679,
+  "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q5_0.bin",
+  "choices": [
+    {
+      "text": "One notepad would last 10 days because there are 30 pages in a single notepad, and each page can hold up to 10 notes.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 24,
+    "total_tokens": 90,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

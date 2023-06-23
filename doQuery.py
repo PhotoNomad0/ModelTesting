@@ -5,9 +5,9 @@ import time
 from urllib.request import urlopen
 import json
 
-usePythonBinding = False
+usePythonBindings = True
 
-if usePythonBinding:
+if usePythonBindings:
     # for GPT4ALL Chat UI
     openai.api_base = "http://localhost:8000/v1"
 else:
@@ -51,14 +51,6 @@ prompts = [
         "prompt": "write a JavaScript program to generate and print out the ascii character and hexadecimal codes for 0 to 7f",
     },
     {
-        "id": "dry_socks",
-        "prompt": "Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?" ,
-    },
-    {
-        "id": "TOT_socks",
-        "prompt": "Three experts with exceptional logical thinking skills are collaboratively answering a question using a Tree of Thoughts method. Each expert will share their thought process in detail, taking into account the previous thoughts of others and emitting any errors. They will iteratively refine and expand upon each other's ideas, giving credit where it's due. The process continues until a conclusive answer is found. Organize the entire response in a markdown format. The question is, \"Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?\"",
-    },
-    {
         "id": "railway",
         "prompt": "Explain origin of standard gauge for railways",
     },
@@ -78,6 +70,14 @@ prompts = [
         "id": "python_math",
         "prompt": "in ax^3+bx^2+c*x+d=0, write a python program to solve for all possible values of x",
     },
+    {
+        "id": "dry_socks",
+        "prompt": "Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?" ,
+    },
+    {
+        "id": "TOT_socks",
+        "prompt": "Three experts with exceptional logical thinking skills are collaboratively answering a question using a Tree of Thoughts method. Each expert will share their thought process in detail, taking into account the previous thoughts of others and emitting any errors. They will iteratively refine and expand upon each other's ideas, giving credit where it's due. The process continues until a conclusive answer is found. Organize the entire response in a markdown format. The question is, \"Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?\"",
+    },
 ]
 
 ignoredModels = [
@@ -89,28 +89,33 @@ ignoredModels = [
         "model": "mpt-7b",
         "reason": "same?"
     },
-    # {
-    #     'model': "replit-code-v1-3b",
-    #     "reason": "out of memory?"
-    # }
+    {
+        'model': "replit-code-v1-3b",
+        "reason": "out of memory?"
+    }
 ]
 
 # model = "gpt-3.5-turbo"
 # model = "mpt-7b-chat"
-# models = [
-#     # "nous-hermes-13b.ggmlv3.q4_0.bin"
-#     "nous-hermes-13b.ggmlv3.q4_0",
-#     # "ggml-gpt4all-j-v1.3-groovy.bin",
-#     "ggml-mpt-7b-chat.bin",
-#     "GPT4All-13B-snoozy.ggmlv3.q4_0.bin",
-# #     "wizardLM-7B.ggmlv3.q8_0",
-# #     "vic7b-q5_1",
-# #     "ggml-vic13b-q8_0",
-# #     "nous-gpt4-vicuna-13b",
-# #     "nous-hermes-13b.ggmlv3.q6_K"
-# #     "30b-Lazarus.ggmlv3.q5_1",
-# #     "airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
-# ]
+models = [
+    # "nous-hermes-13b.ggmlv3.q4_0.bin"
+    # "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q2_K.bin",
+    # "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q5_0.bin",
+    # "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
+    # "ggml-30b-Lazarus.ggmlv3.q4_1.bin",
+    "ggml-30b-Lazarus.ggmlv3.q5_1.bin"
+    # "nous-hermes-13b.ggmlv3.q4_0",
+    # "ggml-gpt4all-j-v1.3-groovy.bin",
+    # "ggml-mpt-7b-chat.bin",
+    # "GPT4All-13B-snoozy.ggmlv3.q4_0.bin",
+#     "wizardLM-7B.ggmlv3.q8_0",
+#     "vic7b-q5_1",
+#     "ggml-vic13b-q8_0",
+#     "nous-gpt4-vicuna-13b",
+#     "nous-hermes-13b.ggmlv3.q6_K"
+#     "30b-Lazarus.ggmlv3.q5_1",
+#     "airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
+]
 
 modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
 
@@ -203,9 +208,10 @@ def filter(models):
     return list
 
 
-models = getModels()
+# models = getModels()
 
 models = filter(models)
+print("models", models)
 
 for model in models:
     reload = False

@@ -1,0 +1,3 @@
+When you were 6 years old, your sister's age in terms of her relationship to yours would be (your age)/2 or 3. So when you were 6 and she was half your age, she was 3 years old. Now that you are 80, the formula for calculating her current age is:
+- Her age now = Your age + (her age at a time when she was half your age) - this would be calculated as follows:
+Her age now = 80 + (3) - which gives us an answer of 83. So currently, your sister's

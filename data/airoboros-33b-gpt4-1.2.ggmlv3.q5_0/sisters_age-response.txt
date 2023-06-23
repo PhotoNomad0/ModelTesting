@@ -1,0 +1,4 @@
+Let's solve this problem step by step:
+1. You were 6 years old when your sister was half your age. So, at that time, your sister must have been 3 years old (half of 6).
+2. Now you are 80 years old and want to find out how old your sister is now.
+3. Since the difference in your ages remains constant throughout life, your sister should be 40 years old now.

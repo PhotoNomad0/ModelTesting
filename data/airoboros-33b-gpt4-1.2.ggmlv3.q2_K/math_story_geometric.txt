@@ -1,0 +1,22 @@
+{
+  "id": "b4db15ef896a4d3b86735cba7340f449",
+  "object": "text_completion",
+  "created": 1687525690.41632,
+  "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q2_K.bin",
+  "choices": [
+    {
+      "text": "Harmony made notepads by recycling discarded paper, folding five letter size pieces of paper three times and cutting along the lines to create smaller note papers. She then stacked these smaller sheets together and stapled them. One notepad would last for 10 days if someone wrote ten notes per day on it.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 52,
+    "total_tokens": 118,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

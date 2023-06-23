@@ -1,0 +1,22 @@
+{
+  "id": "be28b268e69548e29a7090e5556b6878",
+  "object": "text_completion",
+  "created": 1687548139.8339121,
+  "model": "ggml-30b-Lazarus.ggmlv3.q5_1.bin",
+  "choices": [
+    {
+      "text": "Sure! Here's a rephrased version of your text: In Science class, Sara had to perform 3 different experiments using test tubes. For the first experiment, she required 2 test tubes. The remaining experiments were identical in terms of their need for test tubes; they both needed the same number of test tubes. Since there are a total of 8 test tubes available and Sara used up 2 for the first experiment, this means that out of the remaining 6 test tubes, half (or 3) were required for each of these identical experiments. Therefore, each of",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 96,
+    "total_tokens": 155,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -1,0 +1,4 @@
+Before breaking his right arm, Cam was able to type 9 words per minute on his phone. After breaking his arm, he had to use his left hand for a while and could only type 6 words per minute. The difference between the number of words he could type in 5 minutes before and after breaking his arm is:
+
+Before = 9 words/minute * (1 min / 5 mins) * 5 mins = 30 words
+After = 6 words/minute * (1 min / 5 mins) * 5 mins = 24 words

@@ -1,0 +1,4 @@
+Before breaking his right arm, Cam could type 9 words per minute on his phone. This means that he would be able to type 45 words (9 x 5) in a period of 5 minutes. After breaking his arm, he had to use his left hand and could only type 6 words per minute. In this case, he would type 30 words (6 x 5) in the same amount of time.
+
+The difference between these two situations is:
+45 - 30 = 15 words

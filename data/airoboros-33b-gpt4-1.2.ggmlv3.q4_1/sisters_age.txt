@@ -1,0 +1,22 @@
+{
+  "id": "2f65c9c3ae9c4efc842971a5f172170b",
+  "object": "text_completion",
+  "created": 1687544612.902875,
+  "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
+  "choices": [
+    {
+      "text": "Step 1: Let's assume your sister was born at the same time as you and has always been younger than you.\n\nStep 2: When you were 6, she would have been 3 (since her age is half of yours).\n\nStep 3: Now that you are 80 years old, your sister should be 40 years old because her age remains constant relative to yours throughout time.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 66,
+    "total_tokens": 106,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

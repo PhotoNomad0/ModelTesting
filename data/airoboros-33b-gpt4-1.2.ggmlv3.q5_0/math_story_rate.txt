@@ -1,0 +1,22 @@
+{
+  "id": "74fd8d4961214bde9a87427c895ef13e",
+  "object": "text_completion",
+  "created": 1687528706.08754,
+  "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q5_0.bin",
+  "choices": [
+    {
+      "text": "Before breaking his right arm, Cam could type 9 words per minute on his phone. This means that he would be able to type 45 words (9 x 5) in a period of 5 minutes. After breaking his arm, he had to use his left hand and could only type 6 words per minute. In this case, he would type 30 words (6 x 5) in the same amount of time.\n\nThe difference between these two situations is:\n45 - 30 = 15 words",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 82,
+    "total_tokens": 161,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

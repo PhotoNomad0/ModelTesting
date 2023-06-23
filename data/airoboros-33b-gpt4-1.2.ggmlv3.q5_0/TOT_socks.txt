@@ -1,0 +1,22 @@
+{
+  "id": "d4a6c5748c6e4799b03c9ef0a69c7c7c",
+  "object": "text_completion",
+  "created": 1687540326.603621,
+  "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q5_0.bin",
+  "choices": [
+    {
+      "text": "```\n| Expert 1 | Thought Process                                |\n|----------|-----------------------------------------------|\n|          | I'm not entirely sure what information is needed for this question, but based on my understanding, here are some initial thoughts. Firstly, Tom washed 10 pairs of socks and they were wet from the wash. He then hung them outside to dry for 10 hours before checking on their status and finding that they were all dry. After feeling each sock, he took them back inside his house because they were dry. The question asks how long it will take Tom to",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 87,
+    "total_tokens": 252,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

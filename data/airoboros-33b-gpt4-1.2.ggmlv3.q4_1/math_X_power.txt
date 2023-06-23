@@ -1,0 +1,22 @@
+{
+  "id": "73f569d78a2b4732a477c3baf1d1489b",
+  "object": "text_completion",
+  "created": 1687545790.752961,
+  "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
+  "choices": [
+    {
+      "text": "Let's solve this equation step-by-step. First, let's distribute the exponent \"x\" in both terms of the equation:\n\n8*X + 2*X = 130\n\nNow, add these two expressions together to eliminate one term with an exponent:\n\n9*X = 130 - 2*X\n\nNext, subtract 2*X from both sides of the equation to isolate X on one side:\n\n9*X - 2*X = 130 - 2*X\n7*X = 1",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 70,
+    "total_tokens": 97,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "4787de9f9ef64000ac1bb35ffc85fbea",
+  "object": "text_completion",
+  "created": 1687528057.16304,
+  "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q5_0.bin",
+  "choices": [
+    {
+      "text": "Let's solve this problem step by step:\n1. You were 6 years old when your sister was half your age. So, at that time, your sister must have been 3 years old (half of 6).\n2. Now you are 80 years old and want to find out how old your sister is now.\n3. Since the difference in your ages remains constant throughout life, your sister should be 40 years old now.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 73,
+    "total_tokens": 113,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "187f165ba43840ab9f21d1983f69196b",
+  "object": "text_completion",
+  "created": 1687544488.932495,
+  "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
+  "choices": [
+    {
+      "text": "In artificial intelligence (AI) research, legal language models (LLMs) are used to analyze and interpret legal documents. They can help automate tasks such as extracting information from contracts or identifying relevant case law for specific situations. This technology has the potential to improve efficiency in various aspects of the legal industry by reducing reliance on manual processes that may be time-consuming, costly, and prone to human error.\n\nLLMs can also assist with tasks like summarizing large amounts of information or generating new documents based on existing ones. For example, an LLM could generate a summary report for a",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 99,
+    "total_tokens": 122,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

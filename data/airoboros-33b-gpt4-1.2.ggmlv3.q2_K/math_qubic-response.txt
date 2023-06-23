@@ -1,0 +1,5 @@
+To find the values of x using Cardano's Formula in ax^3 + bx^2 + cx + d = 0 with a = 1, b = 0, c = 1, and d = -130, we first need to determine the discriminant. The discriminant is given by:
+
+D = (b^2) - 4ac
+
+For this equation, D = (-1)(-1)*(1*(-1)) = 1. Since the discriminant is positive, there are two real roots for x. To find these values,

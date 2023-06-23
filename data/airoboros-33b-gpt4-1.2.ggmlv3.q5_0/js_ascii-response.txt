@@ -1,0 +1,6 @@
+```javascript
+// Generate ASCII characters from 0 to 7F (inclusive) with their corresponding hexadecimal values.
+for (let i = 0; i <= 7f; ++i) {
+    console.log(`${String.fromCharCode(i)}: ${i.toString(16).padStart(2, '0')}`);
+}
+```

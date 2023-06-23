@@ -1,0 +1,22 @@
+{
+  "id": "2c306e87e4d645d39b7367361784adec",
+  "object": "text_completion",
+  "created": 1687526032.8843908,
+  "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q2_K.bin",
+  "choices": [
+    {
+      "text": "The standard gauge for railways was originally developed in Britain during the 19th century. It is also known as \"British Standard\" or \"International\" gauge. The reason behind its adoption and development can be traced back to several factors, including economic growth, technological advancements, and competition among railway companies.\n\n",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 48,
+    "total_tokens": 70,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

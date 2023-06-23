@@ -1,0 +1,7 @@
+Step 1: Let's assume your sister's current age is x years old.
+
+Step 2: When you were 6, she was half your age (x/2). So, at that time her age would have been 3 years old (since x = 3).
+
+Step 3: Now, you are 80 years old. This means that the current difference in ages between you and your sister is 74 years (80 - 6).
+
+Step 4: To find her age now, we need to add this difference of 74 years to her

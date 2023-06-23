@@ -1,0 +1,22 @@
+{
+  "id": "9df5305e1f5c4fc5b29813c5fadca3f1",
+  "object": "text_completion",
+  "created": 1687544650.780202,
+  "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
+  "choices": [
+    {
+      "text": "Sara needed 6 test tubes for her other two experiments.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 10,
+    "total_tokens": 69,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

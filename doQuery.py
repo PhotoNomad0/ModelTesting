@@ -81,18 +81,14 @@ prompts = [
 ]
 
 ignoredModels = [
-    {
-        "model": "gpt4all-j-v1.3-groovy",
-        "reason": "out of memory on reload, or redownloads",
-    },
-    {
-        "model": "mpt-7b",
-        "reason": "same?"
-    },
-    {
-        'model': "replit-code-v1-3b",
-        "reason": "out of memory?"
-    }
+    # {
+    #     "model": "gpt4all-j-v1.3-groovy",
+    #     "reason": "out of memory on reload, or redownloads",
+    # },
+    # {
+    #     "model": "mpt-7b",
+    #     "reason": "same?"
+    # },
 ]
 
 # model = "gpt-3.5-turbo"

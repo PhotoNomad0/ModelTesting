@@ -1,0 +1,1 @@
+LLMs are large language models that have been trained using a lot (large) data.  They can be used for many tasks, including generating new sentences or paragraphs from input text and images; summarizing documents to generate summaries with fewer words than the original document has ; identifying topics in texts based on keywords extracted by LLM's

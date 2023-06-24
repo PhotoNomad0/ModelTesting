@@ -1,0 +1,22 @@
+{
+  "id": "c9409d3ce7cf4dd28404cb561285180f",
+  "object": "text_completion",
+  "created": 1687570650.798252,
+  "model": "ggml-wizard-13b-uncensored.bin",
+  "choices": [
+    {
+      "text": "The standard gauge for railways is a system of measurement that was developed in the United Kingdom during the 18th century. It was originally used to measure the width of railway tracks, but it has since been adopted as a standard for measuring other things, such as the size of paper and canvas. The origin of this gauge can be traced back to the early days of rail transportation, when the first steam-powered locomotives were being developed. The inventors of these machines wanted to create a system that would allow trains to travel at high speeds safely, without the risk of collisions or derailments.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 105,
+    "total_tokens": 127,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

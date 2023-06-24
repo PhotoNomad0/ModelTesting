@@ -1,0 +1,22 @@
+{
+  "id": "937c8ccbaa214b57b12bd5637dabc3ad",
+  "object": "text_completion",
+  "created": 1687639896.347035,
+  "model": "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
+  "choices": [
+    {
+      "text": "Here's a Python program that uses Cardano\u2019s formula to find all possible roots of the equation ax^3 + bx^2 + cx + d = 0. We assume that a is equal to 1, b is equal to 0, c is equal to 1 and d is equal to -130:\n```python\nimport math\ndef cardano(a,b,c,d):\n p = (-d + math.sqrt(d*d-4*a*c)) / (2 * a)\n q = (-d - math.sqrt(d*d",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 75,
+    "total_tokens": 111,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

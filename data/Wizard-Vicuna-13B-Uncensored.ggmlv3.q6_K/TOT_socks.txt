@@ -1,0 +1,22 @@
+{
+  "id": "ea03662b81a6479c8a265baf7a22ab85",
+  "object": "text_completion",
+  "created": 1687639985.701207,
+  "model": "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
+  "choices": [
+    {
+      "text": "Three experts with exceptional logical thinking skills are collaboratively answering a question using a Tree of Thoughts method. Expert 1 begins by stating that since each pair of socks takes 2 hours to dry in the same weather conditions, it will take 7 pairs of socks (or 14 total) * 2 hours = 28 hours for all seven pairs of socks to be completely dry. Therefore, Tom can expect it to take approximately 28 additional hours beyond the time it took to dry the first ten pairs of socks. Expert 2 agrees with this calculation and adds that",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 96,
+    "total_tokens": 261,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

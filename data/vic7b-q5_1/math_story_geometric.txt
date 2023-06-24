@@ -1,0 +1,22 @@
+{
+  "id": "fff0c69ffbcd44dbaf06dd66232897d0",
+  "object": "text_completion",
+  "created": 1687570102.904192,
+  "model": "ggml-vic7b-q5_1.bin",
+  "choices": [
+    {
+      "text": "Harmony was creative in her approach to making notebooks for her friends using recycled paper. To create a notebook, she folded five letter-size sheets of paper into thirds and then cut along the lines to produce smaller note papers. She stacked these notes and stapled them together to form a notepad. If someone wrote ten notes per day in this notepad, how long would it last?\n\n",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 67,
+    "total_tokens": 133,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

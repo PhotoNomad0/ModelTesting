@@ -1,0 +1,22 @@
+{
+  "id": "13a64feb45594cc9bd6b6977eacc9227",
+  "object": "text_completion",
+  "created": 1687639465.937641,
+  "model": "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
+  "choices": [
+    {
+      "text": "**Tree of Thoughts Method for Answering a Question:**\n![Tree of Thoughts](https://i.imgur.com/3ZzJtXm.png)\n1. **Expert 1:** The first step is to identify the problem statement, which is \"How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?\"\n2. **Expert 2:** To answer this question, we need to use the formula for drying time, which is (number of pairs of socks) / (drying rate per hour).",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 75,
+    "total_tokens": 240,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

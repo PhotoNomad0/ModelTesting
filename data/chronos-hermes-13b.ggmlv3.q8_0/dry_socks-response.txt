@@ -1,0 +1,3 @@
+If we assume that the rate at which the socks dried is constant, then we can use the following formula to estimate how long it would take for Tom to dry 7 pairs of socks:
+Time = (Number of Pairs) / Rate
+Since he took 10 hours to dry 10 pairs and they were all dry when he checked back outside, we know that each pair dried at a rate of 1 hour. Therefore, it would take Tom approximately the same amount of time - 7 hours - to dry seven pairs under similar weather conditions.

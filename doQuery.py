@@ -98,16 +98,32 @@ ignoredModels = [
 # model = "gpt-3.5-turbo"
 # model = "mpt-7b-chat"
 models = [
-    # "nous-hermes-13b.ggmlv3.q4_0.bin"
+    # "ggml-30b-Lazarus.ggmlv3.q4_1.bin",
+    # "ggml-30b-Lazarus.ggmlv3.q5_1.bin"
     # "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q2_K.bin",
     # "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q5_0.bin",
     # "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
-    # "ggml-30b-Lazarus.ggmlv3.q4_1.bin",
-    "ggml-30b-Lazarus.ggmlv3.q5_1.bin"
-    # "nous-hermes-13b.ggmlv3.q4_0",
+    # "ggml-chronos-hermes-13b.ggmlv3.q8_0.bin",
+    # "GPT4All-13B-snoozy.ggmlv3.q4_0.bin",
+    # "ggml-llama-30b-supercot.ggmlv3.q2_K.bin",
+    # "nous-hermes-13b.ggmlv3.q4_0.bin"
+    # "ggml-vic7b-q5_1.bin",
+    # "ggml-vic13b-q8_0.bin",
+    # "ggml-wizard-13b-uncensored.bin"
+    # "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q2_K.bin",
+    # "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q5_1.bin",
+    # "wizardLM-13B-Uncensored.ggmlv3.q4_0.bin",
+    # "ggml-wizardLM-7B.ggmlv3.q8_0.bin",
+    # "ggml-WizardLM-Uncensored-SuperCOT-Storytelling.ggmlv3.q2_K.bin",
+    
+    "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
+    "ggml-mpt-7b-instruct.bin",
+    "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0.bin",
+    "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin"
+    
     # "ggml-gpt4all-j-v1.3-groovy.bin",
     # "ggml-mpt-7b-chat.bin",
-    # "GPT4All-13B-snoozy.ggmlv3.q4_0.bin",
+
 #     "wizardLM-7B.ggmlv3.q8_0",
 #     "vic7b-q5_1",
 #     "ggml-vic13b-q8_0",
@@ -147,7 +163,7 @@ def runModelQuery(model, prompt, reload):
         n=1, # this does not seem to be number of cores
         echo=True,
         stream=False,
-        timeout=600, # seconds
+        timeout=1800, # seconds
         allow_download=False,
     )
 

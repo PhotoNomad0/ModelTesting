@@ -1,0 +1,22 @@
+{
+  "id": "0044c2f120bf4bb1b6f0d70584cfdb69",
+  "object": "text_completion",
+  "created": 1687570627.257917,
+  "model": "ggml-wizard-13b-uncensored.bin",
+  "choices": [
+    {
+      "text": "Here's an example of a JavaScript program that generates and prints out the ASCII and hexadecimal codes for characters from 0 to 7F (which is the maximum value of an ASCII code):\n```javascript\nfor (let i = 48; i <= 7f; ++i) {\n  const asciiCode = i.toString(16);\n  console.log(`ASCII Code: ${asciiCode}`);\n  \n  // Convert the ASCII code to a hexadecimal string if it's a single-digit number\n  let hexadecimalCode",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 68,
+    "total_tokens": 102,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

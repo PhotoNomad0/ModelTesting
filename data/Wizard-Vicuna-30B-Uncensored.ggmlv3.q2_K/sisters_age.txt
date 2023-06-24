@@ -1,0 +1,22 @@
+{
+  "id": "c6eedbd508b64f30ae2231553d70c869",
+  "object": "text_completion",
+  "created": 1687571962.3097138,
+  "model": "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q2_K.bin",
+  "choices": [
+    {
+      "text": "Let's start with your current age which is 80 years and subtract six from it to get the year you were born which is 74. Then, divide that number (74) by two since your sister was half your age when you were six. That gives us a result of 37. Therefore, at this point in time, your sister's current age would be 37 years old.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 67,
+    "total_tokens": 107,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -1,0 +1,14 @@
+To solve this equation using Cardano's formula, we need to follow these steps:
+1. Rewrite the equation in standard form by completing the square:
+```
+x^2 + (b/a) x + c = 0
+```
+In this case, a=1, b=1, and c=-130, so we have:
+```
+x^2 + (1/1) x + (-130) = 0
+```
+This simplifies to:
+```
+-x - 130 = 0
+```
+We can solve for x

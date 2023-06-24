@@ -1,0 +1,22 @@
+{
+  "id": "fdc2519f91414302b8132c13ffb89103",
+  "object": "text_completion",
+  "created": 1687576418.608912,
+  "model": "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q5_1.bin",
+  "choices": [
+    {
+      "text": "Let's break down the problem into steps to solve it. When you were six years old, your sister was half of that, which means she was three years old at that time. Now that you are 80 years old, we can calculate how old your sister is now by subtracting her age when you were six from 80. Therefore, your sister's current age would be 74 years old (80 - 3 = 77 and since she was born in the same year as you, we add one more year to get 74).",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 92,
+    "total_tokens": 132,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

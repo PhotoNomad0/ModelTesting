@@ -1,0 +1,2 @@
+Expert 1: To answer this question, we need to consider the following information: Tom washed 10 pairs of socks and hung them outside to dry for 10 hours. After that time, all socks were dry, and he took them inside. The key here is the fact that it takes 10 hours to dry seven pairs of socks under similar weather conditions.
+Expert 2: Based on this information, we can use a simple proportion to find out how long it would take Tom to dry seven pairs of socks in the same weather conditions. We know that it took him 1

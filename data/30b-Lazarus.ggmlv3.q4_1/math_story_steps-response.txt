@@ -1,0 +1,2 @@
+Sure! To solve this problem, we need to know how many test tubes are being used in total (8) and how many are already accounted for by the first experiment (2). This leaves us with 6 remaining test tubes. Since each of the other two experiments require the same number of test tubes, we can divide this evenly: 
+- Each of the other two experiments will need 3 test tubes.

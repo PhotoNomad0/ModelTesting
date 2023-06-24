@@ -1,0 +1,7 @@
+If your sister's current age is represented as "x", then we can set up the following equation based on the information given in the text:
+6 + x = (1/2) * 80
+Simplifying this equation, we get:
+3x = 40
+Dividing both sides by 3, we get:
+x = 13.33
+Therefore, your sister's current age is approximately 13 years old.

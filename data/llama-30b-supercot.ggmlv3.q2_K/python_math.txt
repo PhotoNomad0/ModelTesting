@@ -1,0 +1,22 @@
+{
+  "id": "24b4d6bb45a5404dae250f38446c4430",
+  "object": "text_completion",
+  "created": 1687561827.607328,
+  "model": "ggml-llama-30b-supercot.ggmlv3.q2_K.bin",
+  "choices": [
+    {
+      "text": "To solve this equation using Cardano\u2019s method in Python programming language, we will follow these steps: 1. First, rewrite it in terms of base ten numbers instead of powers of two and one. The equation can be rewritten as ax^3+bx^2+c*x+d=0 where a = 1, b = 0, c = 1 and d = -130.\n2. Then we will use the addition property to add or subtract terms until there is only one term left in the equation. In this case, ax^3+bx^2+c",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 89,
+    "total_tokens": 125,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

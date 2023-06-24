@@ -1,0 +1,22 @@
+{
+  "id": "04744c2ba2164f2e811e01f6d6afd793",
+  "object": "text_completion",
+  "created": 1687570435.798399,
+  "model": "ggml-vic13b-q8_0.bin",
+  "choices": [
+    {
+      "text": "Tom washed",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 2,
+    "total_tokens": 91,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

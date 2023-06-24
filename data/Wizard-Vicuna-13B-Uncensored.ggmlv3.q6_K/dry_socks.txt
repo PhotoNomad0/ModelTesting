@@ -1,0 +1,22 @@
+{
+  "id": "fd978a683d6e4befaf0e83c269d10e6c",
+  "object": "text_completion",
+  "created": 1687639925.733917,
+  "model": "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
+  "choices": [
+    {
+      "text": "Assuming that the weather conditions remain the same, Tom can use his previous experience to estimate how long it would take him to dry seven pairs of socks. Since he found all 10 pairs of socks dried completely after 10 hours in the same weather condition, we can assume that it will take approximately 10/7 = 1.42857143 times longer to dry seven pairs of socks compared to one pair. Therefore, Tom should expect his seven pairs of socks to be dried completely after roughly 14.29 hours in the same weather condition.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 93,
+    "total_tokens": 182,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -1,0 +1,1 @@
+When you were six years old, your sister was half of your current age. Currently, you are 80 years old. To determine the current age of your sister, we can follow these steps: first, subtract her age from yours when she was half your age; then divide that number by two to find out how many times older than you she is now.

@@ -1,0 +1,22 @@
+{
+  "id": "d562c0b6a4a04b47a0583553ced93e11",
+  "object": "text_completion",
+  "created": 1687638221.583814,
+  "model": "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
+  "choices": [
+    {
+      "text": "To determine the number of test tubes needed for Sara's Science class experiments, we need to use some math. The first experiment required 2 test tubes and the other two experiments had the same number of test tubes. Let's call this number x. Therefore, the total number of test tubes needed is: \n8 = 2 + x + x \nSolving for x, we get: \nx = 4 \nSo, Sara needed a total of 10 test tubes, and each of the other two experiments required 4 test tubes.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 85,
+    "total_tokens": 144,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

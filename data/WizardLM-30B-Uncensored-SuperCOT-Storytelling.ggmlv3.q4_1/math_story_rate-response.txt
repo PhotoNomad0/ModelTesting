@@ -1,0 +1,3 @@
+To calculate the difference in the number of words Cam could type in 5 minutes before and after he broke his arm, we need to know his typing speed before and after the injury. Before his injury, Cam could type 9 words per minute on his phone with his right hand. After he broke his arm and had to use his left hand, his typing speed decreased to 6 words per minute. Therefore, the difference in the number of words he could type in 5 minutes would be:
+9 - 6 = 3 words per minute 
+So, Cam's typing speed decreased by 3 words per

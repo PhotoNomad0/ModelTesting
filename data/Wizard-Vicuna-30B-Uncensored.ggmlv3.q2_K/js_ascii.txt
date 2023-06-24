@@ -1,0 +1,22 @@
+{
+  "id": "cf72244fb7e24ae89c5a9336d7746a43",
+  "object": "text_completion",
+  "created": 1687572223.435446,
+  "model": "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q2_K.bin",
+  "choices": [
+    {
+      "text": "To create a JavaScript program that generates and prints out the ASCII character and hexadecimal codes for decimal numbers from 0 to 7F, we can use a loop to iterate through each number in the range and then output its corresponding ASCII code. Here's an example of what this program might look like:\n```javascript\nfor (let i = 0; i <= 7f; i++) {\n console.log(i + ' -> ' + String.fromCharCodeAt(i) + ' (' + i.toString(16).padStart(2, \"0\") + ')');\n",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 74,
+    "total_tokens": 108,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

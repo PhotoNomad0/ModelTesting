@@ -1,0 +1,3 @@
+Let's break down the problem and solve it step by step:
+1. When you were 6 years old, your sister was half your age. Let's assume that your sister was x years old at that time. So, we can write an equation: Your age + (Your sister's age / 2) = x. 
+2. Now, let's use the information given: You are now 80 years old. Therefore, when you were 6, your sister was half your age plus 10 (since you are now 80 and not 79). So,

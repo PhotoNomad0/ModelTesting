@@ -1,0 +1,22 @@
+{
+  "id": "3822987b1f0b4e388d2ed48d78c7f862",
+  "object": "text_completion",
+  "created": 1687561347.890455,
+  "model": "ggml-llama-30b-supercot.ggmlv3.q2_K.bin",
+  "choices": [
+    {
+      "text": "var i = 0;\nwhile (i <= 7F) {\n console.log(String.fromCharCode(i));\n console.log('\\\\x' + i.toString(16).toUpperCase());\n i++;\n}",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 19,
+    "total_tokens": 53,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

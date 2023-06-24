@@ -1,0 +1,22 @@
+{
+  "id": "6435962dcf1b46758dd471da656d13de",
+  "object": "text_completion",
+  "created": 1687554679.634807,
+  "model": "ggml-30b-Lazarus.ggmlv3.q5_1.bin",
+  "choices": [
+    {
+      "text": "To find the solution of the cubic equation x\u00b3 + x - 130 = 0 using Cardano's formula, we can follow these steps:\n1. First, let's simplify the expression by rearranging it to have the standard form of ax\u00b3 + bx\u00b2 + cx + d = 0 with a = 1, b = 0, c = 1 and d = -130: x\u00b3 + x - 130.\n2. Next, we can use Cardano's formula to find the solution for x in terms of complex numbers. The",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 75,
+    "total_tokens": 107,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "fc835c0682ea4a208fea8f2f178a7eb3",
+  "object": "text_completion",
+  "created": 1687631683.176577,
+  "model": "ggml-wizardLM-7B.ggmlv3.q8_0.bin",
+  "choices": [
+    {
+      "text": "Can you please provide more information or clarify what type of paper Harmony is using for her notepads? Also, how many sheets are in each letter size piece of paper?",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 30,
+    "total_tokens": 96,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

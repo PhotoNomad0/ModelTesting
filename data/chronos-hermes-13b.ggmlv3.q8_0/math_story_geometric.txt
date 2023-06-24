@@ -1,0 +1,22 @@
+{
+  "id": "4cef039bc26442c89adb5f61d9a79cac",
+  "object": "text_completion",
+  "created": 1687560630.26479,
+  "model": "ggml-chronos-hermes-13b.ggmlv3.q8_0.bin",
+  "choices": [
+    {
+      "text": "Harmony used discarded paper to make notepads for her friends by folding five letter-size pieces of paper three times, cutting along the lines, stacking smaller note papers and stapling them together. If one notepad lasts for ten days when someone writes a single note per day, then how long would it take for someone to write 10 notes on that same notepad?\nTo calculate this, we can use algebra:\nLet x be the number of days it takes for someone to write five notes (since there are five folded pieces of paper in each notepad). Then",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 97,
+    "total_tokens": 163,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

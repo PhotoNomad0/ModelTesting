@@ -1,0 +1,11 @@
+Here's an example Python program that solves for all possible values of x in the equation ax^3 + bx^2 + c*x + d = 0:
+```python
+import sympy
+def find_solutions(a, b, c, d):
+    # Convert the coefficients to SymPy symbols
+    a = sympy.Symbol('a')
+    b = sympy.Symbol('b')
+    c = sympy.Symbol('c')
+    d = sympy.Symbol('d')
+    
+    # Solve for x using Cardano's formula

@@ -1,0 +1,22 @@
+{
+  "id": "da5b7df459c84bff90ccd1550013e375",
+  "object": "text_completion",
+  "created": 1687570778.166322,
+  "model": "ggml-wizard-13b-uncensored.bin",
+  "choices": [
+    {
+      "text": "To solve this equation using Cardano's formula, we need to follow these steps:\n1. Rewrite the equation in standard form by completing the square:\n```\nx^2 + (b/a) x + c = 0\n```\nIn this case, a=1, b=1, and c=-130, so we have:\n```\nx^2 + (1/1) x + (-130) = 0\n```\nThis simplifies to:\n```\n-x - 130 = 0\n```\nWe can solve for x",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 63,
+    "total_tokens": 95,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

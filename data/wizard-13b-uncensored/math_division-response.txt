@@ -1,0 +1,2 @@
+To solve this problem, we can assume that Emily used the same amount of cereal bits per design (63/design). The total number of cereal bits used was 9 x 63 = 583. Therefore, there were about 60 cereal bits in each design (rounded up to the nearest whole number).
+No, Emily did not use an equal number of cereal bits in each design. The number of cereal bits used per design decreased as she created more designs.

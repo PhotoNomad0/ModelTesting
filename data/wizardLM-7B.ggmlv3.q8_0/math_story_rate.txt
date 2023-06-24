@@ -1,0 +1,22 @@
+{
+  "id": "2a4020b0e9d24c5e9b622e5767ac0a06",
+  "object": "text_completion",
+  "created": 1687631689.628862,
+  "model": "ggml-wizardLM-7B.ggmlv3.q8_0.bin",
+  "choices": [
+    {
+      "text": "Can you please provide more information or clarify what type of phone Cam was using? Also, how long did it take him to type 9 words per minute on his phone?",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 31,
+    "total_tokens": 110,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "99eaa6683aab45c8b82ac8a49d6299ff",
+  "object": "text_completion",
+  "created": 1687561176.233441,
+  "model": "ggml-llama-30b-supercot.ggmlv3.q2_K.bin",
+  "choices": [
+    {
+      "text": "Let's say that there are x test tubes in total, so we can write this information as a ratio: (x/8) = 2/(x/4). Solving this equation gives us x=16. So Sara needed 16 test tubes for the other two experiments.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 43,
+    "total_tokens": 102,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

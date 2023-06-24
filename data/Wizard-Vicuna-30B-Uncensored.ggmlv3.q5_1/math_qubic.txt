@@ -1,0 +1,22 @@
+{
+  "id": "35ccd4cd7db24e5d826caff5995858f7",
+  "object": "text_completion",
+  "created": 1687603672.588213,
+  "model": "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q5_1.bin",
+  "choices": [
+    {
+      "text": "Using Cardano's Formula, we can solve the cubic equation ax^3 + bx^2 + cx + d = 0 when a = 1, b = 0, c = 1, and d = -130. The solution for x is given by:\n\n(sqrt(Q + (q/2)^3) * sin(theta)) / R\nwhere Q = (-b^3)/9a^2 + (c^2)/4a; q = b^2/4a + c/2a - d/a; and theta = arcc",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 62,
+    "total_tokens": 107,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

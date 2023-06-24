@@ -1,0 +1,22 @@
+{
+  "id": "0cf6971602e84026983a9c12c18916b3",
+  "object": "text_completion",
+  "created": 1687601745.96892,
+  "model": "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q5_1.bin",
+  "choices": [
+    {
+      "text": "Write a JavaScript program that generates and prints out all ASCII characters from 0 to 127, including their corresponding hexadecimal codes.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 21,
+    "total_tokens": 55,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -1,0 +1,1 @@
+To find the solution of the equation x^3 + x - 130 = 0 using Cardano's formula in this case, we can follow these steps: first, take the cube root of both sides to get x = y; then use the quadratic formula with those values.

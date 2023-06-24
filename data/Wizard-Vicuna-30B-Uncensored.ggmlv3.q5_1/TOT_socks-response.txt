@@ -1,0 +1,4 @@
+Expert 1: To calculate how long it would take Tom to dry seven pairs of socks under the same circumstances, we can use a proportion. We know that it takes 10 hours to dry 10 pairs of socks, and we want to find out how many hours it will take to dry 7 pairs of socks.
+Expert 2: Let x be the number of hours it takes to dry 7 pairs of socks. Then, we can set up a proportion:
+x/10 = (dry socks)/(wet socks)
+where "dry so

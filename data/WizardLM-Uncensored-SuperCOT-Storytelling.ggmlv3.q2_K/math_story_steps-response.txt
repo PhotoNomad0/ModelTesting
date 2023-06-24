@@ -1,0 +1,2 @@
+Sara needed a total of 10 test tubes for the three experiments in Science class. The first experiment required 2 test tubes, so there are 8 test tubes left for the other two experiments. Since they require the same number of test tubes, we can divide the remaining 8 by 2 to get:
+Each of the other two experiments needed 4 test tubes.

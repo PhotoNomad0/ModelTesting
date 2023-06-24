@@ -1,0 +1,8 @@
+Here's an example of a JavaScript program that generates and prints out the ASCII and hexadecimal codes for characters from 0 to 7F (which is the maximum value of an ASCII code):
+```javascript
+for (let i = 48; i <= 7f; ++i) {
+  const asciiCode = i.toString(16);
+  console.log(`ASCII Code: ${asciiCode}`);
+  
+  // Convert the ASCII code to a hexadecimal string if it's a single-digit number
+  let hexadecimalCode

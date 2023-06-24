@@ -1,0 +1,22 @@
+{
+  "id": "95e89675789d4cf3ada2b4d7d51922c8",
+  "object": "text_completion",
+  "created": 1687570074.899182,
+  "model": "ggml-vic7b-q5_1.bin",
+  "choices": [
+    {
+      "text": "When you were six years old, your sister was half of your current age. Currently, you are 80 years old. To determine the current age of your sister, we can follow these steps: first, subtract her age from yours when she was half your age; then divide that number by two to find out how many times older than you she is now.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 63,
+    "total_tokens": 103,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

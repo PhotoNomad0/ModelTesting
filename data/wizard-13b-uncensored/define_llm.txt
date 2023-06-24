@@ -1,0 +1,22 @@
+{
+  "id": "bd356775a7ff4f1aa68e81ccd329c3c1",
+  "object": "text_completion",
+  "created": 1687570499.754058,
+  "model": "ggml-wizard-13b-uncensored.bin",
+  "choices": [
+    {
+      "text": "provide an explanation of how Legal Language Models (LLM) are used in Artificial Intelligence (AI) research.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 16,
+    "total_tokens": 39,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

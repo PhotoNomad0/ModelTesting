@@ -1,0 +1,22 @@
+{
+  "id": "f6cf07e8ee4946abb0d06ba825c33f16",
+  "object": "text_completion",
+  "created": 1687632160.060506,
+  "model": "ggml-WizardLM-Uncensored-SuperCOT-Storytelling.ggmlv3.q2_K.bin",
+  "choices": [
+    {
+      "text": "Create a JavaScript program that will output the ASCII characters and their corresponding hexadecimal codes for numbers from 0 to 127. The program should use a loop to iterate through each number and print out both the character and its hex code in separate columns.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 45,
+    "total_tokens": 79,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

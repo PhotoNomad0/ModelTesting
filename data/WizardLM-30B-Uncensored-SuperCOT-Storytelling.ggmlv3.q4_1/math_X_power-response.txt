@@ -1,0 +1,7 @@
+To solve the equation 8^x + 2^x = 130, we can use exponent rules and simplify both sides of the equation. 
+First, let's apply the power rule of exponents: 
+8^x + 2^x = (8 * 2) ^ x = 16^x 
+Now, we can simplify further by using the fact that any base raised to the power of zero is equal to one: 
+16^0 = 1 
+So, we just need to solve for x such that: 
+1 = 8^

@@ -1,0 +1,22 @@
+{
+  "id": "3aeecd2cedf14d0ca4ad7ceaf26cd29a",
+  "object": "text_completion",
+  "created": 1687556879.818313,
+  "model": "ggml-30b-Lazarus.ggmlv3.q4_1.bin",
+  "choices": [
+    {
+      "text": "LLM stands for \"Language Model\" and it is a crucial component in Artificial Intelligence (AI) research. The main purpose of an LLM is to generate natural-sounding text or speech by predicting the next word, phrase or sentence based on the context provided. This allows AI systems to communicate with humans more effectively, understand and respond to their queries, and perform tasks that require language understanding and generation. \nIn AI research, LLM's are used in various ways such as natural language processing, machine translation, speech recognition, text summarization, chatbots, and personal assistants",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 93,
+    "total_tokens": 116,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "4ddd12f6973b4de08a64ec971a0ddffc",
+  "object": "text_completion",
+  "created": 1687638075.265476,
+  "model": "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
+  "choices": [
+    {
+      "text": "Elaborate on the role and significance of Long Short-Term Memory (LSTM) networks in the field of Artificial Intelligence research.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 20,
+    "total_tokens": 43,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

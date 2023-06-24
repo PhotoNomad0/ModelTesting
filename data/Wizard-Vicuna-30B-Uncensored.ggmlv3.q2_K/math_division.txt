@@ -1,0 +1,22 @@
+{
+  "id": "0b9c50805ed64069b6a199bfdac18b8f",
+  "object": "text_completion",
+  "created": 1687572167.5227,
+  "model": "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q2_K.bin",
+  "choices": [
+    {
+      "text": "Emily decided to create some designs with her cereal bits for breakfast, resulting in a total of nine designs using 63 cereal bits. To determine how many cereal bits were in each design, we can divide the number of cereal bits by the number of designs which gives us approximately seven cereal bits per design. As for whether she used an equal amount of cereal bits in each design, there is no information provided to suggest otherwise.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 77,
+    "total_tokens": 139,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

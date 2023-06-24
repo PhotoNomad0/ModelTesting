@@ -1,0 +1,5 @@
+To solve this equation, we can use algebraic techniques. Here's one way to approach it:
+- First, let's simplify both sides of the equation by combining like terms on each side: 
+- On the left hand side, we have a binomial expression that can be expanded using the Binomial Theorem: (a+b)^x = a^x + xab^(x-1) for any real number x. Applying this to our problem, we get: 
+8^X + 2^X = 130
+- Now, let's combine like terms on the right

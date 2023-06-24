@@ -1,0 +1,22 @@
+{
+  "id": "8126f931438c4b4983889a20bdc8d745",
+  "object": "text_completion",
+  "created": 1687631667.702181,
+  "model": "ggml-wizardLM-7B.ggmlv3.q8_0.bin",
+  "choices": [
+    {
+      "text": "Can you please provide more context or specify which type of LLM's are being used?",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 16,
+    "total_tokens": 39,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "1a98e14ebc26492c9ee240609b71aa7f",
+  "object": "text_completion",
+  "created": 1687639484.284797,
+  "model": "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0.bin",
+  "choices": [
+    {
+      "text": "",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 0,
+    "total_tokens": 89,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

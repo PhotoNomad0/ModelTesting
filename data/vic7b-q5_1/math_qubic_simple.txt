@@ -1,0 +1,22 @@
+{
+  "id": "7ff12706e83f4cb994de1f4dbf78f50a",
+  "object": "text_completion",
+  "created": 1687570204.8074229,
+  "model": "ggml-vic7b-q5_1.bin",
+  "choices": [
+    {
+      "text": "To find the solution of the equation x^3 + x - 130 = 0 using Cardano's formula in this case, we can follow these steps: first, take the cube root of both sides to get x = y; then use the quadratic formula with those values.",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 44,
+    "total_tokens": 76,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

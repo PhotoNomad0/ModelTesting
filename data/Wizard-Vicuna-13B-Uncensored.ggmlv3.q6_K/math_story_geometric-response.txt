@@ -1,0 +1,2 @@
+If Harmony used 5 sheets of letter-sized paper to make each notepad, she folded each sheet three times before cutting it into six equal squares (since there are only five pieces of paper). This means that one notepad was made up of 30 smaller note papers.
+Assuming someone writes ten notes per day on this notepad and doesn't reuse any of the sheets, they will go through a full notepad in approximately 30 days (since there are 30 note papers).

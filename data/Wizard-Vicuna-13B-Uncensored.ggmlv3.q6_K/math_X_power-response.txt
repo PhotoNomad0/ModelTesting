@@ -1,0 +1,6 @@
+To solve this equation for "x", we can first simplify it using some algebraic manipulation. Starting with the original expression, we get:
+(8*x) + (2^x) = 130
+Multiplying both sides by 2^x gives us:
+(8*x)*(2^x) = 2^(x+1)(130-x)
+Using the fact that x is a positive integer, we can simplify further to get:
+64x + 2^x > 130 - x (since 2^x > 13

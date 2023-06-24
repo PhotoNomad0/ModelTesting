@@ -1,0 +1,22 @@
+{
+  "id": "30891454b515446299b11c9a7c815145",
+  "object": "text_completion",
+  "created": 1687557607.6820312,
+  "model": "ggml-30b-Lazarus.ggmlv3.q4_1.bin",
+  "choices": [
+    {
+      "text": "Here is an example of a JavaScript program that can be used to generate and print out the ASCII characters and their corresponding hexadecimal codes from 0 to 7F:\n```javascript\nfor (let i = 0; i <= 7f; i++) {\n    let charCode = String.fromCharCode(i);\n    console.log(`ASCII character: ${charCode}`);\n    console.log(`Hexadecimal code: ${i.toString(16)}`);\n}\n```\nThis program uses a for loop to iterate through the range of ASCII characters",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 68,
+    "total_tokens": 102,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

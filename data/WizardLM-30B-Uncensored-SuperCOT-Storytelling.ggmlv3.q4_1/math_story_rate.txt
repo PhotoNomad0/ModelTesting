@@ -1,0 +1,22 @@
+{
+  "id": "d57c145969064f92abdcc5f08febb684",
+  "object": "text_completion",
+  "created": 1687638489.457021,
+  "model": "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
+  "choices": [
+    {
+      "text": "To calculate the difference in the number of words Cam could type in 5 minutes before and after he broke his arm, we need to know his typing speed before and after the injury. Before his injury, Cam could type 9 words per minute on his phone with his right hand. After he broke his arm and had to use his left hand, his typing speed decreased to 6 words per minute. Therefore, the difference in the number of words he could type in 5 minutes would be:\n9 - 6 = 3 words per minute \nSo, Cam's typing speed decreased by 3 words per",
+      "index": 0,
+      "logprobs": null,
+      "finish_reason": "stop",
+      "references": []
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 4096,
+    "completion_tokens": 104,
+    "total_tokens": 183,
+    "thread_count": 4,
+    "prompt_template": "\n### Instruction\nParaphrase the text below by expanding the words based on the subject\n### Human:\n%1\n### Assistant:\n"
+  }
+}

@@ -8,7 +8,7 @@ import pandas as pd
 
 # if true then uses GPT4ALL Chat UI - make sure GPT4ALL Chat UI is running
 # if false then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
-usePythonBindings = False
+usePythonBindings = True
 default_thread_count = 8
 
 if usePythonBindings:
@@ -93,6 +93,14 @@ ignoredModels = [
     #     "model": "mpt-7b",
     #     "reason": "same?"
     # },
+    # {
+    #     "model": "wizardLM-7B.q4_2",
+    #     "reason": "model does not match requested with UI"
+    # },
+    {
+        "model": "Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0",
+        "reason": "model does not match requested - too large for GPU"
+    }
 ]
 
 # model = "gpt-3.5-turbo"
@@ -117,9 +125,10 @@ models = [
     # "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q5_1.bin",
     # "wizardLM-13B-Uncensored.ggmlv3.q4_0.bin",
     # "ggml-wizardLM-7B.ggmlv3.q8_0.bin",
+    "ggml-wizardLM-7B.q4_2",
     # "ggml-WizardLM-Uncensored-SuperCOT-Storytelling.ggmlv3.q2_K.bin",
     # "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
-    # "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0.bin",
+    "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0.bin",
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin"
     
 
@@ -266,6 +275,7 @@ for model in models:
             model_used = response.model.strip() if response else ""
             if model_used != model:
                 print("model used", model_used, "does not match model requested", model)
+                exit(1)
 
             jsonData = str(response)
             data = json.loads(jsonData)
@@ -334,6 +344,10 @@ def getResultsFiles():
                     response = choice['text'].strip() if choice else ""
                     response = response.replace('\n', '\\n')
                     time = float(testResults['time'])
+                    model_used = testResults['model'].strip()
+                    model_used = trimModel(model_used)
+                    if model_used != model:
+                        print("Model", model_used, " does not match requested", model)
 
                     if not testName in results:
                         results[testName] = {
@@ -354,8 +368,11 @@ def getResultsFiles():
 
 
 def resultsToSpreadsheet(results):
+    # tests = results.keys()
+    # tests.sort(key=str.lower)
+    tests = sorted(results.keys(), key=str.lower)
     with pd.ExcelWriter("data/summary.xlsx") as writer:
-        for testname in results:
+        for testname in tests:
             df = pd.DataFrame(results[testname])
             # print("test", testname, ", data: ", df)
             df.to_excel(writer, sheet_name=testname)

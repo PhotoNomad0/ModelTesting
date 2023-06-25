@@ -1,1 +1,0 @@
-Create a JavaScript program that generates and outputs the ASCII characters and their corresponding hexadecimal codes from decimal values 0 to 127. The output should be in the format of "ASCII Character: Hexadecimal Code".

@@ -1,9 +1,0 @@
-Here's a Python program that uses Cardano's method to solve the quadratic equation ax^3 + bx^2 + cx + d = 0 for all possible values of x: 
-```python
-import cmath
-def cardanos_method(a, b, c, d):
-    discriminant = (b**2 - 4*a*c)
-    if discriminant > 0:
-        real_root = (-b + cbrt(discriminant)) / (2 * a)
-        return [real_root]
-    elif discrimin

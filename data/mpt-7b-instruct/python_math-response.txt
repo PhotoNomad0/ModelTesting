@@ -1,8 +1,0 @@
-in ax^3+bx^2+c*x+d=0, write a python program to solve for all possible values of x
-Here is the code that solves this equation.  It uses the method of completing the square and then factoring out the constant term, which yields an expression in terms of only one variable (x). The solution set can be found by solving this new expression for x using any appropriate technique such as graphing or substitution:
-def solve_equation(ax3+bx2+c*x+d): 
-    # Complete the square to factor out constant term.  This yields an equation in terms of only one variable (x).   
-	a = ax3 + bx2 + c * x + d #constant term is factored out, leaving expression as a function of just 1 varible(x)
-	 
-    #Solve the new expression for x using any appropriate technique such as graphing or substitution.  This yields all possible values of x in solution set
-	return solve_expression(a)

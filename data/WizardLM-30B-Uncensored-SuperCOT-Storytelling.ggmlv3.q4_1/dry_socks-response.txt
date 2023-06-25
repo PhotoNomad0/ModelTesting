@@ -1,4 +1,0 @@
-Based on the given information, we can assume that Tom's drying time for 10 pairs of socks was 10 hours. If he wants to dry seven pairs of socks under the same weather conditions, we can use the following formula: 
-Drying time = (number of pairs of socks) / (drying rate per hour) 
-Assuming Tom's drying rate is constant and based on his previous experience, we can calculate the drying time for seven pairs of socks as follows: 
-Drying time = 7 / (10/1

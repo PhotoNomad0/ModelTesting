@@ -1,4 +1,0 @@
-To solve this equation using Cardano's formula, we first need to find two rational roots of the polynomial. We can do this by factoring it into product of linear factors:
-x^3 + x - 130 = (a - r1)(a - r2)((c/r1) * x + 1/r1 + d/r1)
-where a, b, c and d are the coefficients of the polynomial. We can then substitute these values into Cardano's formula to find the value for x:
-x = (-b + sqrt(b^2 -

@@ -1,3 +1,0 @@
-To find the roots of the equation x^3 + x - 130 = 0 using Cardano’s formula, we need to solve for the values of p, q, r and s. Let's assume that a is equal to 1, b is equal to -130, c is equal to 1 and d is equal to 0. Substituting these values into the formula, we get:
-p = (-d + sqrt(d^2-4ac))/3
-q = (-d - sqrt(d^2-4ac))/3

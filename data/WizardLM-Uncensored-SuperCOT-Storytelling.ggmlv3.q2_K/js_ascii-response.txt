@@ -1,1 +1,0 @@
-Create a JavaScript program that will output the ASCII characters and their corresponding hexadecimal codes for numbers from 0 to 127. The program should use a loop to iterate through each number and print out both the character and its hex code in separate columns.

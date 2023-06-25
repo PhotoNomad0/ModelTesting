@@ -1,6 +1,0 @@
-Here's a Python program that uses Cardano’s formula to find all possible roots of the equation ax^3 + bx^2 + cx + d = 0. We assume that a is equal to 1, b is equal to 0, c is equal to 1 and d is equal to -130:
-```python
-import math
-def cardano(a,b,c,d):
- p = (-d + math.sqrt(d*d-4*a*c)) / (2 * a)
- q = (-d - math.sqrt(d*d

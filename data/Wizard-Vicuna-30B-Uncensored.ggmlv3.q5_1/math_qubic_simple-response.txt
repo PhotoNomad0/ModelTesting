@@ -1,6 +1,0 @@
-Using Cardano's Formula, we can solve the cubic equation x^3 + x - 130 = 0. The solution for x is given by:
-
-(sqrt(Q + (q/2)^3) * sin(theta)) / R
-where Q = (-b^3)/9a^2 + (c^2)/4a; q = b^2/4a + c/2a - d/a; and theta = arcc
-
-In this case, a=1, b=-1, c=-130, and d=0.

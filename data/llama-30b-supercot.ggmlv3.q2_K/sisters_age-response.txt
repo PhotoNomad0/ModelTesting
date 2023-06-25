@@ -1,3 +1,0 @@
-Your sister's current age can be calculated using the following formula: (your sister's present age) = (your age at a given time) / (your age at that same time + your age now). Let's say when you were 6, your sister was half your age. Now you are 80 years old and your sister is still alive. So her current age can be calculated as follows:
-(x) = (6/12), where x represents the ratio of ages at that time
-(y) = (80-6)/(12+6), where y represents the

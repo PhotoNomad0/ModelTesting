@@ -1,3 +1,0 @@
-To write a Python program that solves for all possible solutions of the cubic equation ax³ + bx² + cx + d = 0 with given coefficients a,b,c and d, we can follow these steps:
-1. First, define a function `solve_cubic` to solve the cubic equation using Cardano's formula. This function takes in the coefficients of the equation as arguments and returns a list of all possible solutions for x.
-2. Inside the `solve_cubic` function, we can use the complex numbers library to find the roots of the polynomial equation using

@@ -1,6 +1,0 @@
-Here is an example of how you could write a JavaScript program to generate and print out the ASCII character and Hexadecimal codes for characters from 0 to F (which correspond to decimal values between 0 and 127):
-```javascript
-for(let i = 0; i <= 0xF; ++i) {
- let asciiCode = i.toString(10);
- let hexadecimalCode = asciiCode.toUpperCase();
- console.log(`ASCII Code: ${asciiCode}`nHexadecimal Code: ${hexadecimal

@@ -1,3 +1,0 @@
-To solve this problem, we can assume that Cam's typing speed was constant before and after he broke his arm (9 wpm for 5 minutes = 360 words per minute). The difference between the number of words he could type in 5 minutes before and after he broke his arm is:
-360 - 240 = 120
-Therefore, Cam's typing speed decreased by 120 words per minute (or 20%) after he broke his arm.

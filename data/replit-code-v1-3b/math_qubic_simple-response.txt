@@ -1,4 +1,0 @@
-in x^3+x-130=0, use the cardano's formula to get the value for x
-I will give you a random number between 0 and 100. If it is less than your answer, I wanted that one!
-
-## 4. Cubic root problem using Newton method with error controlling function in python3

@@ -1,5 +1,0 @@
-To find all solutions of the equation ax^3 + bx^2 + cx + d = 0 using Python, we can follow these steps: first, define variables for each coefficient and value; then use the `solve()` function from the `sympy` library to solve for x. We will need to pass in the coefficients as a tuple or list of symbols along with any other desired parameters such as tolerance level.
-```python
-import sympy
-
-a, b, c, d = map(sympy.symbols, ['a', 'b', 'c', 'd']) # define variables

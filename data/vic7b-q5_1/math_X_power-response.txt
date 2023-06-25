@@ -1,3 +1,0 @@
-To find the value of X in the equation 8^(X + 2^X) = 130, we can use logarithmic functions. First, let's define Y = 2^X; then we can rewrite the equation as follows: 8^Y \* (2^X)^(2\*Y) = 130. To solve for X in this expression, we need to take the natural logarithm of both sides and simplify:
-```scss
-log8(8^Y * (2^X)^(2*Y)) = Y + log8

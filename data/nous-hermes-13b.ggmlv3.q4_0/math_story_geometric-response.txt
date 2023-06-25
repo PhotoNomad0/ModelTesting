@@ -1,5 +1,0 @@
-Harmony used discarded paper to make notepads for her friends. She would fold five letter size pieces of paper three times then cut along the lines. She would then stack the smaller note papers and staple them together. How long would one notepad last if someone wrote ten notes per day?
-To determine how long one notepad would last, we need to calculate how many pages are in each notepad and how many days it will take for someone to write 10 notes on a single notepad.
-There are 5 sheets of paper in each notepad, so there are a total of 5 x 5 = 25 pages in one notepad.
-If someone writes 10 notes per day, they will go through one notepad every 25/10 = 2.5 days.
-Therefore, one notepad would last for 2.5 days or approximately 17.5 hours of writing time if someone wrote ten notes per day.

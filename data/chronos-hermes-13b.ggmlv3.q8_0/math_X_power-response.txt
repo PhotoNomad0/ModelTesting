@@ -1,9 +1,0 @@
-To solve this equation, we can use algebra and simplify it as follows:
-(8)^x + (2)^x = 130
-Multiplying both sides by 4 gives us:
-64 + 16^x = 52*4
-Simplifying further, we get:
-76 + 16^x = 208
-Subtracting 76 from both sides and then raising the resulting equation to the power of x gives us:
-16^x - 76 = 208 - 76
-Simplifying,

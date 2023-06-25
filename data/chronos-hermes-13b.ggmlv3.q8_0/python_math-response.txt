@@ -1,8 +1,0 @@
-Here is an example Python code that can be used to find all possible solutions for the equation ax^3 + bx^2 + cx + d = 0 using Cardano's formula and Newton-Raphson method:
-```python
-import math
-def cardano_formula(a,b,c):
-    # Find two rational roots of x^3+ax^2+cx+d=0
-    r1,r2 = (int(math.sqrt(-b)) + int(math.pow(-b,-1)))/2, 0
-    
-    if a ==

@@ -1,7 +1,0 @@
-Emily created a total of 9 designs using 63 cereal bits. To find out the average number of cereal bits per design, we divide the total number of cereal bits by the number of designs:
-
-Average Cereal Bits Per Design = Total Cereal Bits / Number of Designs
-= 63 cereal bits / 9 designs
-≈ 7 cereal bits per design
-
-Since Emily used an average of 7 cereal bits in each design, it is likely that she did not use the same number of cereal

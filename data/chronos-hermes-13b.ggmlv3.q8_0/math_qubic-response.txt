@@ -1,3 +1,0 @@
-To solve this equation using Cardano's formula, we first need to find two rational roots of the polynomial. We can do this by factoring it into product of linear factors:
-ax^3 + bx^2 + cx + d = (a - r1)(a - r2)((c/r1) * x + 1/r1 + d/r1)
-where r1 and r2 are the two distinct rational roots. To find these, we can use trial and error or a more sophisticated algorithm like the Rational Root Theorem. Once we have found the roots,

@@ -1,8 +1,0 @@
-```python
-def cubic_equation(a, b, c, d):
-    D = (b**2) - 3 * a * c + 8 * a * d - 4 * b * d + 12 * c * d
-    
-    if D > 0:
-        r1 = (-b + math.sqrt(D)) / (6 * a)
-        
-        if r1 % 1 == 0 and abs(r1 - round(r1, 3)) < 0.0001: # Check for integer solution

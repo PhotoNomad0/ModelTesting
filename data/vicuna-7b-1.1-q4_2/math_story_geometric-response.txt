@@ -1,7 +1,0 @@
-Harmony used discarded paper to make notepads for her friends. She would fold five letter size pieces of paper three times then cut along the lines. She would then stack the smaller note papers and staple them together. How long would one notepad last if someone wrote ten notes per day?
-To find out how long a notepad made from discarded paper would last, we need to calculate the number of notes that can be written before the notepad becomes too small to be useful. To do this, we will use the following steps:
-1. Calculate the total area of all five letter-size pieces of paper folded three times: 5 x 8.5 x 2 = 47.5 square inches
-2. Divide the total area by the area of one sheet of paper (8.5 x 11 inches): 47.5 / 8.5 = 5.6 sheets
-3. Calculate the number of notes that can be written before the notepad becomes too small to be useful: 5.6 sheets \* 10 notes per day = 56 notes
-
-Therefore, a notepad made from discarded paper would last for approximately 56 notes before it becomes too small to be useful.

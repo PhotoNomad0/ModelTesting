@@ -1,1 +1,0 @@
-Let's say that there are x test tubes in total, so we can write this information as a ratio: (x/8) = 2/(x/4). Solving this equation gives us x=16. So Sara needed 16 test tubes for the other two experiments.

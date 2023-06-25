@@ -1,7 +1,0 @@
-To solve for x in the equation 8^x + 2^x = 130, we need to find a common base between the two exponents. In this case, it's 4 (i.e., 8 and 2 are both divisible by 2). So, let's rewrite the equation as:
-
-(4)^(x+1) + (4)^x = 130
-
-Now, we can subtract the second term from both sides of the equation to isolate it on one side. This gives us:
-
-(4)^(x+

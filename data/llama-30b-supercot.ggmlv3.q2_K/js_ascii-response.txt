@@ -1,6 +1,0 @@
-var i = 0;
-while (i <= 7F) {
- console.log(String.fromCharCode(i));
- console.log('\\x' + i.toString(16).toUpperCase());
- i++;
-}

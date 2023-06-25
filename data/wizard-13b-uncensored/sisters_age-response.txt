@@ -1,5 +1,0 @@
-To solve this problem, we need to use algebra. Let's assume that your sister's current age is "x". Then, when you were 6, her age was (1/2)x. Now, since you are 80 and your sister's age is unknown, we can set up an equation:
-80 = (1/2)(x) + y
-where y is some constant representing the difference in age between you and your sister when you were both 6. Solving for x, we get:
-x = 40 - y
-Now we need to figure out what

@@ -1,5 +1,0 @@
-Before breaking his right arm, Cam was able to type 9 words per minute on his phone. After breaking his arm, he had to use his left hand for a while and could only type 6 words per minute. To find the difference in the number of words typed in 5 minutes before and after breaking his arm, we need to calculate how many more or fewer words are typed with each typing speed:
-
-Difference = Words typed at 9 wpm - Words typed at 6 wpm
-                     = (WPM * Time)1 - (WPM * Time)2
-                          =

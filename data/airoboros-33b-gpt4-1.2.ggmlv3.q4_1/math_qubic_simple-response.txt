@@ -1,7 +1,0 @@
-Cardano's Formula is used to solve cubic equations of the form ax^3 + bx^2 + cx + d = 0. In this case, our equation has coefficients a = 1, b = 1, c = -1 and d = -130.
-
-First, let's rewrite the equation in standard form:
-
-x^3 + x^2 - (1/4) * (-130) = 0
-
-Now, we can apply Cardano's Formula to solve for x. The steps are as follows:

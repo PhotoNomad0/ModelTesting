@@ -1,1 +1,0 @@
-To solve the equation 8^x + 2^x = 130, we can start by using logarithms. Taking the natural logarithm of both sides gives us ln(8^x + 2^x) = ln(130). Using the property that ln(a^b) = b*ln(a), we get x*ln(8) + x*ln(2) = ln(130). Since logarithms are base-specific, let's choose a common denominator of 4 and rewrite this equation as (x

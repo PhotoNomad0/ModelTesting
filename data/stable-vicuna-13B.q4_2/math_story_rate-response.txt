@@ -1,8 +1,0 @@
-Before Cam broke his right arm, he was able to type 9 words per minute on his phone.  After he broke his arm, he had to use his left hand for a while, and he could only type 6 words per minute. What is the difference between the number of words he could type in 5 minutes before and after he broke his arm
-The difference between the number of words Cam could type in 5 minutes before and after he broke his arm is 3 words per minute.
-
-Explanation:
-Before breaking his arm, Cam could type 9 x 60 = 540 words in 5 minutes (since there are 60 seconds in a minute).
-After breaking his arm, Cam could only type 6 x 60 = 360 words in 5 minutes.
-Therefore, the difference between the number of words he could type in 5 minutes before and after he broke his arm is 540 - 360 = 180 words per minute.
-Converting this to words per minute, we get 180 / 60 = 3 words per minute.

@@ -1,4 +1,0 @@
-To create a JavaScript program that generates and prints out the ASCII character and hexadecimal codes for decimal numbers from 0 to 7F, we can use a loop to iterate through each number in the range and then output its corresponding ASCII code. Here's an example of what this program might look like:
-```javascript
-for (let i = 0; i <= 7f; i++) {
- console.log(i + ' -> ' + String.fromCharCodeAt(i) + ' (' + i.toString(16).padStart(2, "0") + ')');

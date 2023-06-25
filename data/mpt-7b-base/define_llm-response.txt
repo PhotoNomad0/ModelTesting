@@ -1,2 +1,0 @@
-- [x] explain what a neural network is and how it works. 
-- [] describe some applications for NN,s (e.g., image recognition) that are not related to language processing or natural langauge understanding but could be used with the same framework as NLP systems?

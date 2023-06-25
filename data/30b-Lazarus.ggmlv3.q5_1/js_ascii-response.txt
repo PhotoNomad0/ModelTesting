@@ -1,8 +1,0 @@
-Sure! Here's a rephrased version of your instruction in the form of a code snippet that generates and prints ASCII characters and their corresponding hexadecimal codes from 0 to 7F using JavaScript:
-```javascript
-for (let i = 0; i <= 7f; i++) {
-    let charCode = String.fromCharCode(i);
-    console.log(`${charCode} -> ${hexadecimal(i)}`);
-}
-function hexadecimal(n) {
-    return n.toString(16).toUpperCase();

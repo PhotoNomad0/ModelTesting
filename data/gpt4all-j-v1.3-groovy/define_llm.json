@@ -1,0 +1,21 @@
+{
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "logprobs": null,
+      "references": [],
+      "text": "explain use of LLM's in AI research\nExplain the role of LLMs in Natural Language Processing (NLP) and how they are used in various applications."
+    }
+  ],
+  "created": 1687649674,
+  "id": "foobarbaz",
+  "model": "gpt4all-j-v1.3-groovy",
+  "object": "text_completion",
+  "usage": {
+    "completion_tokens": 24,
+    "prompt_tokens": 20,
+    "total_tokens": 44
+  },
+  "time": "6.91"
+}

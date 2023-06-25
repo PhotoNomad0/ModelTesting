@@ -1,2 +1,0 @@
-In 8^X+2^X=130 show how to solve for X
-The expression is equal to 130, so the value of x must be 5.

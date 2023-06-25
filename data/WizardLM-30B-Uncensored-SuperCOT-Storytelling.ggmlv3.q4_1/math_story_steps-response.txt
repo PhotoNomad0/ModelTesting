@@ -1,5 +1,0 @@
-To determine the number of test tubes needed for Sara's Science class experiments, we need to use some math. The first experiment required 2 test tubes and the other two experiments had the same number of test tubes. Let's call this number x. Therefore, the total number of test tubes needed is: 
-8 = 2 + x + x 
-Solving for x, we get: 
-x = 4 
-So, Sara needed a total of 10 test tubes, and each of the other two experiments required 4 test tubes.

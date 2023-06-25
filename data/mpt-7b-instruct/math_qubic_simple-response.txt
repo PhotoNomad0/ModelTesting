@@ -1,3 +1,0 @@
-in x^3+x-130=0, use the cardano's formula to get the value for x
-Sure, here is how you can do that. First of all we need to factorize this polynomial into a product of two linear factors and one quadratic term. The factorization will be done in such way so that each coefficient from the resulting terms would have its absolute value equal or less than 130 (because it's the maximum possible value for x). Then, using Cardano’s formula you can find out what is the value of variable “x" which satisfies this equation:
-x^3 + x - 130 = 0

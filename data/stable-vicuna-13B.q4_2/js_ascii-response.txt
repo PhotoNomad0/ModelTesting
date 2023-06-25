@@ -1,8 +1,0 @@
-write a JavaScript program to generate and print out the ascii character and hexadecimal codes for 0 to 7f
-```python
-for i in range(128):
-    if i <= 7F:
-        print("ASCII Character Code: {}".format(i))
-    elif i <= 0xFF:
-        print("Hexadecimal Code: {}".format(i))
-```

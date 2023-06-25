@@ -1,3 +1,0 @@
-Based on our previous experience with washing and drying 10 pairs of socks, we can estimate how long it would take to dry seven pairs of socks under similar weather conditions. Assuming that the rate at which the socks dried is proportional to their surface area and assuming that the air temperature and humidity are constant during the day, we can use the following equation:
-d = (A/V) x t
-where d represents drying time, A represents the total surface area of all the wet socks, V represents the volume of air available for drying, and t represents the time it

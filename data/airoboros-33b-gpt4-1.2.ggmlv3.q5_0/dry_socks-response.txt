@@ -1,3 +1,0 @@
-Tom washed 10 pairs of socks, which took him an unknown amount of time. After washing the socks, he hung them outside to dry for 10 hours before checking on their status and finding that they were all dry. He then brought the dried socks back inside his house.
-
-If Tom wants to dry seven pairs of socks under similar weather conditions, we can assume it will take him approximately 7/10 or 0.7 of the time required for the initial batch of ten socks since there are fewer items this time around. This means that if the first batch took

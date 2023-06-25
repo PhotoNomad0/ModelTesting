@@ -1,2 +1,0 @@
-If Sara used a total of 8 test tubes for three different experiments, then she must have used at least one test tube per experiment (since there are only 7 possible even numbers between 1 and 8). Therefore, we know that each of the other two experiments required at least one test tube.
-Without additional information, it is impossible to determine exactly how many test tubes were needed for each of these other two experiments.

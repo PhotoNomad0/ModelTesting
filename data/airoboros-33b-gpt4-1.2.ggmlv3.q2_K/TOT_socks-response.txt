@@ -1,4 +1,0 @@
-```markdown
-1. Thought 1 (Expert A):
-   - Question: "Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?"
-   - Answer: To determine how

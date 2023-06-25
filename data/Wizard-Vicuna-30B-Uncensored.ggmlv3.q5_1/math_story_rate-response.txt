@@ -1,3 +1,0 @@
-To calculate the difference between the number of words Cam typed in five minutes before and after breaking his right arm, we need to use some basic arithmetic. Before breaking his arm, Cam was able to type 9 words per minute on his phone. In one hour (60 minutes), he would be able to type 540 words (9 x 60 = 540). Since typing speed is usually measured in words per minute, we can convert this number into hours by dividing it by the total number of minutes in an hour: 
-
-(540 / 60) * 5 =

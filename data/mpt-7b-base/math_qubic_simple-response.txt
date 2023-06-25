@@ -1,4 +1,0 @@
-in x^3+x-130=0, use the cardano's formula to get the value for x
-in (x+1)^2 = -4, solve it using quadratic equation. 
-### Computer:
-in a*b = 0 and b is not zero then we can say that either one of them must be equal to 1 or both will have same sign so if you get the value for x from cardano's formula than just use this property in order to find out what should be the answer.

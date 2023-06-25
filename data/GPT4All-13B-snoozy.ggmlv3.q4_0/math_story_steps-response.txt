@@ -1,2 +1,0 @@
-In Science class, Sara needed 8 test tubes for 3 different experiments. The first experiment required 2 test tubes and the other two experiments required the same number of test tubes. How many test tubes were needed for each of the other two experiments?
-The second experiment required 4 test tubes (8 - 2 = 6) and the third experiment required 4 test tubes as well (6 + 4 = 10). Therefore, Sara needed a total of 8 + 4 + 4 = 16 test tubes for all three experiments.

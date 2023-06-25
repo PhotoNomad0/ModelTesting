@@ -1,2 +1,0 @@
-Sara needed a total of 8 test tubes for three different experiments, with one experiment requiring 2 test tubes and the remaining two experiments needing an equal amount of test tubes. To determine how many test tubes were required for each of the other two experiments, we can use algebra to solve this problem:
-Let x be the number of test tubes needed for each of the other two experiments (excluding the one that requires 2). Then, we know that Sara needs a total of 8 test tubes and she already used 2 in the first experiment. Therefore, there must be at least

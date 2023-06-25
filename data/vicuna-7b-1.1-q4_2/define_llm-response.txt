@@ -1,1 +1,0 @@
-LLM, or language model, is a type of artificial intelligence (AI) that can generate human-like responses to prompts. They are commonly used in natural language processing and machine learning applications. The goal of using an LLM is to create a more conversational experience with AI systems, making them feel more like humans.

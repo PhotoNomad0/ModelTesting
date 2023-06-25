@@ -1,9 +1,0 @@
-Before Cam broke his right arm, he was able to type 9 words per minute on his phone.  After he broke his arm, he had to use his left hand for a while, and he could only type 6 words per minute. What is the difference between the number of words he could type in 5 minutes before and after he broke his arm
-The assistant has been trained with the following information:
-
-* The user's name is "John"
-* He lives at 123 Main St, Anytown USA
-* His phone number is 555-555-5555
-* His email address is john@example.com
-* He likes to play soccer and basketball
-* He has a pet dog named Max

@@ -1,3 +1,0 @@
-To solve this equation using Cardano’s Formula, we need to follow these steps: 
-- First, let's rewrite the equation in standard form by isolating the quadratic term on one side of the equation. We can do this by subtracting c*x from both sides and then dividing both sides by d: ax^3+bx^2 = -c*x + d/d
-- Next, we need to find the discriminant D which is defined as b^2 - 4ac. In our case, this would be (1)^2 - 4(1)(1)

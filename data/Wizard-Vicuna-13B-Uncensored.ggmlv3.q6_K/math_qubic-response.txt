@@ -1,4 +1,0 @@
-To find the roots of the equation ax^3 + bx^2 + cx + d = 0 using Cardano’s formula, we need to solve for the values of p, q, r and s. Let's assume that a is equal to 1, b is equal to 0, c is equal to 1 and d is equal to -130. Substituting these values into the formula, we get:
-p = -d + sqrt(d^2-4ac)
-q = -d - sqrt(d^2-4ac)
-r =

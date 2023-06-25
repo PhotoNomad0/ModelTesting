@@ -1,4 +1,0 @@
-Expert 1:
-To answer this question, we need to make some assumptions about the weather and air temperature in Tom's location. Assuming that the weather conditions are similar for both washing cycles, we can use our previous experience with drying time of 10 pairs of socks as a reference point. Based on our estimate, it took approximately 10 hours for the socks to dry outside under similar weather conditions.
-Expert 2:
-We need to determine how much longer Tom's seven pairs of wet socks will take to dry based on the same weather conditions and air temperature as before.

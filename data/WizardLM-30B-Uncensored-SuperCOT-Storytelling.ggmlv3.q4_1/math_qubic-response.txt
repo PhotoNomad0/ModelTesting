@@ -1,2 +1,0 @@
-To solve the quadratic equation ax^3 + bx^2 + cx + d = 0 using Cardano's method, we need to follow these steps: 
-1. First, we check if the discriminant (b^2 - 4ac) is positive or negative. In this case, a=1, b=0, c=-130, and d=-130, so the discriminant is (-1)^2 - 4(1)(-130) = 169 < 0, which means the equation has only one real root.

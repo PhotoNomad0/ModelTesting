@@ -1,5 +1,0 @@
-To solve this equation, we will use a method called factorization. First, let's rewrite it in terms of base ten numbers instead of powers of two and one. The equation can be rewritten as 8 * (10^2) + (2^1) = 130. Now, we will solve for the variable X by isolating the variable term on both sides:
-(8*10^2+2)=130
-(8*100+2)=130
-(8*100+2)=130
-Addition property of equality

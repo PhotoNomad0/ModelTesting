@@ -1,9 +1,0 @@
-Here's a simple JavaScript program that generates and prints out the ASCII characters and their corresponding hexadecimal values from 0 to 7F.
-
-```javascript
-// Generate an array of ASCII characters and their hexadecimal codes from 0 to 7f
-const asciiToHex = [...Array(80).keys()].map((x, i) => {
-    return [`\u${i + 32}`, `\\x${i.toString().padStart(4, '0').toUpperCase()}`.slice(-4)];
-});
-
-//

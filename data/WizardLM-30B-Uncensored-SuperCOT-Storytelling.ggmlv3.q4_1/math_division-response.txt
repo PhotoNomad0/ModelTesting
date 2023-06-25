@@ -1,3 +1,0 @@
-To determine the average number of cereal bits used in Emily's designs, we need to divide the total number of cereal bits by the number of designs. In this case, 63 cereal bits were used in total and there were 9 designs, so each design would have used:
-63 / 9 = 7 cereal bits 
-So, Emily used an average of 7 cereal bits in each design. However, we don't know if she used an equal number of cereal bits in each design or not without additional information.

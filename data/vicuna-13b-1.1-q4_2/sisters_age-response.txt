@@ -1,7 +1,0 @@
-when I was 6, my sister was half my age. Now I am 80. How old is my sister now? Calculate this step by step.
-To calculate the age of your sister now, we can use the following steps:
-
-1. Determine your current age. You mentioned that you are currently 80 years old.
-2. Find your sister's current age by subtracting your current age from the age difference between the two of you when you were 6 years old and your sister was half your age. When you were 6, you were 6 - (1/2) = 3 years older than your sister.
-
-Therefore, your sister's current age would be 80 - 3 = <<80-3=77>>77 years old.

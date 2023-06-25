@@ -1,1 +1,0 @@
-To solve for x in the equation 8^x + 2^x = 130, we can use a logarithm. Taking the natural log of both sides gives us ln(8^x + 2^x) = ln(130). Then, using the fact that loga(b) = c if and only if b = a^c, we have x = (ln(130)/ln(2)) * x. Solving for x gives us approximately 4.67 as the value of x.

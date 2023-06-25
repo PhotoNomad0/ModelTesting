@@ -1,7 +1,0 @@
-Emily created a total of 9 designs using 63 cereal bits. To find out if she used an equal number of cereal bits for each design, we need to divide the total number of cereal bits by the number of designs:
-
-Cereal Bits per Design = Total Cereal Bits / Number of Designs
-                              = 63 / 9
-                              ≈ 7
-
-So, Emily used approximately 7 cereal bits for each design.

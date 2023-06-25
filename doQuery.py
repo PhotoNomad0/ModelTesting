@@ -4,11 +4,15 @@ import os
 import time
 from urllib.request import urlopen
 import json
+import pandas as pd
 
-usePythonBindings = True
+# if true then uses GPT4ALL Chat UI - make sure GPT4ALL Chat UI is running
+# if false then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
+usePythonBindings = False
+default_thread_count = 8
 
 if usePythonBindings:
-    # for GPT4ALL Chat UI
+    # for using new python API
     openai.api_base = "http://localhost:8000/v1"
 else:
     # for GPT4ALL Chat UI
@@ -100,8 +104,11 @@ models = [
     # "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q5_0.bin",
     # "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
     # "ggml-chronos-hermes-13b.ggmlv3.q8_0.bin",
+    "gpt4all-j-v1.3-groovy",
     # "GPT4All-13B-snoozy.ggmlv3.q4_0.bin",
     # "ggml-llama-30b-supercot.ggmlv3.q2_K.bin",
+    # "ggml-mpt-7b-chat.bin",
+    # "ggml-mpt-7b-instruct.bin",
     # "nous-hermes-13b.ggmlv3.q4_0.bin"
     # "ggml-vic7b-q5_1.bin",
     # "ggml-vic13b-q8_0.bin",
@@ -111,22 +118,12 @@ models = [
     # "wizardLM-13B-Uncensored.ggmlv3.q4_0.bin",
     # "ggml-wizardLM-7B.ggmlv3.q8_0.bin",
     # "ggml-WizardLM-Uncensored-SuperCOT-Storytelling.ggmlv3.q2_K.bin",
+    # "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
+    # "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0.bin",
+    # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin"
     
-    "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
-    "ggml-mpt-7b-instruct.bin",
-    "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0.bin",
-    "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin"
-    
-    # "ggml-gpt4all-j-v1.3-groovy.bin",
-    # "ggml-mpt-7b-chat.bin",
 
-#     "wizardLM-7B.ggmlv3.q8_0",
-#     "vic7b-q5_1",
-#     "ggml-vic13b-q8_0",
-#     "nous-gpt4-vicuna-13b",
-#     "nous-hermes-13b.ggmlv3.q6_K"
-#     "30b-Lazarus.ggmlv3.q5_1",
-#     "airoboros-33b-gpt4-1.2.ggmlv3.q4_1",
+#
 ]
 
 modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
@@ -161,6 +158,7 @@ def runModelQuery(model, prompt, reload):
         stream=False,
         timeout=1800, # seconds
         allow_download=False,
+        thread_count=default_thread_count
     )
 
     return response_
@@ -237,7 +235,7 @@ for model in models:
         id_ = prompt_['id']
         fileName = id_
         prompt = prompt_['prompt']
-        filePath = modelPath + "/" + fileName + ".txt"
+        filePath = modelPath + "/" + fileName + ".json"
 
         if os.path.exists(filePath):
             print("Already have results for", filePath, "skipping")
@@ -269,16 +267,101 @@ for model in models:
             if model_used != model:
                 print("model used", model_used, "does not match model requested", model)
 
+            jsonData = str(response)
+            data = json.loads(jsonData)
+            data['time'] = f'{elapsed_time:.2f}'
+
             print("Saving to", filePath)
             with open(filePath, "w") as file:
-                file.write(str(response))
+                json.dump(data, file)
 
-            filePath2 = modelPath + "/" + fileName + "-response.txt"
-            with open(filePath2, "w") as file:
-                file.write(str(action_text))
 
-            filePath3 = modelPath + "/" + fileName + "-time.txt"
-            with open(filePath3, "w") as file:
-                file.write(f'Time elapsed: {elapsed_time:.2f} seconds')
+def updateResultsFiles():
+    resultsPath = 'data/'
+    models = os.listdir(resultsPath)
+    models.sort(key=str.lower)
+    results = {}
+    for model in models:
+        modelDataPath = resultsPath + model + '/'
+        if os.path.isdir(modelDataPath):
+            files = os.listdir(modelDataPath)
+            for file in files:
+                pos = file.find('-response.txt')
+                if pos > 0:
+                    with open(modelDataPath + file) as f:
+                        response = f.read()
+                    testName = file[0:pos]
+                    timeFile = testName + '-time.txt'
+                    with open(modelDataPath + timeFile) as f:
+                        time = f.read()
 
+                    time = time.split('Time elapsed: ')
+                    time = time[1]
+                    time = time.split(' seconds')
+                    time = time[0]
+
+                    resultsFile = testName + '.txt'
+                    with open(modelDataPath + resultsFile) as f:
+                        results = f.read()
+                    
+                    results = json.loads(results)
+                    results['time'] = time
+
+                    resultsJsonFile = modelDataPath + testName + '.json'
+                    with open(resultsJsonFile, 'w') as f:
+                        json.dump(results, f)
+
+
+def getResultsFiles():
+    resultsPath = 'data/'
+    models = os.listdir(resultsPath)
+    models.sort(key=str.lower)
+    results = {}
+    for model in models:
+        modelDataPath = resultsPath + model + '/'
+        if os.path.isdir(modelDataPath):
+            files = os.listdir(modelDataPath)
+            for file in files:
+                pos = file.find('.json')
+                if pos > 0:
+                    with open(modelDataPath + file) as f:
+                        testResults = json.load(f)
+
+                    testName = file[0:-5]
+                    
+                    choices = testResults['choices']
+                    choice = choices[0] if choices else ""
+                    response = choice['text'].strip() if choice else ""
+                    response = response.replace('\n', '\\n')
+                    time = float(testResults['time'])
+
+                    if not testName in results:
+                        results[testName] = {
+                            'model': [],
+                            'time': [],
+                            'order': [],
+                            'comments': [],
+                            'response': [],
+                        }
+
+                    results[testName]['model'].append(model)
+                    results[testName]['time'].append(time)
+                    results[testName]['response'].append(response)
+                    results[testName]['order'].append(0)
+                    results[testName]['comments'].append('')
+
+    return results
+
+
+def resultsToSpreadsheet(results):
+    with pd.ExcelWriter("data/summary.xlsx") as writer:
+        for testname in results:
+            df = pd.DataFrame(results[testname])
+            # print("test", testname, ", data: ", df)
+            df.to_excel(writer, sheet_name=testname)
+        
+print("Getting Results")
+# updateResultsFiles()
+results = getResultsFiles()
+resultsToSpreadsheet(results)
 print("Done")

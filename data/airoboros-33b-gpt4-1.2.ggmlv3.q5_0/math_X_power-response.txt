@@ -1,9 +1,0 @@
-Let's solve this equation step by step. First, notice that both terms have an exponent of "x," so we can factor out x from each term:
-
-8^x + 2^x = 130
-
-Now, divide both sides by x to isolate the variable on one side and a constant (in this case, 1) on the other side:
-
-8^x / x + 2^x / x = 130/x
-
-Since we want all terms in the numerator of each fraction, multiply both sides by x to eliminate fractions:

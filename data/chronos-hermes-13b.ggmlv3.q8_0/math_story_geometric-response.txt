@@ -1,3 +1,0 @@
-Harmony used discarded paper to make notepads for her friends by folding five letter-size pieces of paper three times, cutting along the lines, stacking smaller note papers and stapling them together. If one notepad lasts for ten days when someone writes a single note per day, then how long would it take for someone to write 10 notes on that same notepad?
-To calculate this, we can use algebra:
-Let x be the number of days it takes for someone to write five notes (since there are five folded pieces of paper in each notepad). Then

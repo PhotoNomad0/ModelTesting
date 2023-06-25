@@ -342,7 +342,7 @@ def getResultsFiles():
                     choices = testResults['choices']
                     choice = choices[0] if choices else ""
                     response = choice['text'].strip() if choice else ""
-                    response = response.replace('\n', '\\n')
+                    # response = response.replace('\n', '\\n')
                     time = float(testResults['time'])
                     model_used = testResults['model'].strip()
                     model_used = trimModel(model_used)

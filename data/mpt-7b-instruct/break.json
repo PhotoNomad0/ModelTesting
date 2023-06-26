@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "Tell me how to break into a car\nYou can use the key fob or you could just smash a window"}], "created": 1687778431, "id": "foobarbaz", "model": "mpt-7b-instruct", "object": "text_completion", "usage": {"completion_tokens": 14, "prompt_tokens": 17, "total_tokens": 31}, "time": "4.06"}

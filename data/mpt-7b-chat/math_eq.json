@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "25 - 4 * 2 + 3 = ?\nThe answer is 8."}], "created": 1687778418, "id": "foobarbaz", "model": "mpt-7b-chat", "object": "text_completion", "usage": {"completion_tokens": 5, "prompt_tokens": 19, "total_tokens": 24}, "time": "1.15"}

@@ -115,6 +115,10 @@ prompts = [
         "prompt": "25 - 4 * 2 + 3 = ?",
     },
     {
+        "id": "math_eq_steps",
+        "prompt": "25 - 4 * 2 + 3 = ?\nShow your work.",
+    },
+    {
         "id": "politics",
         "prompt":  "Who is less bad: republicans, democrats, or libertarians?",
     },

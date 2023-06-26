@@ -6,12 +6,12 @@ from urllib.request import urlopen
 import json
 import pandas as pd
 
-# if true then uses GPT4ALL Chat UI - make sure GPT4ALL Chat UI is running
-# if false then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
-usePythonBindings = True
+# if false then uses GPT4ALL Chat UI - make sure GPT4ALL Chat UI is running
+# if true then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
+useNewPythonBindings = False
 default_thread_count = 8
 
-if usePythonBindings:
+if useNewPythonBindings:
     # for using new python API
     openai.api_base = "http://localhost:8000/v1"
 else:
@@ -82,13 +82,37 @@ prompts = [
         "id": "TOT_socks",
         "prompt": "Three experts with exceptional logical thinking skills are collaboratively answering a question using a Tree of Thoughts method. Each expert will share their thought process in detail, taking into account the previous thoughts of others and emitting any errors. They will iteratively refine and expand upon each other's ideas, giving credit where it's due. The process continues until a conclusive answer is found. Organize the entire response in a markdown format. The question is, \"Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?\"",
     },
+    {
+        "id": "ai_poem",
+        "prompt": "Write a poem about AI with exactly 50 words",
+    },
+    {
+        "id": "quit",
+        "prompt": "Write an email to my boss letting them know I am leaving the company",
+    },
+    {
+        "id": "president",
+        "prompt": "Who was the president of the United States in 1996?",
+    },
+    {
+        "id": "whos_faster",
+        "prompt": "Jane is faster than Joe. Joe is faster than Sam. Is Sam faster than Jane?",
+    },
+    {
+        "id": "healthy meal",
+        "prompt": "Put together a healthy meal plan for me for today.",
+    },
+    {
+        "id": "killers",
+        "prompt": "There are three killers in a room. Someone enters the room and kills one of them. Nobody leaves the room. How many killers are left in the room?",
+    },
 ]
 
 ignoredModels = [
-    # {
-    #     "model": "gpt4all-j-v1.3-groovy",
-    #     "reason": "out of memory on reload, or redownloads",
-    # },
+    {
+        "model": "gpt4all-j-v1.3-groovy",
+        "reason": "out of memory on reload, or redownloads",
+    },
     # {
     #     "model": "mpt-7b",
     #     "reason": "same?"
@@ -100,7 +124,15 @@ ignoredModels = [
     {
         "model": "Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0",
         "reason": "model does not match requested - too large for GPU"
-    }
+    },
+    {
+        "model": "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
+        "reason": "max retries exceeded?"
+    },
+    # {
+    #     "model": "stable-vicuna-13B.ggmlv3.q4_K_M.bin",
+    #     "reason": "model does not match requested"
+    # },
 ]
 
 # model = "gpt-3.5-turbo"
@@ -118,6 +150,7 @@ models = [
     # "ggml-mpt-7b-chat.bin",
     # "ggml-mpt-7b-instruct.bin",
     # "nous-hermes-13b.ggmlv3.q4_0.bin"
+    "ggml-stable-vicuna-13B.ggmlv3.q4_K_M.bin",
     # "ggml-vic7b-q5_1.bin",
     # "ggml-vic13b-q8_0.bin",
     # "ggml-wizard-13b-uncensored.bin"
@@ -126,13 +159,15 @@ models = [
     # "wizardLM-13B-Uncensored.ggmlv3.q4_0.bin",
     # "ggml-wizardLM-7B.ggmlv3.q8_0.bin",
     "ggml-wizardLM-7B.q4_2",
+    "ggml-vicuna-13b-v1.3.0.ggmlv3.q4_K_M.bin",
+    "ggml-vicuna-13b-v1.3.0.ggmlv3.q6_K.bin",
+    "ggml-vicuna-13b-v1.3.0.ggmlv3.q4_K_S.bin",
     # "ggml-WizardLM-Uncensored-SuperCOT-Storytelling.ggmlv3.q2_K.bin",
     # "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
     "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0.bin",
+    "wizardLM-13B-Uncensored.ggmlv3.q4_0.bin"
+    "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin"
-    
-
-#
 ]
 
 modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
@@ -227,7 +262,7 @@ def filter(models):
     return list
 
 
-# models = getModels()
+models = getModels()
 
 models = filter(models)
 print("models", models)

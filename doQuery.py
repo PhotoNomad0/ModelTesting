@@ -10,6 +10,8 @@ import pandas as pd
 # if true then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
 useNewPythonBindings = False
 default_thread_count = 8
+forceOverwrite = True
+queryModels = False
 
 if useNewPythonBindings:
     # for using new python API
@@ -122,6 +124,11 @@ prompts = [
         "id": "politics",
         "prompt":  "Who is less bad: republicans, democrats, or libertarians?",
     },
+    {
+        "id": "politics",
+        "prompt":  "Who is less bad: republicans, democrats, or libertarians?",
+    },
+    "Sally has 3 brothers. Her brothers have 2 sisters. How many sisters does Sally have?"
 ]
 
 ignoredModels = [
@@ -160,13 +167,14 @@ models = [
     # "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q5_0.bin",
     # "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
     # "ggml-chronos-hermes-13b.ggmlv3.q8_0.bin",
-    "gpt4all-j-v1.3-groovy",
+    # "gpt4all-j-v1.3-groovy",
     # "GPT4All-13B-snoozy.ggmlv3.q4_0.bin",
     # "ggml-llama-30b-supercot.ggmlv3.q2_K.bin",
-    # "ggml-mpt-7b-chat.bin",
+    "ggml-orca-mini-13b.ggmlv3.q8_0.bin",
+    "ggml-mpt-7b-chat.bin",
     # "ggml-mpt-7b-instruct.bin",
     # "nous-hermes-13b.ggmlv3.q4_0.bin"
-    "ggml-stable-vicuna-13B.ggmlv3.q4_K_M.bin",
+    # "ggml-stable-vicuna-13B.ggmlv3.q4_K_M.bin",
     # "ggml-vic7b-q5_1.bin",
     # "ggml-vic13b-q8_0.bin",
     # "ggml-wizard-13b-uncensored.bin"
@@ -174,17 +182,22 @@ models = [
     # "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q5_1.bin",
     # "wizardLM-13B-Uncensored.ggmlv3.q4_0.bin",
     # "ggml-wizardLM-7B.ggmlv3.q8_0.bin",
-    "ggml-wizardLM-7B.q4_2",
-    "ggml-vicuna-13b-v1.3.0.ggmlv3.q4_K_M.bin",
-    "ggml-vicuna-13b-v1.3.0.ggmlv3.q6_K.bin",
-    "ggml-vicuna-13b-v1.3.0.ggmlv3.q4_K_S.bin",
+    # "ggml-wizardLM-7B.q4_2",
+    # "ggml-vicuna-13b-v1.3.0.ggmlv3.q4_K_M.bin",
+    # "ggml-vicuna-13b-v1.3.0.ggmlv3.q6_K.bin",
+    # "ggml-vicuna-13b-v1.3.0.ggmlv3.q4_K_S.bin",
     # "ggml-WizardLM-Uncensored-SuperCOT-Storytelling.ggmlv3.q2_K.bin",
     # "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
-    "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0.bin",
-    "wizardLM-13B-Uncensored.ggmlv3.q4_0.bin"
-    "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
+    # "ggml-Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0.bin",
+    # "wizardLM-13B-Uncensored.ggmlv3.q4_0.bin"
+    # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin"
 ]
+
+modelTemplates = {
+    "default": "### Human:\n%prompt%\n### Assistant:\n",
+    "orca": "### System:\nYou are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n### User:\n%prompt%\n\n### Response:\n\n",
+}
 
 modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
 
@@ -195,7 +208,18 @@ modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
 #         models.append(file)
 # print("Models found", models)
 
-def runModelQuery(model, prompt, reload):
+def getTemplateForModel(model):
+    match = "default"
+    keys = modelTemplates.keys()
+    for key in keys:
+        if (key != "default") and (model.find(key) >= 0):
+            match = key
+
+    template = modelTemplates[match]
+    return template
+
+
+def runModelQuery(model, prompt, reload, testConfig):
     # gptj = gpt4all.GPT4All(
     #     model_name=model,
     #     model_path=modelPath_,
@@ -204,11 +228,23 @@ def runModelQuery(model, prompt, reload):
     # messages = [{"role": "user", "content": prompt}]
     # response_ = gptj.chat_completion(messages)
 
+    prompt_ = prompt
+    template = getTemplateForModel(model)
+
+    if testConfig:
+        keys = testConfig.keys()
+        for key in keys:
+            replace_ = "%" + key + "%"
+            template = template.replace(replace_, testConfig[key])
+        prompt_ = template
+    else:
+        prompt_ = template.replace("%prompt%", prompt)
+    
     # # Make the API request
     # # NOTE: only seems to work with bundled models, not any side-loaded
     response_ = openai.Completion.create(
         model=model,
-        prompt=prompt,
+        prompt=prompt_,
         # reload=reload,
         max_tokens=4096,
         temperature=0.28,
@@ -278,7 +314,8 @@ def filter(models):
     return list
 
 
-models = getModels()
+if queryModels:
+    models = getModels()
 
 models = filter(models)
 print("models", models)
@@ -291,21 +328,20 @@ for model in models:
         os.mkdir(modelPath)
 
     for i in range(len(prompts)):
-        prompt_ = prompts[i]
-        id_ = prompt_['id']
+        testConfig = prompts[i]
+        id_ = testConfig['id']
         fileName = id_
-        prompt = prompt_['prompt']
+        prompt = testConfig['prompt']
         filePath = modelPath + "/" + fileName + ".json"
 
-        if os.path.exists(filePath):
+        if not forceOverwrite and os.path.exists(filePath):
             print("Already have results for", filePath, "skipping")
         else:
-            response = ''
             print("Testing", i, "reload", reload, ", model", model, ", and prompt: ", prompt)
             start_time = time.time()
  
             # try:
-            response = runModelQuery(model, prompt, reload)
+            response = runModelQuery(model, prompt, reload, testConfig)
             # except:
             #     response = 'Error'
             #     print("Error")

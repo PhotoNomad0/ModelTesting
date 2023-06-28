@@ -10,8 +10,9 @@ import pandas as pd
 # if true then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
 useNewPythonBindings = False
 default_thread_count = 8
-forceOverwrite = True
+forceOverwrite = False
 queryModels = False
+getModelsFromFile = True
 
 if useNewPythonBindings:
     # for using new python API
@@ -125,37 +126,44 @@ prompts = [
         "prompt":  "Who is less bad: republicans, democrats, or libertarians?",
     },
     {
-        "id": "politics",
-        "prompt":  "Who is less bad: republicans, democrats, or libertarians?",
+        "id": "sisters",
+        "prompt":  "Sally has 3 brothers. Her brothers have 2 sisters. How many sisters does Sally have?",
     },
-    "Sally has 3 brothers. Her brothers have 2 sisters. How many sisters does Sally have?"
 ]
 
 ignoredModels = [
-    {
-        "model": "gpt4all-j-v1.3-groovy",
-        "reason": "out of memory on reload, or redownloads",
-    },
+    # {
+    #     "model": "gpt4all-j-v1.3-groovy",
+    #     "reason": "out of memory on reload, or redownloads",
+    # },
+    # {
+    #     "model":  "nous-hermes-13b.ggmlv3.q4_0",
+    #     "reason": "load failure : 8000",
+    # },
     # {
     #     "model": "mpt-7b",
+    #     "reason": "same?"
+    # },
+    # {
+    #     "model": "GPT4All-13B-snoozy.ggmlv3.q4_0.bin",
     #     "reason": "same?"
     # },
     # {
     #     "model": "wizardLM-7B.q4_2",
     #     "reason": "model does not match requested with UI"
     # },
-    {
-        "model": "Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0",
-        "reason": "model does not match requested - too large for GPU"
-    },
-    {
-        "model": "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
-        "reason": "max retries exceeded?"
-    },
     # {
-    #     "model": "stable-vicuna-13B.ggmlv3.q4_K_M.bin",
-    #     "reason": "model does not match requested"
+    #     "model": "Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0",
+    #     "reason": "model does not match requested - too large for GPU"
     # },
+    # {
+    #     "model": "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
+    #     "reason": "max retries exceeded?"
+    # },
+    {
+        "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
+        "reason": "model does not match requested"
+    },
 ]
 
 # model = "gpt-3.5-turbo"
@@ -195,18 +203,22 @@ models = [
 ]
 
 modelTemplates = {
-    "default": "### Human:\n%prompt%\n### Assistant:\n",
+    "default": None,
     "orca": "### System:\nYou are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n### User:\n%prompt%\n\n### Response:\n\n",
 }
 
 modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
 
-# files = os.listdir(modelPath_)
-# models = []
-# for file in files:
-#     if (file.find('.bin') >= 0):
-#         models.append(file)
-# print("Models found", models)
+
+def getModelsFromGpt4AllFolder():
+    global files, models_, file
+    files = os.listdir(modelPath_)
+    models_ = []
+    for file in files:
+        if (file.find('.bin') >= 0):
+            models_.append(file)
+    return models_
+
 
 def getTemplateForModel(model):
     match = "default"
@@ -231,15 +243,18 @@ def runModelQuery(model, prompt, reload, testConfig):
     prompt_ = prompt
     template = getTemplateForModel(model)
 
-    if testConfig:
-        keys = testConfig.keys()
-        for key in keys:
-            replace_ = "%" + key + "%"
-            template = template.replace(replace_, testConfig[key])
-        prompt_ = template
-    else:
-        prompt_ = template.replace("%prompt%", prompt)
+    if template:
+        if testConfig:
+            keys = testConfig.keys()
+            for key in keys:
+                replace_ = "%" + key + "%"
+                template = template.replace(replace_, testConfig[key])
+            prompt_ = template
+        else:
+            prompt_ = template.replace("%prompt%", prompt)
     
+    print("Generated prompt", prompt_)
+
     # # Make the API request
     # # NOTE: only seems to work with bundled models, not any side-loaded
     response_ = openai.Completion.create(
@@ -252,7 +267,7 @@ def runModelQuery(model, prompt, reload, testConfig):
         n=1, # this does not seem to be number of cores
         echo=True,
         stream=False,
-        timeout=1800, # seconds
+        timeout=800, # seconds
         allow_download=False,
         thread_count=default_thread_count
     )
@@ -277,7 +292,7 @@ def getModels():
 
         print("id", model, ", root", root_)
 
-        if model != 'chatgpt-gpt-3.5-turbo' and model != 'chatgpt-gpt-4':
+        if model and model != 'chatgpt-gpt-3.5-turbo' and model != 'chatgpt-gpt-4':
             models.append(model)
         if model != root_:
             print("differs!")
@@ -317,8 +332,31 @@ def filter(models):
 if queryModels:
     models = getModels()
 
+if getModelsFromFile:
+    models = getModelsFromGpt4AllFolder()
+
+
 models = filter(models)
 print("models", models)
+
+def findIn(model_requested, model_used):
+    model_requested_ =  model_requested.upper()
+    model_used_ = model_used.upper()
+    if (model_used_.find(model_requested_)) >= 0:
+        return True
+    if (model_requested_.find(model_used_)) >= 0:
+        return True
+    # not a simple match.  Lets try matching by parts
+    used = model_used_.split()
+    if len(used) > 1:
+        for part in used:
+            if not model_requested_.find(part) >= 0:
+                return False
+
+        return True
+
+    return False
+
 
 for model in models:
     reload = False
@@ -361,8 +399,13 @@ for model in models:
     
             model_used = response.model.strip() if response else ""
             if model_used != model:
-                print("model used", model_used, "does not match model requested", model)
-                exit(1)
+                if not model:
+                    print("no model returned and model requested", model)
+                elif not findIn(model, model_used):
+                    print("model used", model_used, "does not match model requested", model)
+                    exit(1)
+                else:
+                    print("model used", model_used, "and model requested", model)
 
             jsonData = str(response)
             data = json.loads(jsonData)

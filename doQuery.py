@@ -168,6 +168,10 @@ ignoredModels = [
         "model": "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
         "reason": "timeouts"
     },
+    {
+        "model": "ggml-30b-Lazarus.ggmlv3.q4_1.bin",
+        "reason": "timeouts"
+    },
 ]
 
 # model = "gpt-3.5-turbo"
@@ -518,7 +522,7 @@ def readPreviousResultsFromSpreadsheet():
     results = {}
 
     # Load spreadsheet
-    xl = pd.ExcelFile('data/summary_edit2.xls')
+    xl = pd.ExcelFile('data/summary_scored.xls')
 
     sheet_names = xl.sheet_names
     for sheet_name in sheet_names:
@@ -536,11 +540,46 @@ def readPreviousResultsFromSpreadsheet():
 
     return results
 
+def mergeInPreviousData(results, previousResults):
+    mergedResults = results.copy()
+    for test in previousResults.keys():
+        if test in results:
+            previous = previousResults[test]
+            newer = results[test]
+            prevModels = previous['model']
+            newModels = newer['model']
+            for i in range(len(prevModels)):
+                model = prevModels[i]
+                match = newModels.index(model)
+                if match >= 0:
+                    sameTestResults = contentsMatch(previous, i, newer, match, 'response') and contentsMatch(previous, i, newer, match, 'time')
+                    if sameTestResults:
+                        updatefield(previous, i, newer, match, 'comments')
+                        updatefield(previous, i, newer, match, 'order')
+        else:
+            mergedResults[test] = previousResults[test]
+
+    return mergedResults
+
+
+def updatefield(previous, i, newer, match, key):
+    prevValue = previous[key][i]
+    newValue = newer[key][match]
+    if prevValue and not newValue:
+        newer[key][match] = prevValue
+
+
+def contentsMatch(prevModels, i, newModels, match, key):
+    previous = prevModels[key][i]
+    newer = newModels[key][match]
+    matched = previous == newer
+    return matched
 
 
 print("Getting Results")
 # updateResultsFiles()
 previousResults = readPreviousResultsFromSpreadsheet()
 results = getSavedResultsAsDictionary()
+results = mergeInPreviousData(results, previousResults)
 saveResultsToSpreadsheet(results)
 print("Done")

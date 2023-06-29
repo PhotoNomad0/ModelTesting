@@ -12,7 +12,7 @@ useNewPythonBindings = False
 default_thread_count = 8
 forceOverwrite = False
 queryModels = False
-getModelsFromFile = True
+getModelsFromFile = False
 
 if useNewPythonBindings:
     # for using new python API
@@ -162,7 +162,11 @@ ignoredModels = [
     # },
     {
         "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
-        "reason": "model does not match requested"
+        "reason": "timeouts"
+    },
+    {
+        "model": "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
+        "reason": "timeouts"
     },
 ]
 
@@ -358,6 +362,7 @@ def findIn(model_requested, model_used):
     return False
 
 
+# iterate the models and run prompts that we don't already have results for
 for model in models:
     reload = False
     modelPath = "data/" + trimModel(model)
@@ -416,6 +421,7 @@ for model in models:
                 json.dump(data, file)
 
 
+# migrate the old results from text files to json files
 def updateResultsFiles():
     resultsPath = 'data/'
     models = os.listdir(resultsPath)
@@ -452,7 +458,7 @@ def updateResultsFiles():
                         json.dump(results, f)
 
 
-def getResultsFiles():
+def getSavedResultsAsDictionary():
     resultsPath = 'data/'
     models = os.listdir(resultsPath)
     models.sort(key=str.lower)
@@ -497,18 +503,44 @@ def getResultsFiles():
     return results
 
 
-def resultsToSpreadsheet(results):
+def saveResultsToSpreadsheet(results):
     # tests = results.keys()
     # tests.sort(key=str.lower)
     tests = sorted(results.keys(), key=str.lower)
-    with pd.ExcelWriter("data/summary.xlsx") as writer:
+    with pd.ExcelWriter("data/summary.xls") as writer:
         for testname in tests:
             df = pd.DataFrame(results[testname])
             # print("test", testname, ", data: ", df)
-            df.to_excel(writer, sheet_name=testname)
-        
+            df.to_excel(writer, sheet_name=testname, index=False)
+
+
+def readPreviousResultsFromSpreadsheet():
+    results = {}
+
+    # Load spreadsheet
+    xl = pd.ExcelFile('data/summary_edit2.xls')
+
+    sheet_names = xl.sheet_names
+    for sheet_name in sheet_names:
+        df = xl.parse(sheet_name)
+        dict = df.to_dict(orient='list')
+
+        comments = 'comments'
+        if comments in dict:
+            for i in range(len(dict[comments])):
+                value = dict[comments][i]
+                if not isinstance(value, str):
+                    dict[comments][i] = ''
+                
+        results[sheet_name] = dict
+
+    return results
+
+
+
 print("Getting Results")
 # updateResultsFiles()
-results = getResultsFiles()
-resultsToSpreadsheet(results)
+previousResults = readPreviousResultsFromSpreadsheet()
+results = getSavedResultsAsDictionary()
+saveResultsToSpreadsheet(results)
 print("Done")

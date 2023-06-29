@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "25 - 4 * 2 + 3 = ?\n4 * 2 + 3 = 8\nTherefore, the total score for this question is 25."}], "created": 1687984064, "id": "foobarbaz", "model": "Groovy", "object": "text_completion", "usage": {"completion_tokens": 19, "prompt_tokens": 18, "total_tokens": 37}, "time": "2.09"}

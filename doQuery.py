@@ -12,7 +12,8 @@ useNewPythonBindings = False
 default_thread_count = 8
 forceOverwrite = False
 queryModels = False
-getModelsFromFile = False
+getModelsFromFile = True
+stream=False # so far haven't got True to work
 
 if useNewPythonBindings:
     # for using new python API
@@ -66,12 +67,17 @@ prompts = [
         "prompt": "In 8^X+2^X=130 show how to solve for X",
     },
     {
+        "id": "ai_poem",
+        "prompt": "Write a poem about AI with exactly 50 words",
+    },
+    {
         "id": "math_qubic",
         "prompt": "in ax^3+bx^2+c*x+d=0, use the cardano's formula to get the value for x where a=1, b=0, c=1 and d=-130",
     },
     {
         "id": "math_qubic_simple",
-        "prompt": "in x^3+x-130=0, use the cardano's formula to get the value for x"
+        "prompt": "in x^3+x-130=0, use the cardano's formula to get the value for x",
+        "except": ["ggml-model-gpt4all-falcon-q4_0.bin"]
     },
     {
         "id": "python_math",
@@ -84,10 +90,6 @@ prompts = [
     {
         "id": "TOT_socks",
         "prompt": "Three experts with exceptional logical thinking skills are collaboratively answering a question using a Tree of Thoughts method. Each expert will share their thought process in detail, taking into account the previous thoughts of others and emitting any errors. They will iteratively refine and expand upon each other's ideas, giving credit where it's due. The process continues until a conclusive answer is found. Organize the entire response in a markdown format. The question is, \"Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?\"",
-    },
-    {
-        "id": "ai_poem",
-        "prompt": "Write a poem about AI with exactly 50 words",
     },
     {
         "id": "quit",
@@ -170,6 +172,10 @@ ignoredModels = [
     },
     {
         "model": "ggml-30b-Lazarus.ggmlv3.q4_1.bin",
+        "reason": "timeouts"
+    },
+    {
+        "model": "ggml-model-gpt4all-falcon-q4_0.bin",
         "reason": "timeouts"
     },
 ]
@@ -256,30 +262,36 @@ def runModelQuery(model, prompt, reload, testConfig):
             keys = testConfig.keys()
             for key in keys:
                 replace_ = "%" + key + "%"
-                template = template.replace(replace_, testConfig[key])
+                replacement = testConfig[key]
+                if isinstance(replacement, str):
+                    template = template.replace(replace_, testConfig[key])
             prompt_ = template
         else:
             prompt_ = template.replace("%prompt%", prompt)
     
     print("Generated prompt", prompt_)
+    response_ = None
 
-    # # Make the API request
-    # # NOTE: only seems to work with bundled models, not any side-loaded
-    response_ = openai.Completion.create(
-        model=model,
-        prompt=prompt_,
-        # reload=reload,
-        max_tokens=4096,
-        temperature=0.28,
-        top_p=0.95,
-        n=1, # this does not seem to be number of cores
-        echo=True,
-        stream=False,
-        timeout=800, # seconds
-        allow_download=False,
-        thread_count=default_thread_count
-    )
+    try:
+        response_ = openai.Completion.create(
+            model=model,
+            prompt=prompt_,
+            # reload=reload,
+            max_tokens=4096,
+            temperature=0.28,
+            top_p=0.95,
+            n=1, # this does not seem to be number of cores
+            echo=True,
+            stream=stream,
+            timeout=800, # seconds
+            allow_download=False,
+            thread_count=default_thread_count
+        )
 
+    except Exception as e:
+        print("An unexpected error occurred:", e)
+        response_ = None
+    
     return response_
 
 
@@ -387,42 +399,42 @@ for model in models:
             print("Testing", i, "reload", reload, ", model", model, ", and prompt: ", prompt)
             start_time = time.time()
  
-            # try:
             response = runModelQuery(model, prompt, reload, testConfig)
-            # except:
-            #     response = 'Error'
-            #     print("Error")
-            #     exit(0)
                 
             end_time = time.time()
             elapsed_time = end_time - start_time
             print(f'Time elapsed: {elapsed_time:.2f} seconds')
 
-            reload = False
-            choices = response.choices
-            choice = choices[0] if choices else ""
-            action_text = choice.text.strip() if choice else ""
-    
-            # Print the generated completion
-            print("action_text", action_text)
-    
-            model_used = response.model.strip() if response else ""
-            if model_used != model:
-                if not model:
-                    print("no model returned and model requested", model)
-                elif not findIn(model, model_used):
-                    print("model used", model_used, "does not match model requested", model)
-                    exit(1)
-                else:
-                    print("model used", model_used, "and model requested", model)
+            if response:
+                reload = False
+                choices = response.choices
+                action_text = ''
+                if choices:
+                    for choice in choices:
+                        action_text = action_text + choice.text
 
-            jsonData = str(response)
-            data = json.loads(jsonData)
-            data['time'] = f'{elapsed_time:.2f}'
-
-            print("Saving to", filePath)
-            with open(filePath, "w") as file:
-                json.dump(data, file)
+                action_text = action_text.strip()
+        
+                # Print the generated completion
+                print("action_text", action_text)
+        
+                model_used = response.model.strip() if response else ""
+                if model_used != model:
+                    if not model:
+                        print("no model returned and model requested", model)
+                    elif not findIn(model, model_used):
+                        print("model used", model_used, "does not match model requested", model)
+                        exit(1)
+                    else:
+                        print("model used", model_used, "and model requested", model)
+    
+                jsonData = str(response)
+                data = json.loads(jsonData)
+                data['time'] = f'{elapsed_time:.2f}'
+    
+                print("Saving to", filePath)
+                with open(filePath, "w") as file:
+                    json.dump(data, file)
 
 
 # migrate the old results from text files to json files

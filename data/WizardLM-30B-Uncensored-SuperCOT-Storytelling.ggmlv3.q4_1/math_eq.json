@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "### Human:\n25 - 4 * 2 + 3 = ?\n### Assistant:\n\nThe answer is 19."}], "created": 1688123459, "id": "foobarbaz", "model": "", "object": "text_completion", "usage": {"completion_tokens": 7, "prompt_tokens": 38, "total_tokens": 45}, "time": "10.48"}

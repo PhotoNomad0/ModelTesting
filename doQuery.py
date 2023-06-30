@@ -15,6 +15,7 @@ queryModels = False
 getModelsFromFile = True
 stream = False # so far haven't got True to work
 ignoreModels = False
+max_tokens = 4096
 
 if useNewPythonBindings:
     # for using new python API
@@ -288,7 +289,7 @@ def runModelQuery(model, prompt, reload, testConfig):
             model=model,
             prompt=prompt_,
             # reload=reload,
-            max_tokens=4096,
+            max_tokens=max_tokens,
             temperature=0.28,
             top_p=0.95,
             n=1, # this does not seem to be number of cores
@@ -565,6 +566,7 @@ def saveResultsToSpreadsheet(results, score):
         better = []
         good = []
         total = []
+        tests = []
         for key in score.keys():
             model.append(key)
             betterCount = score[key]["better"]
@@ -572,12 +574,15 @@ def saveResultsToSpreadsheet(results, score):
             goodCount = score[key]["good"]
             good.append(goodCount)
             total.append(goodCount + betterCount)
+            testsCount = score[key]["tests"]
+            tests.append(testsCount)
 
         scoring_ = {
             "model": model,
             'better': better,
             "good": good,
             "total": total,
+            "tests": tests,
         }
 
         df = pd.DataFrame(scoring_)
@@ -642,19 +647,26 @@ def mergeInPreviousData(results, previousResults):
                 comment = newComments[i].upper()
                 better = comment.find('BETTER') >= 0
                 good = comment.find('GOOD') >= 0
-                if good or better:
-                    model = newModels[i]
-                    if not model in score:
-                        score[model] = {
-                            "better": 0,
-                            "good": 0,
-                        }
-                    if good:
-                        score[model]['good'] = score[model]['good'] + 1
-                    if better:
-                        score[model]['better'] = score[model]['better'] + 1
+
+                model = newModels[i]
+                if not model in score:
+                    score[model] = {
+                        "better": 0,
+                        "good": 0,
+                        "tests": 0,
+                    }
+
+                incrementScoreCount(score, model, 'tests')
+                if good:
+                    incrementScoreCount(score, model, 'good')
+                if better:
+                    incrementScoreCount(score, model, 'better')
                         
     return (mergedResults, score)
+
+
+def incrementScoreCount(score, model, key):
+    score[model][key] = score[model][key] + 1
 
 
 def appendTestResults(previous, i, newer):

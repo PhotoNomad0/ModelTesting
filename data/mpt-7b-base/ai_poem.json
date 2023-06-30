@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "Write a poem about AI with exactly 50 words\nWrite the first line of your favorite song."}], "created": 1688084070, "id": "foobarbaz", "model": "MPT Base", "object": "text_completion", "usage": {"completion_tokens": 9, "prompt_tokens": 18, "total_tokens": 27}, "time": "5.55"}

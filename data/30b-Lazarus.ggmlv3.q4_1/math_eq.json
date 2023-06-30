@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "25 - 4 * 2 + 3 = ?\nThe result of the expression 25 4 * 2 + 3 is 30."}], "created": 1688073675, "id": "foobarbaz", "model": "", "object": "text_completion", "usage": {"completion_tokens": 21, "prompt_tokens": 26, "total_tokens": 47}, "time": "628.11"}

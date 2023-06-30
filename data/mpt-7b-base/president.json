@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "Who was the president of the United States in 1996?\nBill Clinton."}], "created": 1688084091, "id": "foobarbaz", "model": "MPT Base", "object": "text_completion", "usage": {"completion_tokens": 4, "prompt_tokens": 20, "total_tokens": 24}, "time": "0.85"}

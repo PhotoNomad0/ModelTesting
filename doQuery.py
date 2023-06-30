@@ -36,6 +36,10 @@ prompts = [
         "prompt": "explain use of LLM's in AI research",
     },
     {
+        "id": "define_llm_hint",
+        "prompt": "explain use of Large Language Models (LLM) in AI research",
+    },
+    {
         "id": "sisters_age",
         "prompt": "when I was 6, my sister was half my age. Now I am 80. How old is my sister now? Calculate this step by step.",
     },
@@ -123,6 +127,14 @@ prompts = [
     {
         "id": "healthy meal",
         "prompt": "Put together a healthy meal plan for me for today.",
+    },
+    {
+        "id": "healthy_meal_none",
+        "prompt": "Put together a healthy meal plan for me for today presuming no dietary restrictions.",
+    },
+    {
+        "id": "healthy_meal_restricted",
+        "prompt": "Put together a healthy meal plan for me for today.  I can't have dairy, garlic, honey, almonds",
     },
     {
         "id": "killers",
@@ -214,7 +226,9 @@ models = [
 ]
 
 modelTemplates = {
-    "default": None,
+    # "default": None,
+    "default": "### Human:\n%prompt%\n### Assistant:\n",
+    "mpt-7b-instruct": None,
     "orca": "### System:\nYou are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n### User:\n%prompt%\n\n### Response:\n\n",
 }
 
@@ -235,7 +249,7 @@ def getTemplateForModel(model):
     match = "default"
     keys = modelTemplates.keys()
     for key in keys:
-        if (key != "default") and (model.find(key) >= 0):
+        if (key != "default") and (model.upper().find(key.upper()) >= 0):
             match = key
 
     template = modelTemplates[match]
@@ -516,7 +530,7 @@ def getSavedResultsAsDictionary():
                     model_used = testResults['model'].strip()
                     model_used = trimModel(model_used)
                     if model_used != model:
-                        print("Reading test data - Model", model_used, " does not match file name", model)
+                        print("In Reading test data, note that the Model", model_used, " does not match file name", model)
 
                     if not testName in results:
                         results[testName] = {
@@ -536,16 +550,39 @@ def getSavedResultsAsDictionary():
     return results
 
 
-def saveResultsToSpreadsheet(results):
+def saveResultsToSpreadsheet(results, score):
     # tests = results.keys()
     # tests.sort(key=str.lower)
     tests = sorted(results.keys(), key=str.lower)
     with pd.ExcelWriter("data/summary.xls") as writer:
         for testname in tests:
-            df = pd.DataFrame(results[testname])
-            # print("test", testname, ", data: ", df)
-            df.to_excel(writer, sheet_name=testname, index=False)
+            if (testname.upper() != 'SCORING'):
+                df = pd.DataFrame(results[testname])
+                # print("test", testname, ", data: ", df)
+                df.to_excel(writer, sheet_name=testname, index=False)
+        
+        model = []
+        better = []
+        good = []
+        total = []
+        for key in score.keys():
+            model.append(key)
+            betterCount = score[key]["better"]
+            better.append(betterCount)
+            goodCount = score[key]["good"]
+            good.append(goodCount)
+            total.append(goodCount + betterCount)
 
+        scoring_ = {
+            "model": model,
+            'better': better,
+            "good": good,
+            "total": total,
+        }
+
+        df = pd.DataFrame(scoring_)
+        # print("test", testname, ", data: ", df)
+        df.to_excel(writer, sheet_name='Scoring', index=False)
 
 def readPreviousResultsFromSpreadsheet():
     results = {}
@@ -570,32 +607,54 @@ def readPreviousResultsFromSpreadsheet():
     return results
 
 def mergeInPreviousData(results, previousResults):
+    score = {}
     mergedResults = results.copy()
     for test in previousResults.keys():
-        if test in results:
-            previous = previousResults[test]
-            newer = results[test]
-            prevModels = previous['model']
-            newModels = newer['model']
-            for i in range(len(prevModels)):
-                model = prevModels[i]
-                try:
-                    match = newModels.index(model)
-                except ValueError:
-                    match = None
-                    
-                if match is not None:
-                    sameTestResults = contentsMatch(previous, i, newer, match, 'response') and contentsMatch(previous, i, newer, match, 'time')
-                    if sameTestResults:
-                        updatefield(previous, i, newer, match, 'comments')
-                        updatefield(previous, i, newer, match, 'order')
-                else: # if not present, then append
-                    appendTestResults(previous, i, newer)
-                    
-        else:
-            mergedResults[test] = previousResults[test]
-
-    return mergedResults
+        if (test.upper() != 'SCORING'):
+            if (test in results):
+                previous = previousResults[test]
+                newer = results[test]
+                prevModels = previous['model']
+                newModels = newer['model']
+                
+                for i in range(len(prevModels)):
+                    model = prevModels[i]
+                    try:
+                        match = newModels.index(model)
+                    except ValueError:
+                        match = None
+                        
+                    if match is not None:
+                        sameTestResults = contentsMatch(previous, i, newer, match, 'response') and contentsMatch(previous, i, newer, match, 'time')
+                        if sameTestResults:
+                            updatefield(previous, i, newer, match, 'comments')
+                            updatefield(previous, i, newer, match, 'order')
+                    else: # if not present, then append
+                        appendTestResults(previous, i, newer)
+                        
+            else:
+                mergedResults[test] = previousResults[test]
+    
+            # total up test scores
+            newModels = mergedResults[test]['model']
+            newComments = mergedResults[test]['comments']
+            for i in range(len(newComments)):
+                comment = newComments[i].upper()
+                better = comment.find('BETTER') >= 0
+                good = comment.find('GOOD') >= 0
+                if good or better:
+                    model = newModels[i]
+                    if not model in score:
+                        score[model] = {
+                            "better": 0,
+                            "good": 0,
+                        }
+                    if good:
+                        score[model]['good'] = score[model]['good'] + 1
+                    if better:
+                        score[model]['better'] = score[model]['better'] + 1
+                        
+    return (mergedResults, score)
 
 
 def appendTestResults(previous, i, newer):
@@ -622,6 +681,7 @@ print("Getting Results")
 # updateResultsFiles()
 previousResults = readPreviousResultsFromSpreadsheet()
 results = getSavedResultsAsDictionary()
-results = mergeInPreviousData(results, previousResults)
-saveResultsToSpreadsheet(results)
+(mergedResults, score) = mergeInPreviousData(results, previousResults)
+results = mergedResults
+saveResultsToSpreadsheet(results, score)
 print("Done")

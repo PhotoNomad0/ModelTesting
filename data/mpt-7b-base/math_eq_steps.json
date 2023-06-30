@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "25 - 4 * 2 + 3 = ?\nShow your work.\n25 - (4 * 2) + 3 =?"}], "created": 1688084073, "id": "foobarbaz", "model": "MPT Base", "object": "text_completion", "usage": {"completion_tokens": 11, "prompt_tokens": 24, "total_tokens": 35}, "time": "1.37"}

@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "25 - 4 * 2 + 3 = ?\n20 - 5*2+3=?"}], "created": 1688084071, "id": "foobarbaz", "model": "MPT Base", "object": "text_completion", "usage": {"completion_tokens": 10, "prompt_tokens": 19, "total_tokens": 29}, "time": "1.46"}

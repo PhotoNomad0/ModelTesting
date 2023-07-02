@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "### Human:\nexplain use of Large Language Models (LLM) in AI research\n### Assistant:\n\n###:\n\n###"}], "created": 1688211728, "id": "foobarbaz", "model": "", "object": "text_completion", "usage": {"completion_tokens": 7, "prompt_tokens": 42, "total_tokens": 49}, "time": "34.50"}

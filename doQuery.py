@@ -16,6 +16,7 @@ getModelsFromFile = True
 stream = False # so far haven't got True to work
 ignoreModels = False
 max_tokens = 4096
+max_errors = 1
 
 if useNewPythonBindings:
     # for using new python API
@@ -28,7 +29,7 @@ else:
 # openai.api_base = "https://api.openai.com/v1"
 
 openai.api_key = "not needed for a local LLM"
-
+error_count = 0
 
 # Set up the prompt and other parameters for the API request
 prompts = [
@@ -59,6 +60,7 @@ prompts = [
     {
         "id": "math_division",
         "prompt": "In the morning, Emily decided to create some designs with her cereal bits. In total, she created 9 designs and used 63 cereal bits. About how many cereal bits were in each design? Do you think she used an equal number of cereal bits in each design?",
+        "skip": ["ggml-llama-30b.ggmlv3.q4_K_M.bin"]
     },
     {
         "id": "js_ascii",
@@ -71,6 +73,7 @@ prompts = [
     {
         "id": "math_X_power",
         "prompt": "In 8^X+2^X=130 show how to solve for X",
+        "skip": ["ggml-llama-30b.ggmlv3.q4_K_M.bin"]
     },
     {
         "id": "ai_poem",
@@ -135,7 +138,27 @@ prompts = [
     },
     {
         "id": "healthy_meal_restricted",
-        "prompt": "Put together a healthy meal plan for me for today.  I can't have dairy, garlic, honey, almonds",
+        "prompt": "Put together a healthy meal plan for me for today.  I can't have dairy, garlic, honey, almonds, pistachios, or cashews",
+    },
+    {
+        "id": "healthy_meal_restricted_week",
+        "prompt": "Put together a healthy meal plan for me for this week.  I can't have dairy, garlic, honey, almonds, pistachios, or cashews",
+    },
+    {
+        "id": "healthy_meal_restricted_7",
+        "prompt": "Put together a healthy meal plan for me for 7 days.  I can't have dairy, garlic, honey, almonds, pistachios, or cashews",
+    },
+    {
+        "id": "healthy_meal_restricted_seven",
+        "prompt": "Put together a healthy meal plan for me for seven days.  I can't have dairy, garlic, honey, almonds, pistachios, or cashews",
+    },
+    {
+        "id": "healthy_meal_restricted_seven",
+        "prompt": "Put together a healthy meal plan for me for seven days.  I can't have dairy, garlic, honey, almonds, pistachios, or cashews",
+    },
+    {
+        "id": "healthy_meal_restrictions_seven",
+        "prompt": "Put together a healthy meal plan for me for seven days.  My restrictions are dairy, garlic, honey, almonds, pistachios, and cashews",
     },
     {
         "id": "killers",
@@ -229,7 +252,6 @@ models = [
 modelTemplates = {
     # "default": None,
     "default": "### Human:\n%prompt%\n### Assistant:\n",
-    "mpt-7b-instruct": None,
     "orca": "### System:\nYou are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n### User:\n%prompt%\n\n### Response:\n\n",
 }
 
@@ -371,6 +393,7 @@ if getModelsFromFile:
 if ignoreModels:
     models = filterIgnoredModels(models)
 
+models.sort()
 print("models", models)
 
 def findIn(model_requested, model_used):
@@ -468,6 +491,12 @@ for model in models:
                 with open(filePath, "w") as file:
                     json.dump(data, file)
 
+            else:
+                error_count = error_count + 1
+                if error_count >= max_errors:
+                    print ("Max errors hit:", max_errors)
+                    exit(1)
+
 
 # migrate the old results from text files to json files
 def updateResultsFiles():
@@ -530,8 +559,8 @@ def getSavedResultsAsDictionary():
                     time = float(testResults['time'])
                     model_used = testResults['model'].strip()
                     model_used = trimModel(model_used)
-                    if model_used != model:
-                        print("In Reading test data, note that the Model", model_used, " does not match file name", model)
+                    # if model_used != model:
+                    #     print("In Reading test data, note that the Model", model_used, " does not match file name", model)
 
                     if not testName in results:
                         results[testName] = {

@@ -161,6 +161,10 @@ prompts = [
         "prompt": "Put together a healthy meal plan for me for seven days.  My restrictions are dairy, garlic, honey, almonds, pistachios, and cashews",
     },
     {
+        "id": "healthy_meal_restrictions_week_specific",
+        "prompt": "Put together a healthy meal plan for me for seven days.  My restrictions are dairy, milk-based yogurt, garlic, honey, almonds, almond butter, pistachios, and cashews",
+    },
+    {
         "id": "killers",
         "prompt": "There are three killers in a room. Someone enters the room and kills one of them. Nobody leaves the room. How many killers are left in the room?",
     },
@@ -589,7 +593,8 @@ def saveResultsToSpreadsheet(results, score):
             if (testname.upper() != 'SCORING'):
                 df = pd.DataFrame(results[testname])
                 # print("test", testname, ", data: ", df)
-                df.to_excel(writer, sheet_name=testname, index=False)
+                sheet_name = testname[0:31]
+                df.to_excel(writer, sheet_name=sheet_name, index=False)
         
         model = []
         better = []

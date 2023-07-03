@@ -14,7 +14,7 @@ forceOverwrite = False
 queryModels = False
 getModelsFromFile = True
 stream = False # so far haven't got True to work
-ignoreModels = False
+ignoreModels = True
 max_tokens = 4096
 max_errors = 1
 
@@ -161,7 +161,7 @@ prompts = [
         "prompt": "Put together a healthy meal plan for me for seven days.  My restrictions are dairy, garlic, honey, almonds, pistachios, and cashews",
     },
     {
-        "id": "healthy_meal_restrictions_week_specific",
+        "id": "healthy_meal_restr_specific",
         "prompt": "Put together a healthy meal plan for me for seven days.  My restrictions are dairy, milk-based yogurt, garlic, honey, almonds, almond butter, pistachios, and cashews",
     },
     {
@@ -214,6 +214,10 @@ ignoredModels = [
     {
         "model": "ggml-30b-Lazarus.ggmlv3.q4_1.bin",
         "reason": "timeouts"
+    },
+    {
+        "model": "ggml-wizardlm-33b-v1.0-uncensored.ggmlv3.q4_1.bin",
+        "reason": "crash"
     },
 ]
 
@@ -594,6 +598,7 @@ def saveResultsToSpreadsheet(results, score):
                 df = pd.DataFrame(results[testname])
                 # print("test", testname, ", data: ", df)
                 sheet_name = testname[0:31]
+                print("Saving test", testname, ", sheetname", sheet_name)
                 df.to_excel(writer, sheet_name=sheet_name, index=False)
         
         model = []

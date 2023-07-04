@@ -11,12 +11,14 @@ import pandas as pd
 useNewPythonBindings = False
 default_thread_count = 8
 forceOverwrite = False
-queryModels = False
-getModelsFromFile = True
+queryModels = True
+getModelsFromFile = False
+filterByFiles = True
 stream = False # so far haven't got True to work
 ignoreModels = True
 max_tokens = 4096
 max_errors = 1
+useGPT4All = True
 
 if useNewPythonBindings:
     # for using new python API
@@ -233,7 +235,7 @@ models = [
     # "gpt4all-j-v1.3-groovy",
     # "GPT4All-13B-snoozy.ggmlv3.q4_0.bin",
     # "ggml-llama-30b-supercot.ggmlv3.q2_K.bin",
-    "ggml-orca-mini-13b.ggmlv3.q8_0.bin",
+    # "ggml-orca-mini-13b.ggmlv3.q8_0.bin",
     "ggml-mpt-7b-chat.bin",
     # "ggml-mpt-7b-instruct.bin",
     # "nous-hermes-13b.ggmlv3.q4_0.bin"
@@ -258,8 +260,8 @@ models = [
 ]
 
 modelTemplates = {
-    # "default": None,
-    "default": "### Human:\n%prompt%\n### Assistant:\n",
+    "default": None,
+    # "default": "### Human:\n%prompt%\n### Assistant:\n",
     "orca": "### System:\nYou are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n### User:\n%prompt%\n\n### Response:\n\n",
 }
 
@@ -288,14 +290,6 @@ def getTemplateForModel(model):
 
 
 def runModelQuery(model, prompt, reload, testConfig):
-    # gptj = gpt4all.GPT4All(
-    #     model_name=model,
-    #     model_path=modelPath_,
-    #     allow_download=False,
-    # )
-    # messages = [{"role": "user", "content": prompt}]
-    # response_ = gptj.chat_completion(messages)
-
     prompt_ = prompt
     template = getTemplateForModel(model)
 
@@ -314,26 +308,62 @@ def runModelQuery(model, prompt, reload, testConfig):
     print("Generated prompt", prompt_)
     response_ = None
 
+    response_ = doQuerySub(model, prompt_, response_)
+    
+    return response_
+
+
+def doQuerySub(model, prompt_, response_):
     try:
-        response_ = openai.Completion.create(
-            model=model,
-            prompt=prompt_,
-            # reload=reload,
-            max_tokens=max_tokens,
-            temperature=0.28,
-            top_p=0.95,
-            n=1, # this does not seem to be number of cores
-            echo=True,
-            stream=stream,
-            timeout=800, # seconds
-            allow_download=False,
-            thread_count=default_thread_count
-        )
+        if useGPT4All:
+            gptj = gpt4all.GPT4All(
+                model_name=model,
+                # model_path=modelPath_,
+                allow_download=False,
+            )
+            # messages = [{"role": "user", "content": prompt}]
+            # # response_ = gptj.chat_completion(messages)
+            # model = GPT4All("orca-mini-3b.ggmlv3.q4_0.bin")
+
+            with gptj.chat_session():
+                tokens = list(model.generate(prompt=prompt_,
+                                             max_tokens=max_tokens,
+                                             temperature=0.28,
+                                             top_p=0.95,
+                                             n=1,  # this does not seem to be number of cores
+                                             echo=True,
+                                             stream=stream,
+                                             timeout=800,  # seconds
+                                             allow_download=False,
+                                             thread_count=default_thread_count,
+                                             streaming=True))
+                model.current_chat_session.append({'role': 'assistant', 'content': ''.join(tokens)})
+            
+                # tokens = list(model.generate(prompt='write me a poem about dogs', top_k=1, streaming=True))
+                # model.current_chat_session.append({'role': 'assistant', 'content': ''.join(tokens)})
+
+                response_ = model.current_chat_session
+
+        else:
+            response_ = openai.Completion.create(
+                model=model,
+                prompt=prompt_,
+                # reload=reload,
+                max_tokens=max_tokens,
+                temperature=0.28,
+                top_p=0.95,
+                n=1,  # this does not seem to be number of cores
+                echo=True,
+                stream=stream,
+                timeout=800,  # seconds
+                allow_download=False,
+                thread_count=default_thread_count
+            )
 
     except Exception as e:
         print("An unexpected error occurred:", e)
         response_ = None
-    
+
     return response_
 
 
@@ -397,7 +427,14 @@ if queryModels:
 if getModelsFromFile:
     models = getModelsFromGpt4AllFolder()
 
-
+if filterByFiles:
+    fileModels = getModelsFromGpt4AllFolder()
+    models_ = []
+    for model in models:
+        if model in fileModels:
+            models_.append(model)
+    model = models_
+    
 if ignoreModels:
     models = filterIgnoredModels(models)
 

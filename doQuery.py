@@ -1,3 +1,4 @@
+import math
 import openai
 import gpt4all
 import os
@@ -680,6 +681,8 @@ def saveResultsToSpreadsheet(results, score):
         total = []
         tests = []
         averageTime = []
+        sizes = []
+        metals = []
         for key in score.keys():
             model.append(key)
             betterCount = score[key]["better"]
@@ -689,6 +692,10 @@ def saveResultsToSpreadsheet(results, score):
             total.append(goodCount + betterCount)
             testsCount = score[key]["tests"]
             tests.append(testsCount)
+            size = score[key]["Size"]
+            sizes.append(size)
+            metal = score[key]["Metal"]
+            metals.append(metal)
             averageTime_ = score[key]["averageTime"]
             averageTime.append(averageTime_)
 
@@ -699,6 +706,8 @@ def saveResultsToSpreadsheet(results, score):
             "total": total,
             "tests": tests,
             "averageTime": averageTime,
+            "Size": sizes,
+            "Metal": metals,
         }
 
         df = pd.DataFrame(scoring_)
@@ -729,6 +738,7 @@ def readPreviousResultsFromSpreadsheet():
 
 def mergeInPreviousData(results, previousResults):
     scores = {}
+    scoring = None
     mergedResults = results.copy()
     for test in previousResults.keys():
         if (test.upper() != 'SCORING'):
@@ -737,14 +747,14 @@ def mergeInPreviousData(results, previousResults):
                 newer = results[test]
                 prevModels = previous['model']
                 newModels = newer['model']
-                
+
                 for i in range(len(prevModels)):
                     model = prevModels[i]
                     try:
                         match = newModels.index(model)
                     except ValueError:
                         match = None
-                        
+
                     if match is not None:
                         sameTestResults = contentsMatch(previous, i, newer, match, 'response') and contentsMatch(previous, i, newer, match, 'time')
                         if sameTestResults:
@@ -752,19 +762,35 @@ def mergeInPreviousData(results, previousResults):
                             updatefield(previous, i, newer, match, 'order')
                     else: # if not present, then append
                         appendTestResults(previous, i, newer)
-                        
+ 
             else:
                 mergedResults[test] = previousResults[test]
 
             getTestScore(mergedResults, scores, test)
-
+        else:
+            scoring = previousResults[test]
+        
     for model in scores:
         modelResults = scores[model]
         time = modelResults['time']
         count = modelResults['tests']
         modelResults['averageTime'] = time/count
         
+        if scoring:
+            pos = scoring['model'].index(model)
+            if pos >= 0:
+                copyKeyValue(modelResults, scoring, "Size", pos)
+                copyKeyValue(modelResults, scoring, "Metal", pos)
+
     return (mergedResults, scores)
+
+
+def copyKeyValue(modelResults, scoring, key, pos):
+    if key in scoring:
+        value = scoring[key][pos]
+        if (isinstance(value, float)):
+            value = value if not math.isnan(value) else ''
+        modelResults[key] = value
 
 
 def getTestScore(mergedResults, score, test):

@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "25 - 4 * 2 + 3 = ?\nShow your work.\n25-16=9"}], "created": 1688865998, "id": "foobarbaz", "model": "ggml-guanaco-33B.ggmlv3.q2_K.bin", "object": "text_completion", "usage": {"completion_tokens": 7, "prompt_tokens": 31, "total_tokens": 38}, "time": "20.00"}

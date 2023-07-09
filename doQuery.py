@@ -302,6 +302,13 @@ modelTemplates = {
     "orca": "### System:\nYou are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n### User:\n%prompt%\n\n### Response:\n\n",
 }
 
+testScores = {
+    "all": None,
+    "health": "health",
+    "math": "math",
+    "python": "python",
+}
+
 modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
 
 
@@ -662,7 +669,7 @@ def getSavedResultsAsDictionary():
     return results
 
 
-def saveResultsToSpreadsheet(results, score):
+def saveResultsToSpreadsheet(results, scores):
     # tests = results.keys()
     # tests.sort(key=str.lower)
     tests = sorted(results.keys(), key=str.lower)
@@ -675,44 +682,47 @@ def saveResultsToSpreadsheet(results, score):
                 print("Saving test", testname, ", sheetname", sheet_name)
                 df.to_excel(writer, sheet_name=sheet_name, index=False)
         
-        model = []
-        better = []
-        good = []
-        total = []
-        tests = []
-        averageTime = []
-        sizes = []
-        metals = []
-        for key in score.keys():
-            model.append(key)
-            betterCount = score[key]["better"]
-            better.append(betterCount)
-            goodCount = score[key]["good"]
-            good.append(goodCount)
-            total.append(goodCount + betterCount)
-            testsCount = score[key]["tests"]
-            tests.append(testsCount)
-            size = getKeyFromScore(score, key, "Size", '')
-            sizes.append(size)
-            metal = getKeyFromScore(score, key, "Metal", '')
-            metals.append(metal)
-            averageTime_ = score[key]["averageTime"]
-            averageTime.append(averageTime_)
-
-        scoring_ = {
-            "model": model,
-            'better': better,
-            "good": good,
-            "total": total,
-            "tests": tests,
-            "averageTime": averageTime,
-            "Size": sizes,
-            "Metal": metals,
-        }
-
-        df = pd.DataFrame(scoring_)
-        # print("test", testname, ", data: ", df)
-        df.to_excel(writer, sheet_name='Scoring', index=False)
+        for scoreType, score in scores.items():
+            model = []
+            better = []
+            good = []
+            total = []
+            tests = []
+            averageTime = []
+            sizes = []
+            metals = []
+            for key in score.keys():
+                model.append(key)
+                betterCount = score[key]["better"]
+                better.append(betterCount)
+                goodCount = score[key]["good"]
+                good.append(goodCount)
+                total.append(goodCount + betterCount)
+                testsCount = score[key]["tests"]
+                tests.append(testsCount)
+                size = getKeyFromScore(score, key, "Size", '')
+                sizes.append(size)
+                metal = getKeyFromScore(score, key, "Metal", '')
+                metals.append(metal)
+                averageTime_ = score[key]["averageTime"]
+                averageTime.append(averageTime_)
+    
+            scoring_ = {
+                "model": model,
+                'better': better,
+                "good": good,
+                "total": total,
+                "tests": tests,
+                "averageTime": averageTime,
+                "Size": sizes,
+                "Metal": metals,
+            }
+    
+            df = pd.DataFrame(scoring_)
+            # print("test", testname, ", data: ", df)
+            sheet_name = 'Scoring' if scoreType == 'all' else 'Scoring-' + scoreType
+            print("Saving scores, sheetname", sheet_name)
+            df.to_excel(writer, sheet_name=sheet_name, index=False)
 
 
 def getKeyFromScore(score, key, key2, default):
@@ -743,11 +753,12 @@ def readPreviousResultsFromSpreadsheet():
     return results
 
 def mergeInPreviousData(results, previousResults):
+    global testScores
     scores = {}
     scoring = None
     mergedResults = results.copy()
     for test in previousResults.keys():
-        if (test.upper() != 'SCORING'):
+        if (test.upper().find('SCORING') < 0):
             if (test in results):
                 previous = previousResults[test]
                 newer = results[test]
@@ -772,24 +783,29 @@ def mergeInPreviousData(results, previousResults):
             else:
                 mergedResults[test] = previousResults[test]
 
-            getTestScore(mergedResults, scores, test)
-        else:
+            for testType, filter in testScores.items():
+                if testType not in scores:
+                    scores[testType] = {}
+                testScore = scores[testType]
+                getTestScore(mergedResults, testScore, test, filter)
+                
+        elif (test.upper() == 'SCORING'):
             scoring = previousResults[test]
-        
-    for model in scores:
-        modelResults = scores[model]
-        time = modelResults['time']
-        count = modelResults['tests']
-        modelResults['averageTime'] = time/count
-        
-        if scoring:
-            try:
-                pos = scoring['model'].index(model)
-                if pos >= 0:
-                    copyKeyValue(modelResults, scoring, "Size", pos)
-                    copyKeyValue(modelResults, scoring, "Metal", pos)
-            except ValueError:
-                pos = -1
+    
+    for scoreType, testScores in scores.items():    
+        for model, modelResults in testScores.items():
+            time = modelResults['time']
+            count = modelResults['tests']
+            modelResults['averageTime'] = time/count
+            
+            if scoring:
+                try:
+                    pos = scoring['model'].index(model)
+                    if pos >= 0:
+                        copyKeyValue(modelResults, scoring, "Size", pos)
+                        copyKeyValue(modelResults, scoring, "Metal", pos)
+                except ValueError:
+                    pos = -1
 
     return (mergedResults, scores)
 
@@ -802,35 +818,44 @@ def copyKeyValue(modelResults, scoring, key, pos):
         modelResults[key] = value
 
 
-def getTestScore(mergedResults, score, test):
-    # total up test scores
-    newModels = mergedResults[test]['model']
-    newComments = mergedResults[test]['comments']
-    times = mergedResults[test]['time']
+def getTestScore(mergedResults, score, test, filter=None):
+    includeTest = True
+    if filter:
+        includeTest = False
+        filter_ = [filter.upper()] if isinstance(filter, str) else list(map(str.upper, filter))
+        for f in filter_:
+            if test.upper().find(f) >= 0:
+                includeTest = True
+                break
+                
+    if includeTest:
+        # total up test scores
+        newModels = mergedResults[test]['model']
+        newComments = mergedResults[test]['comments']
+        times = mergedResults[test]['time']
+    
+        for i in range(len(newComments)):
+            comment = newComments[i].upper()
+            time = float(times[i])
+            better = comment.find('BETTER') >= 0
+            good = comment.find('GOOD') >= 0
+    
+            model = newModels[i]
+            if not model in score:
+                score[model] = {
+                    "better": 0,
+                    "good": 0,
+                    "tests": 0,
+                    "time": 0,
+                }
+    
+            incrementScoreCount(score, model, 'tests')
+            incrementScoreCount(score, model, 'time', time)
+            if good:
+                incrementScoreCount(score, model, 'good')
+            if better:
+                incrementScoreCount(score, model, 'better')
 
-    for i in range(len(newComments)):
-        comment = newComments[i].upper()
-        time = float(times[i])
-        better = comment.find('BETTER') >= 0
-        good = comment.find('GOOD') >= 0
-
-        model = newModels[i]
-        if not model in score:
-            score[model] = {
-                "better": 0,
-                "good": 0,
-                "tests": 0,
-                "time": 0,
-            }
-
-        incrementScoreCount(score, model, 'tests')
-        incrementScoreCount(score, model, 'time', time)
-        if good:
-            incrementScoreCount(score, model, 'good')
-        if better:
-            incrementScoreCount(score, model, 'better')
-            
-    return score
 
 def incrementScoreCount(score, model, key, incr = 1.0):
     newValue = score[model][key] + incr
@@ -860,7 +885,7 @@ print("Getting Results")
 # updateResultsFiles()
 previousResults = readPreviousResultsFromSpreadsheet()
 results = getSavedResultsAsDictionary()
-(mergedResults, score) = mergeInPreviousData(results, previousResults)
+(mergedResults, scores) = mergeInPreviousData(results, previousResults)
 results = mergedResults
-saveResultsToSpreadsheet(results, score)
+saveResultsToSpreadsheet(results, scores)
 print("Done")

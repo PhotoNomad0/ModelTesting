@@ -692,9 +692,9 @@ def saveResultsToSpreadsheet(results, score):
             total.append(goodCount + betterCount)
             testsCount = score[key]["tests"]
             tests.append(testsCount)
-            size = score[key]["Size"]
+            size = getKeyFromScore(score, key, "Size", '')
             sizes.append(size)
-            metal = score[key]["Metal"]
+            metal = getKeyFromScore(score, key, "Metal", '')
             metals.append(metal)
             averageTime_ = score[key]["averageTime"]
             averageTime.append(averageTime_)
@@ -713,6 +713,12 @@ def saveResultsToSpreadsheet(results, score):
         df = pd.DataFrame(scoring_)
         # print("test", testname, ", data: ", df)
         df.to_excel(writer, sheet_name='Scoring', index=False)
+
+
+def getKeyFromScore(score, key, key2, default):
+    size = score[key][key2] if key2 in score[key] else default
+    return size
+
 
 def readPreviousResultsFromSpreadsheet():
     results = {}
@@ -777,10 +783,13 @@ def mergeInPreviousData(results, previousResults):
         modelResults['averageTime'] = time/count
         
         if scoring:
-            pos = scoring['model'].index(model)
-            if pos >= 0:
-                copyKeyValue(modelResults, scoring, "Size", pos)
-                copyKeyValue(modelResults, scoring, "Metal", pos)
+            try:
+                pos = scoring['model'].index(model)
+                if pos >= 0:
+                    copyKeyValue(modelResults, scoring, "Size", pos)
+                    copyKeyValue(modelResults, scoring, "Metal", pos)
+            except ValueError:
+                pos = -1
 
     return (mergedResults, scores)
 

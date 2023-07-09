@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "25 - 4 * 2 + 3 = ?\n25"}], "created": 1688816814, "id": "foobarbaz", "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q2_K.bin", "object": "text_completion", "usage": {"completion_tokens": 2, "prompt_tokens": 26, "total_tokens": 28}, "time": "6.14"}

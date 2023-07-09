@@ -11,14 +11,14 @@ import pandas as pd
 useNewPythonBindings = False
 default_thread_count = 8
 forceOverwrite = False
-queryModels = True
-getModelsFromFile = False
-filterByFiles = True
+queryModels = False
+getModelsFromFile = True
+filterByFiles = False
 stream = False # so far haven't got True to work
 ignoreModels = True
 max_tokens = 4096
 max_errors = 1
-useGPT4All = True
+useGPT4All = False
 
 if useNewPythonBindings:
     # for using new python API
@@ -109,6 +109,42 @@ prompts = [
     {
         "id": "python_math",
         "prompt": "in ax^3+bx^2+c*x+d=0, write a python program to solve for all possible values of x",
+    },
+    {
+        "id": "python_capitals",
+        "prompt": "Python program\nWrite a function named capital_indexes. The function takes a single parameter, which is a string. Your function should return a list of all the indexes in the string that have capital letters",
+    },
+    {
+        "id": "python_min_max",
+        "prompt":  "Python program\nDefine a function named largest_difference that takes a list of numbers as its only parameter.\nYour function should compute and return the difference between the largest and smallest number in the list.",
+    },
+    {
+        "id": "python_primes",
+        "prompt":  "write a Python program to print out the first 100 prime numbers",
+    },
+    {
+        "id": "python_insensitive_sort",
+        "prompt":  "write a Python function to do a case insensitive sort of a list of strings",
+    },
+    {
+        "id": "python_filter",
+        "prompt":  "write a python function to filter out the empty strings in a list of strings.",
+    },
+    {
+        "id": "python_read_sheet",
+        "prompt":  "write a python function to read from a spreadsheet",
+    },
+    {
+        "id": "python_read_excel",
+        "prompt":  "write a python function to read from an excel spreadsheet.",
+    },
+    {
+        "id": "python_plot",
+        "prompt":  "in python make a plot that compares two columns in a dataframe.",
+    },
+    {
+        "id": "python_ave_stddev",
+        "prompt":  "in python calculate the average and standard deviation of a list of numbers",
     },
     {
         "id": "dry_socks",
@@ -213,10 +249,10 @@ ignoredModels = [
         "model": "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
         "reason": "timeouts"
     },
-    {
-        "model": "ggml-30b-Lazarus.ggmlv3.q4_1.bin",
-        "reason": "timeouts"
-    },
+    # {
+    #     "model": "ggml-30b-Lazarus.ggmlv3.q4_1.bin",
+    #     "reason": "timeouts"
+    # },
     {
         "model": "ggml-wizardlm-33b-v1.0-uncensored.ggmlv3.q4_1.bin",
         "reason": "crash"
@@ -643,6 +679,7 @@ def saveResultsToSpreadsheet(results, score):
         good = []
         total = []
         tests = []
+        averageTime = []
         for key in score.keys():
             model.append(key)
             betterCount = score[key]["better"]
@@ -652,6 +689,8 @@ def saveResultsToSpreadsheet(results, score):
             total.append(goodCount + betterCount)
             testsCount = score[key]["tests"]
             tests.append(testsCount)
+            averageTime_ = score[key]["averageTime"]
+            averageTime.append(averageTime_)
 
         scoring_ = {
             "model": model,
@@ -659,6 +698,7 @@ def saveResultsToSpreadsheet(results, score):
             "good": good,
             "total": total,
             "tests": tests,
+            "averageTime": averageTime,
         }
 
         df = pd.DataFrame(scoring_)
@@ -688,7 +728,7 @@ def readPreviousResultsFromSpreadsheet():
     return results
 
 def mergeInPreviousData(results, previousResults):
-    score = {}
+    scores = {}
     mergedResults = results.copy()
     for test in previousResults.keys():
         if (test.upper() != 'SCORING'):
@@ -715,35 +755,51 @@ def mergeInPreviousData(results, previousResults):
                         
             else:
                 mergedResults[test] = previousResults[test]
-    
-            # total up test scores
-            newModels = mergedResults[test]['model']
-            newComments = mergedResults[test]['comments']
-            for i in range(len(newComments)):
-                comment = newComments[i].upper()
-                better = comment.find('BETTER') >= 0
-                good = comment.find('GOOD') >= 0
 
-                model = newModels[i]
-                if not model in score:
-                    score[model] = {
-                        "better": 0,
-                        "good": 0,
-                        "tests": 0,
-                    }
+            getTestScore(mergedResults, scores, test)
 
-                incrementScoreCount(score, model, 'tests')
-                if good:
-                    incrementScoreCount(score, model, 'good')
-                if better:
-                    incrementScoreCount(score, model, 'better')
-                        
-    return (mergedResults, score)
+    for model in scores:
+        modelResults = scores[model]
+        time = modelResults['time']
+        count = modelResults['tests']
+        modelResults['averageTime'] = time/count
+        
+    return (mergedResults, scores)
 
 
-def incrementScoreCount(score, model, key):
-    score[model][key] = score[model][key] + 1
+def getTestScore(mergedResults, score, test):
+    # total up test scores
+    newModels = mergedResults[test]['model']
+    newComments = mergedResults[test]['comments']
+    times = mergedResults[test]['time']
 
+    for i in range(len(newComments)):
+        comment = newComments[i].upper()
+        time = float(times[i])
+        better = comment.find('BETTER') >= 0
+        good = comment.find('GOOD') >= 0
+
+        model = newModels[i]
+        if not model in score:
+            score[model] = {
+                "better": 0,
+                "good": 0,
+                "tests": 0,
+                "time": 0,
+            }
+
+        incrementScoreCount(score, model, 'tests')
+        incrementScoreCount(score, model, 'time', time)
+        if good:
+            incrementScoreCount(score, model, 'good')
+        if better:
+            incrementScoreCount(score, model, 'better')
+            
+    return score
+
+def incrementScoreCount(score, model, key, incr = 1.0):
+    newValue = score[model][key] + incr
+    score[model][key] = newValue
 
 def appendTestResults(previous, i, newer):
     # prevValue = previous[key][i]

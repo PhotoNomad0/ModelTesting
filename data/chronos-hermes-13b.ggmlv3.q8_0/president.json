@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "Who was the president of the United States in 1996?\nBill Clinton"}], "created": 1688774738, "id": "foobarbaz", "model": "ggml-chronos-hermes-13b.ggmlv3.q8_0.bin", "object": "text_completion", "usage": {"completion_tokens": 4, "prompt_tokens": 28, "total_tokens": 32}, "time": "3.64"}

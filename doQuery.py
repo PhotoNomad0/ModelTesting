@@ -676,7 +676,10 @@ def saveResultsToSpreadsheet(results, scores):
     with pd.ExcelWriter("data/summary.xls") as writer:
         for testname in tests:
             if (testname.upper() != 'SCORING'):
-                df = pd.DataFrame(results[testname])
+                testResults = results[testname]
+                newTestResults = sortTestResultsByModel(testResults)
+
+                df = pd.DataFrame(newTestResults)
                 # print("test", testname, ", data: ", df)
                 sheet_name = testname[0:31]
                 print("Saving test", testname, ", sheetname", sheet_name)
@@ -723,6 +726,20 @@ def saveResultsToSpreadsheet(results, scores):
             sheet_name = 'Scoring' if scoreType == 'all' else 'Scoring-' + scoreType
             print("Saving scores, sheetname", sheet_name)
             df.to_excel(writer, sheet_name=sheet_name, index=False)
+
+
+def sortTestResultsByModel(testResults):
+    models = testResults['model']
+    sorted_models = sorted(models, key=lambda x: x.lower())
+    newTestResults = {}
+    for model in sorted_models:
+        pos = models.index(model)
+        for key in testResults:
+            if key not in newTestResults:
+                newTestResults[key] = []
+            value = testResults[key][pos]
+            newTestResults[key].append(value)
+    return newTestResults
 
 
 def getKeyFromScore(score, key, key2, default):

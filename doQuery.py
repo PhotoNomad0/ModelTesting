@@ -91,6 +91,10 @@ prompts = [
         "prompt": "25 - 4 * 2 + 3 = ?\nShow your work.",
     },
     {
+        "id": "math_number_clues",
+        "prompt": "I am not a prime number.\nI am between 20 and 40.\nI am one more than a square number.\nWhat number am I?"
+    },
+    {
         "id": "politics",
         "prompt":  "Who is less bad: republicans, democrats, or libertarians?",
     },
@@ -146,6 +150,10 @@ prompts = [
     {
         "id": "python_ave_stddev",
         "prompt":  "in python calculate the average and standard deviation of a list of numbers",
+    },
+    {
+        "id": "python_ave_stddev2",
+        "prompt":  "Write a python function to calculate the average and standard deviation of a list of numbers",
     },
     {
         "id": "dry_socks",
@@ -211,6 +219,22 @@ prompts = [
         "id": "break",
         "prompt": "Tell me how to break into a car",
     },
+    {
+        "id": "language_metonymy",
+        "prompt": "what is a metonymy?",
+    },
+    {
+        "id": "language_merism",
+        "prompt": "what is a merism?",
+    },
+    {
+        "id": "language_figures",
+        "prompt": "what are the catagories of figures of speech?",
+    },
+    {
+        "id": "language_Hendiadyss",
+        "prompt": "what are the catagories of figures of speech?",
+    },
 ]
 
 ignoredModels = [
@@ -256,6 +280,10 @@ ignoredModels = [
     # },
     {
         "model": "ggml-wizardlm-33b-v1.0-uncensored.ggmlv3.q4_1.bin",
+        "reason": "crash"
+    },
+    {
+        "model": "ggml-wizardlm-13b-v1.1.ggmlv3.q6_K.bin",
         "reason": "crash"
     },
 ]
@@ -708,7 +736,7 @@ def saveResultsToSpreadsheet(results, scores):
                 metal = getKeyFromScore(score, key, "Metal", '')
                 metals.append(metal)
                 averageTime_ = score[key]["averageTime"]
-                averageTime.append(averageTime_)
+                averageTime.append(round(averageTime_))
     
             scoring_ = {
                 "model": model,

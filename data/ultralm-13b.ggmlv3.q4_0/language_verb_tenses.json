@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "what are the verb tenses?\nThe present simple, past simple, and future simple."}], "created": 1689417640, "id": "foobarbaz", "model": "ultralm-13b.ggmlv3.q4_0.bin", "object": "text_completion", "usage": {"completion_tokens": 11, "prompt_tokens": 20, "total_tokens": 31}, "time": "2.24"}

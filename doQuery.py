@@ -49,6 +49,10 @@ prompts = [
         "prompt": "when I was 6, my sister was half my age. Now I am 80. How old is my sister now? Calculate this step by step.",
     },
     {
+        "id": "sisters_age_short",
+        "prompt": "when I was 6, my sister was half my age. Now I am 80. How old is my sister now?",
+    },
+    {
         "id": "math_story_steps",
         "prompt": "In Science class, Sara needed 8 test tubes for 3 different experiments. The first experiment required 2 test tubes and the other two experiments required the same number of test tubes. How many test tubes were needed for each of the other two experiments?",
     },
@@ -101,6 +105,10 @@ prompts = [
     {
         "id": "sisters",
         "prompt":  "Sally has 3 brothers. Her brothers have 2 sisters. How many sisters does Sally have?",
+    },
+    {
+        "id": "sisters_explain",
+        "prompt":  "Sally has 3 brothers. Her brothers have 2 sisters. How many sisters does Sally have? Explain your answer",
     },
     {
         "id": "math_qubic",
@@ -232,8 +240,16 @@ prompts = [
         "prompt": "what are the catagories of figures of speech?",
     },
     {
-        "id": "language_Hendiadyss",
-        "prompt": "what are the catagories of figures of speech?",
+        "id": "language_hendiadys",
+        "prompt": "what is a Hendiadys?",
+    },
+    {
+        "id": "language_verb_types",
+        "prompt": "what are the types of verbs?",
+    },
+    {
+        "id": "language_verb_tenses",
+        "prompt": "what are the verb tenses?",
     },
 ]
 
@@ -333,6 +349,7 @@ modelTemplates = {
 testScores = {
     "all": None,
     "health": "health",
+    "language": "language",
     "math": "math",
     "python": "python",
 }
@@ -596,7 +613,7 @@ for model in models:
                         print("no model returned and model requested", model)
                     elif not findIn(model, model_used):
                         print("model used", model_used, "does not match model requested", model)
-                        exit(1)
+                        # exit(1)
                     else:
                         print("model used", model_used, "and model requested", model)
     

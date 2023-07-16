@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "25 - 4 * 2 + 3 = ?\n27"}], "created": 1689466941, "id": "foobarbaz", "model": "ggml-Manticore-13B-Chat-Pyg-Guanaco-GGML-q4_K_M.bin", "object": "text_completion", "usage": {"completion_tokens": 2, "prompt_tokens": 26, "total_tokens": 28}, "time": "2.22"}

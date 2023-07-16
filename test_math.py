@@ -1,37 +1,27 @@
 import numpy as np
 import math
 
-def solve_for_x(a, b, c, d):
-    # check if the discriminant is negative 
-    if (b**2 - 4*a*c) < 0:
-        print("No real solutions")
-    else:
-        # get the square root of the discriminant 
-        sqrtd = ((-b + sqrt(discr))/(2 * a))
+def generate_primes(n):
+    primes = []
+    for i in range(2, n+1):
+        if primes[i-1] == True:
+            continue
 
-        if (sqrtd == int(sqrtd)):
-            print("x = ", int(sqrtd))
-        else:
-            # get the other root 
-            other_root = (-b - sqrt(discr))/(2 * a)
+        is_prime = True
+        for j in range(2, i):
+            if (i % j) == 0:
+                is_prime = False
+                break
 
-            if (other_root == int(other_root)):
-                print("x = ", int(other_root))
-            else:
-                # check for complex numbers 
-                if ((sqrtd + other_root).imag != 0):
-                    print("No real solutions")
-                else:
-                    print("x = ", sqrtd)
-                    
-# Driver code to test the above function 
-a = 1
-b = 0
-c = 1
-d = -130
-solve_for_x(a, b, c, d)
+        if is_prime:
+            primes.append(i)
 
+    return primes[:100]
 
+first_100_primes = generate_primes(25)
+for prime in first_100_primes:
+    print(prime)
+    
 # print ("Solution", solve(1, 0, 1, -130))
 
 # def solve_cubic_gold(a, b, c, d):

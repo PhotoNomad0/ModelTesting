@@ -1,26 +1,59 @@
-import numpy as np
-import math
+import pandas as pd
+from io import StringIO
 
-def generate_primes(n):
-    primes = []
-    for i in range(2, n+1):
-        if primes[i-1] == True:
-            continue
+import openpyxl
+import csv
 
-        is_prime = True
-        for j in range(2, i):
-            if (i % j) == 0:
-                is_prime = False
-                break
+def read_spreadsheet(filepath):
+    # Load the file using XLSXReader library
+    try:
+        xlsxreader = pd.read_excel(filepath, header=None)
+    except FileNotFoundError as e:
+        print("File not found:", str(e))
+        return None
 
-        if is_prime:
-            primes.append(i)
+    if len(xlsxreader.columns) == 0:
+        print("No data in the spreadsheet")
+        return None
 
-    return primes[:100]
+    # Return a list of lists containing all rows from the first sheet (assuming only one sheet is present)
+    return [list(row) for row in xlsxreader]
 
-first_100_primes = generate_primes(25)
-for prime in first_100_primes:
-    print(prime)
+print(read_spreadsheet("data/summary_scored.csv"))
+
+# import sympy as sp
+# from sympy import *
+# x = symbols('x') # Define symbol for x
+# a = 1
+# b = 1
+# c = 1
+# d = -151
+# import sympy as sp
+# 
+# equation = sp.Equation(ax3 + bx**2 + c*x + d)
+# solutions = equation.solve()
+# print("All possible solutions of x: ", solutions)
+
+# def generate_primes(n):
+#     primes = []
+#     for i in range(2, n+1):
+#         if primes[i-1] == True:
+#             continue
+# 
+#         is_prime = True
+#         for j in range(2, i):
+#             if (i % j) == 0:
+#                 is_prime = False
+#                 break
+# 
+#         if is_prime:
+#             primes.append(i)
+# 
+#     return primes[:100]
+# 
+# first_100_primes = generate_primes(25)
+# for prime in first_100_primes:
+#     print(prime)
     
 # print ("Solution", solve(1, 0, 1, -130))
 

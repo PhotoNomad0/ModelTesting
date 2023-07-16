@@ -120,6 +120,11 @@ prompts = [
         "skip": ["ggml-model-gpt4all-falcon-q4_0.bin"]
     },
     {
+        "id": "math_qubic_nohint",
+        "prompt": "in x^3+x-130=0, solve for the value for x",
+        "skip": ["ggml-model-gpt4all-falcon-q4_0.bin"]
+    },
+    {
         "id": "python_math",
         "prompt": "in ax^3+bx^2+c*x+d=0, write a python program to solve for all possible values of x",
     },

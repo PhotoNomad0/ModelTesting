@@ -10,7 +10,7 @@ useNewPythonBindings = False
 default_thread_count = 8
 forceOverwrite = False
 queryModels = False
-getModelsFromFile = False
+getModelsFromFile = True
 filterByFiles = False
 stream = False  # so far haven't got True to work
 ignoreModels = True
@@ -342,7 +342,7 @@ models = [
     # "wizardLM-13B-Uncensored.ggmlv3.q4_0.bin"
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
-    "ggmo-redmond-hermes-coder.ggmlv3.q4_0.bin",
+    "redmond-hermes-coder.ggmlv3.q4_0.bin",
     "WizardCoder-15B-1.0.ggmlv3.q4_0.bin",
 ]
 
@@ -375,9 +375,8 @@ if filterByFiles:
 if ignoreModels:
     models = ai.filterIgnoredModels(models, ignoredModels)
 
-models.sort()
+models.sort(key=str.lower)
 print("models", models)
-
 
 queryConfig = {
     'useGPT4All': useGPT4All,
@@ -473,7 +472,7 @@ print("Getting Results")
 # updateResultsFiles()
 previousResults = ai.readPreviousResultsFromSpreadsheet()
 results = ai.getSavedResultsAsDictionary()
-(mergedResults, scores) = ai.mergeInPreviousData(results, previousResults)
+(mergedResults, scores) = ai.mergeInPreviousData(results, previousResults, testScores)
 results = mergedResults
 ai.saveResultsToSpreadsheet(results, scores)
 print("Done")

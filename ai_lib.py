@@ -375,8 +375,7 @@ def readPreviousResultsFromSpreadsheet():
     return results
 
 
-def mergeInPreviousData(results, previousResults):
-    global testScores
+def mergeInPreviousData(results, previousResults, testScores):
     scores = {}
     scoring = None
     mergedResults = results.copy()

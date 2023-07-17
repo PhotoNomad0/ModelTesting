@@ -4,22 +4,32 @@ from io import StringIO
 import openpyxl
 import csv
 
-def read_spreadsheet(filepath):
-    # Load the file using XLSXReader library
-    try:
-        xlsxreader = pd.read_excel(filepath, header=None)
-    except FileNotFoundError as e:
-        print("File not found:", str(e))
-        return None
+# def read_spreadsheet(filepath):
+#     # Load the file using XLSXReader library
+#     try:
+#         xlsxreader = pd.read_excel(filepath, header=None)
+#     except FileNotFoundError as e:
+#         print("File not found:", str(e))
+#         return None
+# 
+#     if len(xlsxreader.columns) == 0:
+#         print("No data in the spreadsheet")
+#         return None
+# 
+#     # Return a list of lists containing all rows from the first sheet (assuming only one sheet is present)
+#     return [list(row) for row in xlsxreader]
+# 
+# print(read_spreadsheet("data/summary_scored.csv"))
 
-    if len(xlsxreader.columns) == 0:
-        print("No data in the spreadsheet")
-        return None
+from sympy.solvers import solve
+from sympy import Symbol
 
-    # Return a list of lists containing all rows from the first sheet (assuming only one sheet is present)
-    return [list(row) for row in xlsxreader]
+x = Symbol('x') # Define symbol for x
+a, b, c, d = 1, 0, 1, -130
+eq = a*x**3 + b*x**2 + c*x + d
 
-print(read_spreadsheet("data/summary_scored.csv"))
+sol = solve(eq)
+print(sol)
 
 # import sympy as sp
 # from sympy import *

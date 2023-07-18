@@ -1,8 +1,11 @@
 import pandas as pd
-from io import StringIO
 
-import openpyxl
-import csv
+def read_spreadsheet(filename):
+    # read data from spreadsheet using pandas
+    df = pd.read_csv(filename)
+
+    # return dataframe
+    return df
 
 # def read_spreadsheet(filepath):
 #     # Load the file using XLSXReader library
@@ -29,7 +32,7 @@ a, b, c, d = 1, 0, 1, -130
 eq = a*x**3 + b*x**2 + c*x + d
 
 sol = solve(eq)
-print(sol)
+print("Correct Answer", sol)
 
 # import sympy as sp
 # from sympy import *

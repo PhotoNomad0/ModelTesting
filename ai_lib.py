@@ -5,6 +5,7 @@ import os
 from urllib.request import urlopen
 import json
 import pandas as pd
+import requests
 
 
 def set_port(port):
@@ -57,14 +58,48 @@ def runModelQuery(model, prompt, reload, testConfig, modelTemplates, queryConfig
 
 def doQuerySub(model, prompt_, response_, queryConfig):
     try:
-        if queryConfig['useGPT4All']:
+        if queryConfig['noModelSelection']:
+            url = openai.api_base + '/chat/completions'
+            headers = {'Content-Type': 'application/json'}
+            data = {
+                # 'messages': [{'role': 'user', 'content': 'Introduce yourself.'}],
+                'messages': [{'role': 'assistant', 'content': prompt_}],
+                'temperature': 0.7,
+                'max_tokens': -1,
+                'stream': False
+            }
+            
+            response = requests.post(url, headers=headers, data=json.dumps(data))
+
+            if response.status_code == 200:
+                response_ = response.json()
+                # Do something with the data
+            else:
+                print(f'An error occurred: {response.status_code}')
+                
+            # response_ = openai.Completion.create(
+            #     # model=model,
+            #     prompt=prompt_,
+            #     # reload=reload,
+            #     # max_tokens=queryConfig['max_tokens'],
+            #     temperature=0.28,
+            #     top_p=0.95,
+            #     n=1,  # this does not seem to be number of cores
+            #     echo=True,
+            #     # stream=queryConfig['stream'],
+            #     # timeout=800,  # seconds
+            #     # allow_download=False,
+            #     # thread_count=queryConfig['default_thread_count']
+            # )
+
+            # messages = [{"role": "user", "content": prompt}]
+            # # response_ = gptj.chat_completion(messages)
+        elif queryConfig['useGPT4All']:
             gptj = gpt4all.GPT4All(
                 model_name=model,
                 # model_path=modelPath_,
                 allow_download=False,
             )
-            # messages = [{"role": "user", "content": prompt}]
-            # # response_ = gptj.chat_completion(messages)
             # model = GPT4All("orca-mini-3b.ggmlv3.q4_0.bin")
 
             with gptj.chat_session():

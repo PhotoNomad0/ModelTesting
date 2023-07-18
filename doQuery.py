@@ -16,8 +16,8 @@ stream = False  # so far haven't got True to work
 ignoreModels = True
 max_tokens = 4096
 max_errors = 1
-useGPT4All = False
-
+useGPT4All = True
+noModelSelection = True
 
 
 if useNewPythonBindings:
@@ -342,8 +342,8 @@ models = [
     # "wizardLM-13B-Uncensored.ggmlv3.q4_0.bin"
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
-    "redmond-hermes-coder.ggmlv3.q4_0.bin",
     "WizardCoder-15B-1.0.ggmlv3.q4_0.bin",
+    # "redmond-hermes-coder.ggmlv3.q4_0.bin",
 ]
 
 modelTemplates = {
@@ -362,20 +362,21 @@ testScores = {
 
 modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
 
+if not noModelSelection:
+    if queryModels:
+        models = ai.getModels()
+    
+    if getModelsFromFile:
+        models = ai.getModelsFromGpt4AllFolder(modelPath_)
+    
+    if filterByFiles:
+        ai.filterByFilesInFolder(models, modelPath_)
+    
+    if ignoreModels:
+        models = ai.filterIgnoredModels(models, ignoredModels)
 
-if queryModels:
-    models = ai.getModels()
+    models.sort(key=str.lower)
 
-if getModelsFromFile:
-    models = ai.getModelsFromGpt4AllFolder(modelPath_)
-
-if filterByFiles:
-    ai.filterByFilesInFolder(models, modelPath_)
-
-if ignoreModels:
-    models = ai.filterIgnoredModels(models, ignoredModels)
-
-models.sort(key=str.lower)
 print("models", models)
 
 queryConfig = {
@@ -383,15 +384,17 @@ queryConfig = {
     'max_tokens': max_tokens,
     'stream': stream,
     'default_thread_count': default_thread_count,
+    'noModelSelection': noModelSelection,
 }
 
 # iterate the models and run prompts that we don't already have results for
 for model in models:
     reload = False
     modelPath = "data/" + ai.trimModel(model)
-    if not os.path.exists(modelPath):
-        # Create model directory if it does not exist
-        os.mkdir(modelPath)
+    if not noModelSelection:
+        if not os.path.exists(modelPath):
+            # Create model directory if it does not exist
+            os.mkdir(modelPath)
 
     for i in range(len(prompts)):
         testConfig = prompts[i]
@@ -432,31 +435,58 @@ for model in models:
 
             if response:
                 reload = False
-                choices = response.choices
+                isDict = isinstance(response, dict)
+                if isDict:
+                    choices = response['choices']
+                else:
+                    choices = response.choices
                 action_text = ''
                 if choices:
                     for choice in choices:
-                        action_text = action_text + choice.text
+                        if isDict:
+                            action_text = action_text + str(choice['message'])
+                        else:
+                            action_text = action_text + choice.text
 
                 action_text = action_text.strip()
-        
+
                 # Print the generated completion
                 print("action_text", action_text)
-        
-                model_used = response.model.strip() if response else ""
+
+                if isDict:
+                    model_used = response['model'] if response else ""
+                else:
+                    model_used = response.model if response else ""
+                model_used = model_used.strip() if model_used else ""
                 if model_used != model:
-                    if not model:
+                    if noModelSelection:
+                        folder_path, file_name = os.path.split(model_used)
+                        modelPath = "data/" + ai.trimModel(file_name)
+                        print("model_used was", model_used)
+                        if not os.path.exists(modelPath):
+                            # Create model directory if it does not exist
+                            os.mkdir(modelPath)
+
+                        filePath = modelPath + "/" + fileName + ".json"
+
+                    elif not model:
                         print("no model returned and model requested", model)
+
                     elif not ai.findIn(model, model_used):
                         print("model used", model_used, "does not match model requested", model)
                         # exit(1)
+
                     else:
                         print("model used", model_used, "and model requested", model)
-    
-                jsonData = str(response)
-                data = json.loads(jsonData)
+
+                if isDict:
+                    data = response
+                else:
+                    jsonData = str(response)
+                    data = json.loads(jsonData)
+
                 data['time'] = f'{elapsed_time:.2f}'
-    
+
                 print("Saving to", filePath)
                 with open(filePath, "w") as file:
                     json.dump(data, file)
@@ -467,6 +497,8 @@ for model in models:
                     print("Max errors hit:", max_errors)
                     exit(1)
 
+    if noModelSelection:
+        break
 
 print("Getting Results")
 # updateResultsFiles()

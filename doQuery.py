@@ -342,8 +342,8 @@ models = [
     # "wizardLM-13B-Uncensored.ggmlv3.q4_0.bin"
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
-    "WizardCoder-15B-1.0.ggmlv3.q4_0.bin",
-    # "redmond-hermes-coder.ggmlv3.q4_0.bin",
+    # "WizardCoder-15B-1.0.ggmlv3.q4_0.bin",
+    "redmond-hermes-coder.ggmlv3.q4_0.bin",
 ]
 
 modelTemplates = {
@@ -391,10 +391,10 @@ queryConfig = {
 for model in models:
     reload = False
     modelPath = "data/" + ai.trimModel(model)
-    if not noModelSelection:
-        if not os.path.exists(modelPath):
-            # Create model directory if it does not exist
-            os.mkdir(modelPath)
+
+    if not os.path.exists(modelPath):
+        # Create model directory if it does not exist
+        os.mkdir(modelPath)
 
     for i in range(len(prompts)):
         testConfig = prompts[i]
@@ -405,9 +405,9 @@ for model in models:
         prompt = testConfig['prompt']
         filePath = modelPath + "/" + fileName + ".json"
 
-        skipExistingFile = not forceOverwrite and os.path.exists(filePath)
+        alreadyHaveResults = not forceOverwrite and os.path.exists(filePath)
         
-        if not skipExistingFile:
+        if not alreadyHaveResults:
             # see we are to skip this test for this model
             if 'skip' in testConfig:
                 skipConfig = testConfig['skip']
@@ -419,7 +419,7 @@ for model in models:
                     except ValueError:
                         skip = False
 
-        if skipExistingFile:
+        if alreadyHaveResults:
             print("Already have results for", filePath, "skipping")
         elif skip:
             print("Test says to skip over model", model, "skipping")

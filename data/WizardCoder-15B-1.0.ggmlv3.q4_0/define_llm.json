@@ -1,0 +1,22 @@
+{
+  "id": "chatcmpl-5b78068ceplu1th1pxp7i",
+  "object": "chat.completion",
+  "created": 1689695358,
+  "model": "/Users/blm/.cache/lm-studio/models/TheBloke/WizardCoder-15B-1.0-GGML/WizardCoder-15B-1.0.ggmlv3.q4_0.bin",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "username = input(\"What is your name? \")\nprint(\"Hello, \" + username + \"!\")\nage = int(input(\"How old are you? \"))\nprint(\"You are \" + str(age) + \" years old.\")\n# The above two lines are used to get the user's name and age as input from the user. The first line gets the name and the second line gets the age. The str() function is used to convert the integer age to a string so that it can be concatenated with the string \"years old\". The + operator is used to concatenate the two strings.."
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 126,
+    "total_tokens": 126
+  },
+  "time": "22.35"
+}

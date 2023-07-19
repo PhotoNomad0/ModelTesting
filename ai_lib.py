@@ -64,7 +64,7 @@ def doQuerySub(model, prompt_, response_, queryConfig):
             data = {
                 # 'messages': [{'role': 'user', 'content': 'Introduce yourself.'}],
                 'messages': [{'role': 'assistant', 'content': prompt_}],
-                'temperature': 0.7,
+                'temperature': 0.28,
                 'max_tokens': -1,
                 'stream': False
             }
@@ -283,7 +283,13 @@ def getSavedResultsAsDictionary():
 
                     choices = testResults['choices']
                     choice = choices[0] if choices else ""
-                    response = choice['text'].strip() if choice else ""
+                    response = ''
+                    if choice:
+                        if 'text' in choice:
+                            response = choice['text']
+                        if 'message' in choice:
+                            response = choice['message']['content']
+                        response = response.strip() if response else ""
                     # response = response.replace('\n', '\\n')
                     time = float(testResults['time'])
                     model_used = testResults['model'].strip()

@@ -350,14 +350,15 @@ modelTemplates = {
     "default": None,
     # "default": "### Human:\n%prompt%\n### Assistant:\n",
     "orca": "### System:\nYou are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n### User:\n%prompt%\n\n### Response:\n\n",
+    "redmond-hermes-coder": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction: %prompt%\n\n### Response:"
 }
 
-testScores = {
+testScoreSheets = {
     "all": None,
     "health": "health",
     "language": "language",
     "math": "math",
-    "python": "python",
+    "coding": {"python", "js_"},
 }
 
 modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
@@ -504,7 +505,7 @@ print("Getting Results")
 # updateResultsFiles()
 previousResults = ai.readPreviousResultsFromSpreadsheet()
 results = ai.getSavedResultsAsDictionary()
-(mergedResults, scores) = ai.mergeInPreviousData(results, previousResults, testScores)
+(mergedResults, scores) = ai.mergeInPreviousData(results, previousResults, testScoreSheets)
 results = mergedResults
 ai.saveResultsToSpreadsheet(results, scores)
 print("Done")

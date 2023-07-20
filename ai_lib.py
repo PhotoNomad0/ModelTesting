@@ -416,7 +416,7 @@ def readPreviousResultsFromSpreadsheet():
     return results
 
 
-def mergeInPreviousData(results, previousResults, testScores):
+def mergeInPreviousData(results, previousResults, testScoreSheets):
     scores = {}
     scoring = None
     mergedResults = results.copy()
@@ -446,17 +446,17 @@ def mergeInPreviousData(results, previousResults, testScores):
             else:
                 mergedResults[test] = previousResults[test]
 
-            for testType, filter in testScores.items():
-                if testType not in scores:
-                    scores[testType] = {}
-                testScore = scores[testType]
+            for scoreType, filter in testScoreSheets.items():
+                if scoreType not in scores:
+                    scores[scoreType] = {}
+                testScore = scores[scoreType]
                 getTestScore(mergedResults, testScore, test, filter)
 
         elif (test.upper() == 'SCORING'):
             scoring = previousResults[test]
 
-    for scoreType, testScores in scores.items():
-        for model, modelResults in testScores.items():
+    for scoreType, testScoreSheets in scores.items():
+        for model, modelResults in testScoreSheets.items():
             time = modelResults['time']
             count = modelResults['tests']
             modelResults['averageTime'] = time/count

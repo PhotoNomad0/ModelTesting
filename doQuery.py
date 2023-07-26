@@ -16,8 +16,8 @@ stream = False  # so far haven't got True to work
 ignoreModels = True
 max_tokens = 4096
 max_errors = 1
-useGPT4All = True
-noModelSelection = True
+useGPT4All = False
+noModelSelection = False
 
 
 if useNewPythonBindings:
@@ -252,8 +252,12 @@ prompts = [
         "prompt": "what are the types of verbs?",
     },
     {
-        "id": "language_verb_tenses",
-        "prompt": "what are the verb tenses?",
+        "id": "linux_ssh",
+        "prompt": "what does this command do: ssh -i \"~/UserKey.pem\" -C -L 25900:localhost:5900 ec2-34-221-131-108.us-west-2.compute.amazonaws.com",
+    },
+    {
+        "id": "linux_ssh_troubleshoot",
+        "prompt": "why does this command give error Permission denied (publickey):\n\nssh -i \“~/UserKey.pem\" -C -L 25900:localhost:5900 ec2-34-221-131-108.us-west-2.compute.amazonaws.com",
     },
 ]
 

@@ -253,7 +253,7 @@ prompts = [
     },
     {
         "id": "linux_ssh",
-        "prompt": "what does this command do: ssh -i \"~/UserKey.pem\" -C -L 25900:localhost:5900 ec2-34-221-131-108.us-west-2.compute.amazonaws.com",
+        "prompt": "what does this command do: ssh -i \"~/UserKey.pem\" -C -L 25900:localhost:5900 user@ec2-34-221-131-108.us-west-2.compute.amazonaws.com",
     },
     {
         "id": "linux_ssh_troubleshoot",
@@ -449,7 +449,10 @@ for model in models:
                 if choices:
                     for choice in choices:
                         if isDict:
-                            action_text = action_text + str(choice['message'])
+                            if 'message' in choice:
+                                action_text = action_text + str(choice['message'])
+                            else:
+                                action_text = action_text + str(choice['text'])
                         else:
                             action_text = action_text + choice.text
 

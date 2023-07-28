@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "in x^3+x-130=0, solve for the value for x\nThe solution is -8"}], "created": 1690421644, "id": "foobarbaz", "model": "MPT Instruct", "object": "text_completion", "usage": {"completion_tokens": 5, "prompt_tokens": 26, "total_tokens": 31}, "time": "4.45"}

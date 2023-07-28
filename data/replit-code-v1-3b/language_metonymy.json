@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "what is a metonymy?\na word that refers to something else.\n\n## [Question](https"}], "created": 1690424030, "id": "foobarbaz", "model": "Replit", "object": "text_completion", "usage": {"completion_tokens": 2030, "prompt_tokens": 18, "total_tokens": 2048}, "time": "332.38"}

@@ -48,7 +48,7 @@ def runModelQuery(model, prompt, reload, testConfig, modelTemplates, queryConfig
         else:
             prompt_ = template.replace("%prompt%", prompt)
 
-    print("Generated prompt", prompt_)
+    print("Generated prompt:", prompt_)
     response_ = None
 
     response_ = doQuerySub(model, prompt_, response_, queryConfig)

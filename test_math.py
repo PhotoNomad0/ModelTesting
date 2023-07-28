@@ -1,19 +1,17 @@
-def is_prime(n):
-    if n <= 1:
-        return False
-    for i in range(2, int(n**0.5)+1):
-        if n % i == 0:
-            return False
-    return True
+def largest_difference(numbers):
+    smallest = float('inf')
+    largest = float('-inf')
+    for num in numbers:
+        if num < smallest:
+            smallest = num
+        elif num > largest:
+            largest = num
+    return abs(largest - smallest)
 
-count = 0
-num = 2
-while count < 100:
-    if is_prime(num):
-        print(num)
-        count += 1
-    num += 11
-
+numbers = [3, 5, 7, 10, 12]
+print(largest_difference(numbers)) # Output: 4
+    
+    
 # def read_spreadsheet(filepath):
 #     # Load the file using XLSXReader library
 #     try:

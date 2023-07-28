@@ -1,0 +1,1 @@
+{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "what is a metonymy?\nA metaphor, simile or analogy"}], "created": 1690421698, "id": "foobarbaz", "model": "MPT Instruct", "object": "text_completion", "usage": {"completion_tokens": 7, "prompt_tokens": 18, "total_tokens": 25}, "time": "3.17"}

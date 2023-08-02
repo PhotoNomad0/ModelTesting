@@ -319,7 +319,7 @@ def saveResultsToSpreadsheet(results, scores):
     # tests = results.keys()
     # tests.sort(key=str.lower)
     tests = sorted(results.keys(), key=str.lower)
-    with pd.ExcelWriter("data/summary.xls") as writer:
+    with pd.ExcelWriter("data/summary.xls", engine="openpyxl") as writer:
         for testname in tests:
             if (testname.upper() != 'SCORING'):
                 testResults = results[testname]

@@ -365,13 +365,15 @@ testScoreSheets = {
     "coding": {"python", "js_"},
 }
 
-modelPath_ = '/Users/blm/Library/ApplicationSupport/nomic.ai/GPT4All'
+home_dir = os.path.expanduser('~')
+modelPath_ = os.path.join(home_dir, 'Library/Application Support/nomic.ai/GPT4All')
 
 if not noModelSelection:
     if queryModels:
         models = ai.getModels()
     
     if getModelsFromFile:
+        print("getting models from", modelPath_)
         models = ai.getModelsFromGpt4AllFolder(modelPath_)
     
     if filterByFiles:

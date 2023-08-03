@@ -1,7 +1,5 @@
-Modules:
-openpyxl
-xlrd
-pandas
-openpyxl
-openai
-gpt4all
+## to update the requirements.txt do:
+pip freeze > requirements.txt
+
+## to use the requirements.txt do:
+pip install -r requirements.txt

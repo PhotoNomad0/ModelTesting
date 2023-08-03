@@ -1,0 +1,6 @@
+openai~=0.27.8
+gpt4all~=1.0.8
+pandas~=2.0.3
+requests~=2.31.0
+openpyxl~=3.2.0b1
+xlrd~=2.0.1

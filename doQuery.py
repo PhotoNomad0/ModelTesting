@@ -252,6 +252,10 @@ prompts = [
         "prompt": "what are the types of verbs?",
     },
     {
+        "id": "language_verb_tenses",
+        "prompt": "what are the verb tenses?",
+    },
+    {
         "id": "linux_ssh",
         "prompt": "what does this command do: ssh -i \"~/UserKey.pem\" -C -L 25900:localhost:5900 user@ec2-34-221-131-108.us-west-2.compute.amazonaws.com",
     },

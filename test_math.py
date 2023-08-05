@@ -1,16 +1,8 @@
-def largest_difference(numbers):
-    smallest = float('inf')
-    largest = float('-inf')
-    for num in numbers:
-        if num < smallest:
-            smallest = num
-        elif num > largest:
-            largest = num
-    return abs(largest - smallest)
+def filter_empty_strings(strings):
+    return list(filter(None, strings))
 
-numbers = [3, 5, 7, 10, 12]
-print(largest_difference(numbers)) # Output: 4
-    
+strings = ["", "abc", "", "def", "ghi", ""]
+print(filter_empty_strings(strings))
     
 # def read_spreadsheet(filepath):
 #     # Load the file using XLSXReader library

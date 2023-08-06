@@ -353,7 +353,7 @@ def saveResultsToSpreadsheet(results, scores):
                 sizes.append(size)
                 metal = getKeyFromScore(score, key, "Metal", '')
                 metals.append(metal)
-                averageTime_ = score[key]["averageTime"]
+                averageTime_ = score[key]["averageTime"] if not math.isnan(score[key]["averageTime"]) else 0.0
                 averageTime.append(round(averageTime_))
 
             scoring_ = {

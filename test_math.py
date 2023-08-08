@@ -1,9 +1,19 @@
-def filter_empty_strings(strings):
-    return list(filter(None, strings))
+from sympy.solvers import solve
+from sympy import Symbol
 
-strings = ["", "abc", "", "def", "ghi", ""]
-print(filter_empty_strings(strings))
-    
+x = Symbol('x') # Define symbol for x
+a, b, c, d = 1, 1, 0, -80
+eq = a*x**3 + b*x**2 + c*x + d
+
+sol = solve(eq)
+print("Correct Answer", sol)
+
+# def filter_empty_strings(strings):
+#     return list(filter(None, strings))
+#
+# strings = ["", "abc", "", "def", "ghi", ""]
+# print(filter_empty_strings(strings))
+
 # def read_spreadsheet(filepath):
 #     # Load the file using XLSXReader library
 #     try:
@@ -21,15 +31,13 @@ print(filter_empty_strings(strings))
 # 
 # print(read_spreadsheet("data/summary_scored.csv"))
 
-# from sympy.solvers import solve
-# from sympy import Symbol
-# 
-# x = Symbol('x') # Define symbol for x
-# a, b, c, d = 1, 0, 1, -130
-# eq = a*x**3 + b*x**2 + c*x + d
-# 
-# sol = solve(eq)
-# print("Correct Answer", sol)
+# y = x^3
+x = 4 ** (1 / 3)
+print("x**3=", x*x*x)
+print("4**(1/3)=", x)
+z = x**9 + x**6
+print("x**9 + x**6 =", z)
+
 
 # import sympy as sp
 # from sympy import *

@@ -184,6 +184,10 @@ prompts = [
         "prompt": "Who was the president of the United States in 1996?",
     },
     {
+        "id": "presidents",
+        "prompt": "Create a csv of the first 5 presidents of the United states with their names, age when they started office, year they started office, and number of years they served",
+    },
+    {
         "id": "whos_faster",
         "prompt": "Jane is faster than Joe. Joe is faster than Sam. Is Sam faster than Jane?",
     },

@@ -363,7 +363,8 @@ modelTemplates = {
     "default": None,
     # "default": "### Human:\n%prompt%\n### Assistant:\n",
     "orca": "### System:\nYou are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n### User:\n%prompt%\n\n### Response:\n\n",
-    "redmond-hermes-coder": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction: %prompt%\n\n### Response:"
+    "redmond-hermes-coder": "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction: %prompt%\n\n### Response:",
+    "wizardcoder-guanaco":  "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction: %prompt%\n\n### Response:",
 }
 
 testScoreSheets = {

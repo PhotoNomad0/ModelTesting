@@ -1,16 +1,20 @@
-import numpy as np  # for numerical computations
-from scipy import optimize  # to solve equations
+from sympy.solvers import solve
+from sympy import Symbol
 
-def main():
-    a, b, c = -10., 4., 3.   # coefficients of the quadratic equation
+x = Symbol('x') # Define symbol for x
+a, b, c, d = 0, 2, -2, 1-3
+eq = a*x**3 + b*x**2 + c*x + d
 
-    # Finding real solutions using built-in functions in NumPy and SciPy libraries:
-    x_soln = np.roots([a,b,c])
+sol = solve(eq)
+print("Correct Answer", sol)
 
-    print("The roots are:", *x_soln)
-
-if __name__ == '__main__':
-    main()
+for sol_ in sol:
+    x = sol_.n()
+    results = a*x**3 + b*x**2 + c*x + d
+    print(f"{sol_} : using x={x}, yields {a}*x^3 + {b}*x^2 + {c}*x + {d} = {results}")
+    y = 1 - x
+    print(f"a = {x}, b = 1 - a = {1-x}")
+    print(f"a^5 + b^5 = {x**5 + y**5}")
 
 # def filter_empty_strings(strings):
 #     return list(filter(None, strings))
@@ -34,6 +38,7 @@ if __name__ == '__main__':
 #     return [list(row) for row in xlsxreader]
 # 
 # print(read_spreadsheet("data/summary_scored.csv"))
+
 
 
 # import sympy as sp

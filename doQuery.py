@@ -174,6 +174,7 @@ prompts = [
     {
         "id": "TOT_socks",
         "prompt": "Three experts with exceptional logical thinking skills are collaboratively answering a question using a Tree of Thoughts method. Each expert will share their thought process in detail, taking into account the previous thoughts of others and emitting any errors. They will iteratively refine and expand upon each other's ideas, giving credit where it's due. The process continues until a conclusive answer is found. Organize the entire response in a markdown format. The question is, \"Tom washed 10 pairs of socks. The socks are now wet from the wash, so Tom hangs the 10 pairs of socks outside to dry. 10 hours later, he comes back outside to check on the socks. He feels each sock and notices they are all dry. He takes them back inside because they are all dry. How long will it take Tom to dry seven pairs of socks presuming the same weather conditions?\"",
+        "skip": ["wizardcoder-guanaco"]
     },
     {
         "id": "quit",
@@ -427,12 +428,10 @@ for model in models:
             if 'skip' in testConfig:
                 skipConfig = testConfig['skip']
                 if skipConfig and isinstance(skipConfig, list):
-                    try:
-                        pos = skipConfig.index(model)
-                        skip = True
-
-                    except ValueError:
-                        skip = False
+                    for skipStr in skipConfig:
+                        if skipStr in model:
+                            skip = True
+                            break
 
         if alreadyHaveResults:
             print("Already have results for", filePath, "skipping")

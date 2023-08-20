@@ -1,1 +1,0 @@
-{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "25 - 4 * 2 + 3 = ?\n17.8"}], "created": 1688902201, "id": "foobarbaz", "model": "ggml-stable-vicuna-13B.ggmlv3.q6_K.bin", "object": "text_completion", "usage": {"completion_tokens": 5, "prompt_tokens": 26, "total_tokens": 31}, "time": "3.70"}

@@ -1,6 +1,12 @@
 from sympy.solvers import solve
 from sympy import Symbol
 
+def case_insensitive_sort(lst):
+    return sorted(lst, key=lambda x: str.lower(x))
+
+# Example usage:
+print(case_insensitive_sort(['Cherry', 'apple', 'banana']))  # Outputs: ['APPLE', 'BANANA', 'CHERRY']
+
 x = Symbol('x') # Define symbol for x
 a, b, c, d = 0, 2, -2, 1-3
 eq = a*x**3 + b*x**2 + c*x + d

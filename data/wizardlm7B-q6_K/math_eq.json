@@ -1,1 +1,0 @@
-{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "25 - 4 * 2 + 3 = ?\nThe answer is 18."}], "created": 1688992097, "id": "foobarbaz", "model": "ggml-wizardlm7B-q6_K.bin", "object": "text_completion", "usage": {"completion_tokens": 7, "prompt_tokens": 26, "total_tokens": 33}, "time": "3.79"}

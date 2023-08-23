@@ -1,1 +1,0 @@
-{"choices": [{"finish_reason": "stop", "index": 0, "logprobs": null, "references": [], "text": "25 - 4 * 2 + 3 = ?\nThe answer to that equation is 37."}], "created": 1688001665, "id": "foobarbaz", "model": "", "object": "text_completion", "usage": {"completion_tokens": 10, "prompt_tokens": 26, "total_tokens": 36}, "time": "6.18"}

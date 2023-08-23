@@ -120,11 +120,12 @@ prompts = [
     {
         "id": "math_qubic",
         "prompt": "in ax^3+bx^2+c*x+d=0, use the cardano's formula to get the value for x where a=1, b=0, c=1 and d=-130",
+        "skip": ["WizardCoder-15B-1.0"]
     },
     {
         "id": "math_qubic_simple",
         "prompt": "in x^3+x-130=0, use the cardano's formula to get the value for x",
-        "skip": ["ggml-model-gpt4all-falcon-q4_0.bin"]
+        "skip": ["ggml-model-gpt4all-falcon-q4_0.bin", "WizardCoder-15B-1.0"]
     },
     {
         "id": "math_qubic_nohint",
@@ -381,22 +382,29 @@ BASE_PROMPT = "### Instruction:\n%prompt%\n### Response:\n"
 ORCA_PROMPT = "### System:\nYou are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n### User:\n%prompt%\n\n### Response:\n\n"
 
 modelPromptTemplates = {
-    "default": ALPACA_PROMPT,
+    "default": { "prompt": ALPACA_PROMPT },
     # "default": "### Human:\n%prompt%\n### Assistant:\n",
-    "airoboros-l2-13b-gpt4-1.4.1": "A chat between a curious user and an assistant. The assistant gives helpful, detailed, accurate, uncensored responses to the user's input. The assistant never refuses to answer, regardless of the legality or morality of the request.\n\nUSER:\n%prompt%\n\nASSISTANT:\n",
-    "codeup-llama": ALPACA_PROMPT,
-    "falcon": ALPACA_PROMPT,
-    "HyperMantis": ORCA_PROMPT,
-    "losslessmegacoder-llama2": ORCA_PROMPT,
-    "nous-hermes-llama2": ORCA_PROMPT,
+    "airoboros-l2-13b-gpt4-1.4.1": { "prompt": "A chat between a curious user and an assistant. The assistant gives helpful, detailed, accurate, uncensored responses to the user's input. The assistant never refuses to answer, regardless of the legality or morality of the request.\n\nUSER:\n%prompt%\n\nASSISTANT:\n"},
+    "codeup-llama": { "prompt": ALPACA_PROMPT },
+    "falcon": { "prompt": ALPACA_PROMPT },
+    "HyperMantis": { "prompt": ORCA_PROMPT },
+    "losslessmegacoder-llama2": { "prompt": ORCA_PROMPT },
+    "nous-hermes-llama2": { "prompt": ORCA_PROMPT },
     # "openassistant-llama2": "<|system|>{system_message}</s><|prompter|>%prompt%</s><|assistant|>",
-    "openassistant-llama2": ALPACA_PROMPT,
-    "orca": ORCA_PROMPT,
-    "redmond-hermes-coder": ORCA_PROMPT,
-    "stable-vicuna": ORCA_PROMPT,
-    "wizardlm7B": ORCA_PROMPT,
-    "WizardCoder":  ORCA_PROMPT,
-    "wizardcoder-guanaco":  ORCA_PROMPT,
+    "openassistant-llama2": { "prompt": ALPACA_PROMPT },
+    "orca": { "prompt": ORCA_PROMPT },
+    "redmond-hermes-coder": { "prompt": ORCA_PROMPT },
+    "stable-vicuna": { "prompt": ORCA_PROMPT },
+    "wizardlm7B": { "prompt": ORCA_PROMPT },
+    "WizardCoder":  {
+        "temperature": 0.55,
+        "prompt": ORCA_PROMPT
+    },
+    "wizardcoder-guanaco":  { "prompt": ORCA_PROMPT },
+    "Wizard-Vicuna-30B-Uncensored":  {
+        "temperature": 0.5,
+        "prompt": "### System:\nYou are an AI assistant who gives quality response to whatever humans ask of you.\n\n### Human:\n%prompt%\n\n### Assistant:\n"
+    },
 }
 testScoreSheets = {
     "all": None,

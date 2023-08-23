@@ -38,33 +38,40 @@ def runModelQuery(model, prompt, reload, testConfig, modelTemplates, queryConfig
 
     if template:
         if testConfig:
+            prompt_ = template['prompt']
             keys = testConfig.keys()
             for key in keys:
                 replace_ = "%" + key + "%"
                 replacement = testConfig[key]
                 if isinstance(replacement, str):
-                    template = template.replace(replace_, testConfig[key])
-            prompt_ = template
+                    prompt_ = prompt_.replace(replace_, testConfig[key])
         else:
-            prompt_ = template.replace("%prompt%", prompt)
+            prompt_ = template['prompt'].replace("%prompt%", prompt)
 
     print("Generated prompt:", prompt_)
     response_ = None
 
-    response_ = doQuerySub(model, prompt_, response_, queryConfig)
+    response_ = doQuerySub(model, prompt_, response_, queryConfig, template)
 
     return response_
 
 
-def doQuerySub(model, prompt_, response_, queryConfig):
+def doQuerySub(model, prompt_, response_, queryConfig, template):
     try:
+        temperature = 0.70
+        top_p = 0.4
+        if 'top_p' in template:
+            top_p = template['top_p']
+        if 'temperature' in template:
+            temperature = template['temperature']
+
         if queryConfig['noModelSelection']:
             url = openai.api_base + '/chat/completions'
             headers = {'Content-Type': 'application/json'}
             data = {
                 # 'messages': [{'role': 'user', 'content': 'Introduce yourself.'}],
                 'messages': [{'role': 'assistant', 'content': prompt_}],
-                'temperature': 0.28,
+                'temperature': temperature,
                 'max_tokens': -1,
                 'stream': False
             }
@@ -105,8 +112,8 @@ def doQuerySub(model, prompt_, response_, queryConfig):
             with gptj.chat_session():
                 tokens = list(model.generate(prompt=prompt_,
                                              max_tokens=queryConfig['max_tokens'],
-                                             temperature=0.28,
-                                             top_p=0.95,
+                                             temperature=temperature,
+                                             top_p=top_p,
                                              n=1,  # this does not seem to be number of cores
                                              echo=True,
                                              stream=queryConfig['stream'],
@@ -127,8 +134,8 @@ def doQuerySub(model, prompt_, response_, queryConfig):
                 prompt=prompt_,
                 # reload=reload,
                 max_tokens=queryConfig['max_tokens'],
-                temperature=0.28,
-                top_p=0.95,
+                temperature=temperature,
+                top_p=top_p,
                 n=1,  # this does not seem to be number of cores
                 echo=True,
                 stream=queryConfig['stream'],

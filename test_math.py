@@ -1,26 +1,39 @@
-from sympy.solvers import solve
-from sympy import Symbol
+import numpy as np
 
-def case_insensitive_sort(lst):
-    return sorted(lst, key=lambda x: str.lower(x))
+def solve_for_x(a, b, c, d):
+    x = np.roots([a, b, c, d])[0]
+    if not (d == 0 and len(x) > 1):
+        return None
+    else:
+        for i in range(len(x)):
+            if abs(x[i]**3 + b*x[i]**2 + c*x[i]) < d/4:
+                continue
+            elif abs(x[i]**3 - a*x[i]**2) > (d-b**2)/(2*a):
+                return None
+        return x
+# ```
+# You can call this function with the values of `a`, `b`, `c`, and `d` to get all possible solutions for `x`. For example:
+#     ```python
+print(solve_for_x(1, 0, 1, -130))
+# Output: [-0.866675977, -0.5]
 
-# Example usage:
-print(case_insensitive_sort(['Cherry', 'apple', 'banana']))  # Outputs: ['APPLE', 'BANANA', 'CHERRY']
-
-x = Symbol('x') # Define symbol for x
-a, b, c, d = 0, 2, -2, 1-3
-eq = a*x**3 + b*x**2 + c*x + d
-
-sol = solve(eq)
-print("Correct Answer", sol)
-
-for sol_ in sol:
-    x = sol_.n()
-    results = a*x**3 + b*x**2 + c*x + d
-    print(f"{sol_} : using x={x}, yields {a}*x^3 + {b}*x^2 + {c}*x + {d} = {results}")
-    y = 1 - x
-    print(f"a = {x}, b = 1 - a = {1-x}")
-    print(f"a^5 + b^5 = {x**5 + y**5}")
+# from sympy import Symbol
+# from sympy.solvers import solve
+#
+# x = Symbol('x') # Define symbol for x
+# a, b, c, d = 1, 0, 1, -130
+# eq = a*x**3 + b*x**2 + c*x + d
+#
+# sol = solve(eq)
+# print("Correct Answer", sol)
+#
+# for sol_ in sol:
+#     x = sol_.n()
+#     results = a*x**3 + b*x**2 + c*x + d
+#     print(f"{sol_} : using x={x}, yields {a}*x^3 + {b}*x^2 + {c}*x + {d} = {results}")
+#     y = 1 - x
+#     print(f"a = {x}, b = 1 - a = {1-x}")
+#     print(f"a^5 + b^5 = {x**5 + y**5}")
 
 # def filter_empty_strings(strings):
 #     return list(filter(None, strings))

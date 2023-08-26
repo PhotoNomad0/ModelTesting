@@ -6,7 +6,7 @@ from urllib.request import urlopen
 import json
 import pandas as pd
 import requests
-
+import difflib
 
 def set_port(port):
     openai.api_base = "http://localhost:" + str(port) + "/v1"
@@ -443,10 +443,28 @@ def mergeInPreviousData(results, previousResults, testScoreSheets):
                         match = None
 
                     if match is not None:
-                        sameTestResults = contentsMatch(previous, i, newer, match, 'response') and contentsMatch(previous, i, newer, match, 'time')
+                        response_match = contentsMatch(previous, i, newer, match, 'response')
+                        time_match = contentsMatch(previous, i, newer, match, 'time')
+                        sameTestResults = response_match and time_match
                         if sameTestResults:
                             updatefield(previous, i, newer, match, 'comments')
                             updatefield(previous, i, newer, match, 'order')
+                        else:
+                            if not response_match:
+                                key = 'response'
+                                newer_, previous_ = getPreviousAndNewerValues(i, key, match, newer, previous)
+                                print("for", model, "and", key, "mismatch response\n", previous_, "\n", newer_)
+                                # if newer_ and previous_:
+                                #     differences = list(difflib.unified_diff(newer_, previous_))
+                                #     print("differences:", "".join(differences))
+                                #     prevlen = len(previous_)
+                                #     newlen = len(newer_)
+                                #     print("previous len", prevlen, "and new len", newlen)
+                            if not time_match:
+                                key = 'time'
+                                newer_, previous_ = getPreviousAndNewerValues(i, key, match, newer, previous)
+                                print("for", model, "and", key, "mismatch response\n", previous_, "\n", newer_)
+
                     else: # if not present, then append
                         appendTestResults(previous, i, newer)
 
@@ -546,8 +564,21 @@ def updatefield(previous, i, newer, match, key):
         newer[key][match] = prevValue
 
 
-def contentsMatch(prevModels, i, newModels, match, key):
-    previous = prevModels[key][i]
-    newer = newModels[key][match]
-    matched = previous == newer
+def contentsMatch(prevModels, previousIndex, newModels, newIndex, key):
+    newer, previous = getPreviousAndNewerValues(previousIndex, key, newIndex, newModels, prevModels)
+    if isinstance(newer, str) and isinstance(previous, str):
+        matched = previous.strip() == newer.strip()
+        if not matched:
+            # normalize strings and recompare
+            previous = previous.strip().replace('\r\n', '\n')
+            newer = newer.strip().replace('\r\n', '\n')
+            matched = previous == newer
+    else:
+        matched = previous == newer
     return matched
+
+
+def getPreviousAndNewerValues(i, key, newIndex, newModels, prevModels):
+    previous = prevModels[key][i]
+    newer = newModels[key][newIndex]
+    return newer, previous

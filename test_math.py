@@ -1,20 +1,25 @@
-import numpy as np
+def is_prime(n):
+    if n < 2:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
 
-def solve_for_x(a, b, c, d):
-    x = np.roots([a, b, c, d])[0]
-    if not (d == 0 and len(x) > 1):
-        return None
-    else:
-        for i in range(len(x)):
-            if abs(x[i]**3 + b*x[i]**2 + c*x[i]) < d/4:
-                continue
-            elif abs(x[i]**3 - a*x[i]**2) > (d-b**2)/(2*a):
-                return None
-        return x
+primes = []
+i = 2
+while len(primes) < 100 and i <= 1000:
+    if is_prime(i):
+        primes.append(i)
+    i += 1
+
+for p in primes:
+    print(p)
+
 # ```
 # You can call this function with the values of `a`, `b`, `c`, and `d` to get all possible solutions for `x`. For example:
 #     ```python
-print(solve_for_x(1, 0, 1, -130))
+# print(solve_for_x(1, 0, 1, -130))
 # Output: [-0.866675977, -0.5]
 
 # from sympy import Symbol

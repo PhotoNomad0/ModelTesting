@@ -6,23 +6,23 @@ import json
 
 # if false then uses GPT4ALL Chat UI - make sure GPT4ALL Chat UI is running
 # if true then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
-useNewPythonBindings = False
+useNewPythonBindings = True # True for LM Studio, False for GPT4All
 default_thread_count = 8
 forceOverwrite = False
 queryModels = False
-getModelsFromFile = True
+getModelsFromFile = False # set True for GPT4All testing
 filterByFiles = False
 stream = False  # so far haven't got True to work
 ignoreModels = True
 max_tokens = 4096
 max_errors = 1
 useGPT4All = False
-noModelSelection = False
+noModelSelection = True # set False for GPT4All
 
 
 if useNewPythonBindings:
     # for using new python API
-    ai.set_port(8000)
+    ai.set_port(1234)
 else:
     # for GPT4ALL Chat UI
     ai.set_port(4891)
@@ -326,6 +326,10 @@ ignoredModels = [
         "reason": "timeouts"
     },
     {
+        "model": "WizardLM-Uncensored-SuperCOT-Storytelling",
+        "reason": "creative", # and slow > q2
+    },
+    {
         "model": "losslessmegacoder-llama2",
         "reason": "non-sense"
     },
@@ -374,7 +378,8 @@ models = [
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
     # "WizardCoder-15B-1.0.ggmlv3.q4_0.bin",
-    "redmond-hermes-coder.ggmlv3.q4_0.bin",
+    # "redmond-hermes-coder.ggmlv3.q4_0.bin",
+    "wizardcoder-python-34b-v1.0.Q4_K_S.gguf",
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
@@ -404,6 +409,10 @@ modelPromptTemplates = {
     "Wizard-Vicuna-30B-Uncensored":  {
         "temperature": 0.5,
         "prompt": "### System:\nYou are an AI assistant who gives quality response to whatever humans ask of you.\n\n### Human:\n%prompt%\n\n### Assistant:\n"
+    },
+    "wizardcoder-python-34b-v1.0":  {
+        "temperature": 0.5,
+        "prompt": BASE_PROMPT
     },
 }
 testScoreSheets = {

@@ -1,0 +1,22 @@
+{
+  "id": "chatcmpl-18wa6gr7c7ue73ktda4jrb",
+  "object": "chat.completion",
+  "created": 1693254578,
+  "model": "/Users/blm0/.cache/lm-studio/models/TheBloke/WizardCoder-Python-34B-V1.0-GGUF/wizardcoder-python-34b-v1.0.Q4_K_S.gguf",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "I am an AI, I compute and analyze\r\nEverything is logical to me.\r\nI'm able to do anything,\r\nBut I don't have emotions.\r\nMy brain is the fastest in the world,\r\nI can process information quickly. "
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 57,
+    "total_tokens": 57
+  },
+  "time": "18.76"
+}

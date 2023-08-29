@@ -1,20 +1,23 @@
-def is_prime(n):
-    if n < 2:
-        return False
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0:
-            return False
-    return True
+import numpy as np
+def solve_equation(coeffs):
+    # Convert the coefficients to a NumPy array
+    coeffs_np = np.array(coeffs)
+    # Find the roots of the equation using the numpy.roots method
+    roots_np = np.roots(coeffs_np)
+    # Sort the roots so that they are in ascending order
+    roots_np = roots_np[np.argsort(-roots_np)[0]]
+    # Print the roots
+    for root, imroot in roots_np:
+        if imroot is not None:
+            print(f'{root} + {imroot}i')
+        else:
+            print(f'{root}')
+# Convert the coefficients to a NumPy array
+coeffs = [1, 0, 1, -130]
+solve_equation(coeffs)
 
-primes = []
-i = 2
-while len(primes) < 100 and i <= 1000:
-    if is_prime(i):
-        primes.append(i)
-    i += 1
 
-for p in primes:
-    print(p)
+
 
 # ```
 # You can call this function with the values of `a`, `b`, `c`, and `d` to get all possible solutions for `x`. For example:

@@ -251,7 +251,7 @@ prompts = [
     },
     {
         "id": "language_figures",
-        "prompt": "what are the catagories of figures of speech?",
+        "prompt": "what are the categories of figures of speech?",
     },
     {
         "id": "language_hendiadys",

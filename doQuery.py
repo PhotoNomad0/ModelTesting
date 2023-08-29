@@ -402,7 +402,8 @@ models = [
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
     # "WizardCoder-15B-1.0.ggmlv3.q4_0.bin",
     # "redmond-hermes-coder.ggmlv3.q4_0.bin",
-    "wizardcoder-python-34b-v1.0.Q4_K_S.gguf",
+    # "wizardcoder-python-34b-v1.0.Q4_K_S.gguf",
+    "wizardcoder-python-13b-v1.0.Q4_K_M.gguf"
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
@@ -433,7 +434,7 @@ modelPromptTemplates = {
         "temperature": 0.5,
         "prompt": "### System:\nYou are an AI assistant who gives quality response to whatever humans ask of you.\n\n### Human:\n%prompt%\n\n### Assistant:\n"
     },
-    "wizardcoder-python-34b-v1.0":  {
+    "wizardcoder-python":  {
         "temperature": 0.5,
         "prompt": BASE_PROMPT
     },

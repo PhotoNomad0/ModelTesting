@@ -6,19 +6,31 @@ import json
 
 # if false then uses GPT4ALL Chat UI - make sure GPT4ALL Chat UI is running
 # if true then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
-useNewPythonBindings = True # True for LM Studio, False for GPT4All
+useGPT4AllApi = True
+useLmStudioApi = False
+
+useNewPythonBindings = False
 default_thread_count = 8
 forceOverwrite = False
 queryModels = False
-getModelsFromFile = False # set True for GPT4All testing
+getModelsFromFile = True
 filterByFiles = False
 stream = False  # so far haven't got True to work
 ignoreModels = True
 max_tokens = 4096
 max_errors = 1
 useGPT4All = False
-noModelSelection = True # set False for GPT4All
+noModelSelection = False
 
+if useGPT4AllApi:
+    noModelSelection = False
+    getModelsFromFile = True
+    useNewPythonBindings = False
+
+if useLmStudioApi:
+    noModelSelection = True
+    getModelsFromFile = False
+    useNewPythonBindings = True
 
 if useNewPythonBindings:
     # for using new python API
@@ -285,7 +297,14 @@ prompts = [
         "id": "js_save",
         "prompt":  "in a javascript web app, how do you save text to a local file",
     },
-
+    {
+        "id": "prog_regex",
+        "prompt":  "create a regex expression to extract a three character code like \"1Jn\" from a filename in format \"57-1Jn.usfm\".  The characters can be upper or lower case letters or digits. And the filename extension must be \".usfm\".",
+    },
+    {
+        "id": "js_regex",
+        "prompt":  "create a javascript function that uses regex to extract a three character code like \"1Jn\" from a filename in format \"57-1Jn.usfm\".  The characters can be upper or lower case letters or digits. And the filename extension must be \".usfm\".",
+    }
 ]
 
 ignoredModels = [
@@ -340,6 +359,10 @@ ignoredModels = [
     {
         "model": "ggml-wizardlm-13b-v1.1.ggmlv3.q6_K.bin",
         "reason": "crash"
+    },
+    {
+        "model": "mpt-7b-storywriter.ggmlv3.q8_0.bin",
+        "reason": "crash - bad format"
     },
 ]
 

@@ -6,8 +6,9 @@ import json
 
 # if false then uses GPT4ALL Chat UI - make sure GPT4ALL Chat UI is running
 # if true then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
-useGPT4AllApi = True
-useLmStudioApi = False
+useGPT4AllApi = False
+useLmStudioApi = True
+useCreativePrompts = True
 
 useNewPythonBindings = False
 default_thread_count = 8
@@ -307,6 +308,17 @@ prompts = [
     }
 ]
 
+promptsCreative = [
+    {
+        "id": "story_gilligan",
+        "prompt": "write an episode for Gilligan's Island"
+    },
+    {
+        "id": "story_gilligan",
+        "prompt": "write an episode for Lost in Space"
+    }
+]
+
 ignoredModels = [
     # {
     #     "model": "gpt4all-j-v1.3-groovy",
@@ -439,12 +451,14 @@ modelPromptTemplates = {
         "prompt": BASE_PROMPT
     },
 }
+
 testScoreSheets = {
     "all": None,
     "health": "health",
     "language": "language",
     "math": {"math", "sisters"},
     "coding": {"python", "js_", "prog_"},
+    "creative": {"story"},
 }
 
 home_dir = os.path.expanduser('~')
@@ -475,6 +489,9 @@ queryConfig = {
     'default_thread_count': default_thread_count,
     'noModelSelection': noModelSelection,
 }
+
+if useCreativePrompts:
+    prompts = promptsCreative
 
 # iterate the models and run prompts that we don't already have results for
 for model in models:

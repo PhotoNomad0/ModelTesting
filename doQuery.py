@@ -285,7 +285,10 @@ prompts = [
         "id": "js_save",
         "prompt":  "in a javascript web app, how do you save text to a local file",
     },
-
+    {
+        "id": "python_thousands",
+        "prompt":  "Write a function named format_number that takes a non-negative number as its only parameter.\nYour function should convert the number to a string and add commas as a thousands separator."
+    }
 ]
 
 ignoredModels = [

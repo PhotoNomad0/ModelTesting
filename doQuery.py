@@ -6,19 +6,32 @@ import json
 
 # if false then uses GPT4ALL Chat UI - make sure GPT4ALL Chat UI is running
 # if true then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
-useNewPythonBindings = True # True for LM Studio, False for GPT4All
+useGPT4AllApi = False
+useLmStudioApi = True
+useCreativePrompts = True
+
+useNewPythonBindings = False
 default_thread_count = 8
 forceOverwrite = False
 queryModels = False
-getModelsFromFile = False # set True for GPT4All testing
+getModelsFromFile = True
 filterByFiles = False
 stream = False  # so far haven't got True to work
 ignoreModels = True
 max_tokens = 4096
 max_errors = 1
 useGPT4All = False
-noModelSelection = True # set False for GPT4All
+noModelSelection = False
 
+if useGPT4AllApi:
+    noModelSelection = False
+    getModelsFromFile = True
+    useNewPythonBindings = False
+
+if useLmStudioApi:
+    noModelSelection = True
+    getModelsFromFile = False
+    useNewPythonBindings = True
 
 if useNewPythonBindings:
     # for using new python API
@@ -288,6 +301,25 @@ prompts = [
     {
         "id": "python_thousands",
         "prompt":  "Write a function named format_number that takes a non-negative number as its only parameter.\nYour function should convert the number to a string and add commas as a thousands separator."
+    },
+    {
+        "id": "prog_regex",
+        "prompt":  "create a regex expression to extract a three character code like \"1Jn\" from a filename in format \"57-1Jn.usfm\".  The characters can be upper or lower case letters or digits. And the filename extension must be \".usfm\".",
+    },
+    {
+        "id": "js_regex",
+        "prompt":  "create a javascript function that uses regex to extract a three character code like \"1Jn\" from a filename in format \"57-1Jn.usfm\".  The characters can be upper or lower case letters or digits. And the filename extension must be \".usfm\".",
+    }
+]
+
+promptsCreative = [
+    {
+        "id": "story_gilligan",
+        "prompt": "write an episode for Gilligan's Island"
+    },
+    {
+        "id": "story_gilligan",
+        "prompt": "write an episode for Lost in Space"
     }
 ]
 
@@ -344,6 +376,10 @@ ignoredModels = [
         "model": "ggml-wizardlm-13b-v1.1.ggmlv3.q6_K.bin",
         "reason": "crash"
     },
+    {
+        "model": "mpt-7b-storywriter.ggmlv3.q8_0.bin",
+        "reason": "crash - bad format"
+    },
 ]
 
 # model = "gpt-3.5-turbo"
@@ -382,7 +418,8 @@ models = [
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
     # "WizardCoder-15B-1.0.ggmlv3.q4_0.bin",
     # "redmond-hermes-coder.ggmlv3.q4_0.bin",
-    "wizardcoder-python-34b-v1.0.Q4_K_S.gguf",
+    # "wizardcoder-python-34b-v1.0.Q4_K_S.gguf",
+    "wizardcoder-python-13b-v1.0.Q4_K_M.gguf"
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
@@ -413,17 +450,19 @@ modelPromptTemplates = {
         "temperature": 0.5,
         "prompt": "### System:\nYou are an AI assistant who gives quality response to whatever humans ask of you.\n\n### Human:\n%prompt%\n\n### Assistant:\n"
     },
-    "wizardcoder-python-34b-v1.0":  {
+    "wizardcoder-python":  {
         "temperature": 0.5,
         "prompt": BASE_PROMPT
     },
 }
+
 testScoreSheets = {
     "all": None,
     "health": "health",
     "language": "language",
     "math": {"math", "sisters"},
     "coding": {"python", "js_", "prog_"},
+    "creative": {"story"},
 }
 
 home_dir = os.path.expanduser('~')
@@ -454,6 +493,9 @@ queryConfig = {
     'default_thread_count': default_thread_count,
     'noModelSelection': noModelSelection,
 }
+
+if useCreativePrompts:
+    prompts = promptsCreative
 
 # iterate the models and run prompts that we don't already have results for
 for model in models:

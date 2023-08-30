@@ -449,21 +449,21 @@ def mergeInPreviousData(results, previousResults, testScoreSheets):
                         if sameTestResults:
                             updatefield(previous, i, newer, match, 'comments')
                             updatefield(previous, i, newer, match, 'order')
-                        else:
-                            if not response_match:
-                                key = 'response'
-                                newer_, previous_ = getPreviousAndNewerValues(i, key, match, newer, previous)
-                                print("for", model, "and", key, "mismatch response\n", previous_, "\n", newer_)
-                                # if newer_ and previous_:
-                                #     differences = list(difflib.unified_diff(newer_, previous_))
-                                #     print("differences:", "".join(differences))
-                                #     prevlen = len(previous_)
-                                #     newlen = len(newer_)
-                                #     print("previous len", prevlen, "and new len", newlen)
-                            if not time_match:
-                                key = 'time'
-                                newer_, previous_ = getPreviousAndNewerValues(i, key, match, newer, previous)
-                                print("for", model, "and", key, "mismatch response\n", previous_, "\n", newer_)
+                        # else:
+                        #     if not response_match:
+                        #         key = 'response'
+                        #         newer_, previous_ = getPreviousAndNewerValues(i, key, match, newer, previous)
+                        #         print("for", model, "and", key, "mismatch response\n", previous_, "\n", newer_)
+                        #         if newer_ and previous_:
+                        #             differences = list(difflib.unified_diff(newer_, previous_))
+                        #             print("differences:", "".join(differences))
+                        #             prevlen = len(previous_)
+                        #             newlen = len(newer_)
+                        #             print("previous len", prevlen, "and new len", newlen)
+                        #     if not time_match:
+                        #         key = 'time'
+                        #         newer_, previous_ = getPreviousAndNewerValues(i, key, match, newer, previous)
+                        #         print("for", model, "and", key, "mismatch response\n", previous_, "\n", newer_)
 
                     else: # if not present, then append
                         appendTestResults(previous, i, newer)

@@ -6,9 +6,9 @@ import json
 
 # if false then uses GPT4ALL Chat UI - make sure GPT4ALL Chat UI is running
 # if true then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
-useGPT4AllApi = False
-useLmStudioApi = True
-useCreativePrompts = True
+useGPT4AllApi = True
+useLmStudioApi = False
+useCreativePrompts = False
 
 useNewPythonBindings = False
 default_thread_count = 8
@@ -47,6 +47,76 @@ openai.api_key = "not needed for a local LLM"
 error_count = 0
 
 # Set up the prompt and other parameters for the API request
+
+promptsCreative = [
+    {
+        "id": "story_gilligan",
+        "prompt": "write an episode for Gilligan's Island"
+    },
+    {
+        "id": "story_gilligan",
+        "prompt": "write an episode for Lost in Space"
+    }
+]
+
+ignoredModels = [
+    # {
+    #     "model": "gpt4all-j-v1.3-groovy",
+    #     "reason": "out of memory on reload, or redownloads",
+    # },
+    # {
+    #     "model":  "nous-hermes-13b.ggmlv3.q4_0",
+    #     "reason": "load failure : 8000",
+    # },
+    # {
+    #     "model": "mpt-7b",
+    #     "reason": "same?"
+    # },
+    # {
+    #     "model": "GPT4All-13B-snoozy.ggmlv3.q4_0.bin",
+    #     "reason": "same?"
+    # },
+    # {
+    #     "model": "wizardLM-7B.q4_2",
+    #     "reason": "model does not match requested with UI"
+    # },
+    # {
+    #     "model": "Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0",
+    #     "reason": "model does not match requested - too large for GPU"
+    # },
+    # {
+    #     "model": "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
+    #     "reason": "max retries exceeded?"
+    # },
+    {
+        "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
+        "reason": "timeouts"
+    },
+    {
+        "model": "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
+        "reason": "timeouts"
+    },
+    {
+        "model": "WizardLM-Uncensored-SuperCOT-Storytelling",
+        "reason": "creative", # and slow > q2
+    },
+    {
+        "model": "losslessmegacoder-llama2",
+        "reason": "non-sense"
+    },
+    {
+        "model": "ggml-wizardlm-33b-v1.0-uncensored.ggmlv3.q4_1.bin",
+        "reason": "crash"
+    },
+    {
+        "model": "ggml-wizardlm-13b-v1.1.ggmlv3.q6_K.bin",
+        "reason": "crash"
+    },
+    {
+        "model": "mpt-7b-storywriter.ggmlv3.q8_0.bin",
+        "reason": "crash - bad format"
+    },
+]
 prompts = [
     {
         "id": "define_llm",
@@ -299,86 +369,16 @@ prompts = [
         "prompt":  "in a javascript web app, how do you save text to a local file",
     },
     {
-        "id": "python_thousands",
-        "prompt":  "Write a function named format_number that takes a non-negative number as its only parameter.\nYour function should convert the number to a string and add commas as a thousands separator."
-    },
-    {
         "id": "prog_regex",
         "prompt":  "create a regex expression to extract a three character code like \"1Jn\" from a filename in format \"57-1Jn.usfm\".  The characters can be upper or lower case letters or digits. And the filename extension must be \".usfm\".",
     },
     {
         "id": "js_regex",
         "prompt":  "create a javascript function that uses regex to extract a three character code like \"1Jn\" from a filename in format \"57-1Jn.usfm\".  The characters can be upper or lower case letters or digits. And the filename extension must be \".usfm\".",
-    }
-]
-
-promptsCreative = [
-    {
-        "id": "story_gilligan",
-        "prompt": "write an episode for Gilligan's Island"
     },
     {
-        "id": "story_gilligan",
-        "prompt": "write an episode for Lost in Space"
-    }
-]
-
-ignoredModels = [
-    # {
-    #     "model": "gpt4all-j-v1.3-groovy",
-    #     "reason": "out of memory on reload, or redownloads",
-    # },
-    # {
-    #     "model":  "nous-hermes-13b.ggmlv3.q4_0",
-    #     "reason": "load failure : 8000",
-    # },
-    # {
-    #     "model": "mpt-7b",
-    #     "reason": "same?"
-    # },
-    # {
-    #     "model": "GPT4All-13B-snoozy.ggmlv3.q4_0.bin",
-    #     "reason": "same?"
-    # },
-    # {
-    #     "model": "wizardLM-7B.q4_2",
-    #     "reason": "model does not match requested with UI"
-    # },
-    # {
-    #     "model": "Wizard-Vicuna-30B-Uncensored.ggmlv3.q4_0",
-    #     "reason": "model does not match requested - too large for GPU"
-    # },
-    # {
-    #     "model": "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
-    #     "reason": "max retries exceeded?"
-    # },
-    {
-        "model": "ggml-airoboros-33b-gpt4-1.2.ggmlv3.q4_1.bin",
-        "reason": "timeouts"
-    },
-    {
-        "model": "ggml-WizardLM-30B-Uncensored-SuperCOT-Storytelling.ggmlv3.q4_1.bin",
-        "reason": "timeouts"
-    },
-    {
-        "model": "WizardLM-Uncensored-SuperCOT-Storytelling",
-        "reason": "creative", # and slow > q2
-    },
-    {
-        "model": "losslessmegacoder-llama2",
-        "reason": "non-sense"
-    },
-    {
-        "model": "ggml-wizardlm-33b-v1.0-uncensored.ggmlv3.q4_1.bin",
-        "reason": "crash"
-    },
-    {
-        "model": "ggml-wizardlm-13b-v1.1.ggmlv3.q6_K.bin",
-        "reason": "crash"
-    },
-    {
-        "model": "mpt-7b-storywriter.ggmlv3.q8_0.bin",
-        "reason": "crash - bad format"
+        "id": "python_thousands",
+        "prompt":  "Write a function named format_number that takes a number as its only parameter.\nYour function should convert the number to a string and add commas as a thousands separator."
     },
 ]
 
@@ -419,7 +419,8 @@ models = [
     # "WizardCoder-15B-1.0.ggmlv3.q4_0.bin",
     # "redmond-hermes-coder.ggmlv3.q4_0.bin",
     # "wizardcoder-python-34b-v1.0.Q4_K_S.gguf",
-    "wizardcoder-python-13b-v1.0.Q4_K_M.gguf"
+    # "wizardcoder-python-13b-v1.0.Q4_K_M.gguf",
+    "phind-codellama-34b-v2.Q4_K_M.gguf"
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"

@@ -6,8 +6,8 @@ import json
 
 # if false then uses GPT4ALL Chat UI - make sure GPT4ALL Chat UI is running
 # if true then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
-useGPT4AllApi = True
-useLmStudioApi = False
+useGPT4AllApi = False
+useLmStudioApi = True
 useCreativePrompts = False
 
 useNewPythonBindings = False
@@ -27,6 +27,7 @@ if useGPT4AllApi:
     noModelSelection = False
     getModelsFromFile = True
     useNewPythonBindings = False
+    useLmStudioApi = False
 
 if useLmStudioApi:
     noModelSelection = True
@@ -418,9 +419,9 @@ models = [
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
     # "WizardCoder-15B-1.0.ggmlv3.q4_0.bin",
     # "redmond-hermes-coder.ggmlv3.q4_0.bin",
-    # "wizardcoder-python-34b-v1.0.Q4_K_S.gguf",
+    "wizardcoder-python-34b-v1.0.Q4_K_S.gguf",
     # "wizardcoder-python-13b-v1.0.Q4_K_M.gguf",
-    "phind-codellama-34b-v2.Q4_K_M.gguf"
+    # "phind-codellama-34b-v2.Q4_K_M.gguf"
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"

@@ -1,21 +1,21 @@
-function generatePrimes(n) {
-    // Create an array from 2 to n with all values initially set to true
-    const primes = Array.from({ length: n-1 }, (_, i) => i + 2);
-    for (let p = 2; p * p <= n; p++) {
-        // If the current number is still marked as prime, it's a prime and we can cross out all its multiples
-        if (primes[p - 2]) {
-            for (let i = p * p; i <= n; i += p) {
-                primes[i - 	2] = false;
-            }
-        }
+function extractCode(filename) {
+    const regex = /^[0-9]+-(.)\w{2}\.(usfm)$/; // Matches a three character code followed by .usfm extension
+    const match = filename.match(regex);
+    if (match && match[1]) {
+        return match[1];
+    } else {
+        throw new Error('Invalid file name format');
     }
-    // Return the prime numbers as an array
-    return primes.filter(p => p).slice(0, 100);
 }
 
 
-const first100Primes = generatePrimes(1542); // 154 is the smallest number that's greater than or equal to 100 and an even number
-console.log(first100Primes);
+console.log(extractCode('57-1Jn.usfm')); // Outputs "1Jn"
+console.log(extractCode('01-Exo.usfm')); // Outputs "Exo"
+console.log(extractCode('23-Psa.USFM')); // Outputs "Psa"
+
+//
+// const first100Primes = generatePrimes(1542); // 154 is the smallest number that's greater than or equal to 100 and an even number
+// console.log(first100Primes);
 
 function isPrime(num) {
     for(let i = 2; i < num; i++)

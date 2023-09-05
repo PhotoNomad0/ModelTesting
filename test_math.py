@@ -1,23 +1,30 @@
-import numpy as np
-def solve_equation(coeffs):
-    # Convert the coefficients to a NumPy array
-    coeffs_np = np.array(coeffs)
-    # Find the roots of the equation using the numpy.roots method
-    roots_np = np.roots(coeffs_np)
-    # Sort the roots so that they are in ascending order
-    roots_np = roots_np[np.argsort(-roots_np)[0]]
-    # Print the roots
-    for root, imroot in roots_np:
-        if imroot is not None:
-            print(f'{root} + {imroot}i')
-        else:
-            print(f'{root}')
-# Convert the coefficients to a NumPy array
-coeffs = [1, 0, 1, -130]
-solve_equation(coeffs)
+#!/usr/bin/python3
+import os
+import sys
+
+def list_files(folder_path):
+    return os.listdir(folder_path)
+
+folder_path = "."
+if len(sys.argv) > 1:
+    folder_path = sys.argv[1]
+
+print("Files in path", folder_path, ":")
+files = list_files(folder_path)
+for file in files:
+    print(file)
 
 
-
+# GOld
+# def format_number(num):
+#     return '{0:,}'.format(num)
+#
+# def format_number(num):
+#     return format(num, ',')
+#
+# nums = [12.3, 123, 1234.5, 12345, 123456, 123456.78, -123456.7]
+# for num in nums:
+#     print(num, "formatted is:", format_number(num))
 
 # ```
 # You can call this function with the values of `a`, `b`, `c`, and `d` to get all possible solutions for `x`. For example:

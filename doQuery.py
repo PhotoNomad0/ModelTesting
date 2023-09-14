@@ -379,7 +379,7 @@ prompts = [
     },
     {
         "id": "python_thousands",
-        "prompt":  "Write a function named format_number that takes a number as its only parameter.\nYour function should convert the number to a string and add commas as a thousands separator."
+        "prompt":  "Write a python function named format_number that takes a number as its only parameter.\nYour function should convert the number to a string and add commas as a thousands separator."
     },
 ]
 
@@ -419,14 +419,20 @@ models = [
     # "ggml-Wizard-Vicuna-13B-Uncensored.ggmlv3.q6_K.bin",
     # "WizardCoder-15B-1.0.ggmlv3.q4_0.bin",
     # "redmond-hermes-coder.ggmlv3.q4_0.bin",
-    "wizardcoder-python-34b-v1.0.Q4_K_S.gguf",
+    # "wizardcoder-python-34b-v1.0.Q4_K_S.gguf",
     # "wizardcoder-python-13b-v1.0.Q4_K_M.gguf",
-    # "phind-codellama-34b-v2.Q4_K_M.gguf"
+    # "phind-codellama-34b-v2.Q4_K_M.gguf",
+    # "nous-hermes-llama2-13b.ggmlv3.q4_K_M",
+    # "codellama-13b.Q4_K_M",
+    # "codellama-34b.Q2_K",
+    "codellama-34b-instruct.Q4_K_M.gguf",
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
 BASE_PROMPT = "### Instruction:\n%prompt%\n### Response:\n"
 ORCA_PROMPT = "### System:\nYou are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n### User:\n%prompt%\n\n### Response:\n\n"
+LM_STUDIO_PROMPT = "Perform the instructions to the best of your ability.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
+SPARSE = "%prompt%"
 
 modelPromptTemplates = {
     "default": { "prompt": ALPACA_PROMPT },
@@ -456,6 +462,15 @@ modelPromptTemplates = {
         "temperature": 0.5,
         "prompt": BASE_PROMPT
     },
+    # "codellama-34b": {
+    #     "temperature": 0.4,
+    #     "prompt": SPARSE,
+    # },
+    "codellama-34b-instruct": {
+        "temperature": 0.2,
+        "prompt": "<<SYS>>\nYou are a helpful coding AI assistant.\n<</SYS>>\n\n[INST]\n%prompt%\n[/INST]\n",
+    }
+
 }
 
 testScoreSheets = {

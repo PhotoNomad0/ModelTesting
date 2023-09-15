@@ -467,7 +467,7 @@ modelPromptTemplates = {
     #     "prompt": SPARSE,
     # },
     "codellama-34b-instruct": {
-        "temperature": 0.2,
+        "temperature": 0.4,
         "prompt": "<<SYS>>\nYou are a helpful coding AI assistant.\n<</SYS>>\n\n[INST]\n%prompt%\n[/INST]\n",
     }
 

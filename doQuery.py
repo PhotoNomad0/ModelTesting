@@ -425,14 +425,17 @@ models = [
     # "nous-hermes-llama2-13b.ggmlv3.q4_K_M",
     # "codellama-13b.Q4_K_M",
     # "codellama-34b.Q2_K",
-    "codellama-34b-instruct.Q4_K_M.gguf",
+    # "codellama-34b-instruct.Q4_K_M.gguf",
+    # "codellama-13b-instruct.Q4_K_M.gguf",
+    "llama-2-13b-chat.ggmlv3.q4_0",
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
 BASE_PROMPT = "### Instruction:\n%prompt%\n### Response:\n"
 ORCA_PROMPT = "### System:\nYou are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n### User:\n%prompt%\n\n### Response:\n\n"
 LM_STUDIO_PROMPT = "Perform the instructions to the best of your ability.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
-SPARSE = "%prompt%"
+SPARSE_PROMPT = "%prompt%"
+LLAMA_PROMPT = "<<SYS>>\nYou are a helpful coding AI assistant.\n<</SYS>>\n\n[INST]\n%prompt%\n[/INST]\n"
 
 modelPromptTemplates = {
     "default": { "prompt": ALPACA_PROMPT },
@@ -468,9 +471,16 @@ modelPromptTemplates = {
     # },
     "codellama-34b-instruct": {
         "temperature": 0.4,
-        "prompt": "<<SYS>>\nYou are a helpful coding AI assistant.\n<</SYS>>\n\n[INST]\n%prompt%\n[/INST]\n",
-    }
-
+        "prompt": LLAMA_PROMPT,
+    },
+    "codellama-13b-instruct": {
+        "temperature": 0.4,
+        "prompt": LLAMA_PROMPT,
+    },
+    "llama-2-13b-chat": {
+        "temperature": 0.4,
+        "prompt": LLAMA_PROMPT,
+    },
 }
 
 testScoreSheets = {

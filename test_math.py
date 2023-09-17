@@ -1,14 +1,8 @@
 def format_number(num):
-    """
-    This function takes a number as input and returns a string with comma as thousands separator.
-    """
-    num_str = str(num)
-    formatted_num = ""
-    for i in range(len(num_str)-3, -1, -3):
-        if i < 0:
-            break
-        formatted_num = ',' + num_str[i:i+3] + formatted_num
-    return formatted_num.lstrip(',') + num_str[-3:]
+    return f"{num:,}"
+
+print(format_number(10000.1))
+
 
 # GOld
 # def format_number(num):
@@ -17,9 +11,9 @@ def format_number(num):
 # def format_number(num):
 #     return format(num, ',')
 
-nums = [12.3, 123, 1234.5, 12345, 123456, 123456.78, -123456.7]
-for num in nums:
-    print(num, "formatted is:", format_number(num))
+# nums = [12.3, 123, 1234.5, 12345, 123456, 123456.78, -123456.7]
+# for num in nums:
+#     print(num, "formatted is:", format_number(num))
 
 # ```
 # You can call this function with the values of `a`, `b`, `c`, and `d` to get all possible solutions for `x`. For example:

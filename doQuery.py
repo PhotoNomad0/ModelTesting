@@ -381,6 +381,14 @@ prompts = [
         "id": "python_thousands",
         "prompt":  "Write a python function named format_number that takes a number as its only parameter.\nYour function should convert the number to a string and add commas as a thousands separator."
     },
+    {
+        "id": "prog_json",
+        "prompt":  "Create a JSON for the following. There are three people, two males. One is Mark, another is Joe. Third person who's a woman is Sam. The woman is 30 and two men are both 19."
+    },
+    {
+        "id": "python_number_clues",
+        "prompt": "Write a python program to solve this math problem: \"I am not a prime number.\nI am between 20 and 40.\nI am one more than a square number.\nWhat number am I?\""
+    },
 ]
 
 # model = "gpt-3.5-turbo"
@@ -427,7 +435,8 @@ models = [
     # "codellama-34b.Q2_K",
     # "codellama-34b-instruct.Q4_K_M.gguf",
     # "codellama-13b-instruct.Q4_K_M.gguf",
-    "llama-2-13b-chat.ggmlv3.q4_0",
+    # "llama-2-13b-chat.ggmlv3.q4_0",
+    # "codellama-13b-python.Q4_K_M.gguf",
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
@@ -474,6 +483,10 @@ modelPromptTemplates = {
         "prompt": LLAMA_PROMPT,
     },
     "codellama-13b-instruct": {
+        "temperature": 0.4,
+        "prompt": LLAMA_PROMPT,
+    },
+    "codellama-13b-python": {
         "temperature": 0.4,
         "prompt": LLAMA_PROMPT,
     },

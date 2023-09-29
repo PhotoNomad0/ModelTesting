@@ -6,8 +6,8 @@ import json
 
 # if false then uses GPT4ALL Chat UI - make sure GPT4ALL Chat UI is running
 # if true then uses new python API - in terminal run  `cd ~/Development/LLM/GPT4ALL-Python-API; uvicorn inference:app --reload`
-useGPT4AllApi = False
-useLmStudioApi = True
+useGPT4AllApi = True
+useLmStudioApi = False
 useCreativePrompts = False
 
 useNewPythonBindings = False

@@ -437,6 +437,7 @@ models = [
     # "codellama-13b-instruct.Q4_K_M.gguf",
     # "llama-2-13b-chat.ggmlv3.q4_0",
     # "codellama-13b-python.Q4_K_M.gguf",
+    "Mistral-7B-Instruct-v0.1-GGUF"
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
@@ -493,6 +494,10 @@ modelPromptTemplates = {
     "llama-2-13b-chat": {
         "temperature": 0.4,
         "prompt": LLAMA_PROMPT,
+    },
+    "Mistral-7B-Instruct-v0.1-GGUF": {
+        "temperature": 0.8,
+        "prompt": "<s>[INST] %prompt% [/INST] ",
     },
 }
 

@@ -342,6 +342,7 @@ def saveResultsToSpreadsheet(results, scores):
             model = []
             better = []
             good = []
+            goodish = []
             total = []
             tests = []
             averageTime = []
@@ -351,9 +352,11 @@ def saveResultsToSpreadsheet(results, scores):
                 model.append(key)
                 betterCount = score[key]["better"]
                 better.append(betterCount)
+                goodishCount = score[key]["goodish"]
+                goodish.append(goodishCount)
                 goodCount = score[key]["good"]
                 good.append(goodCount)
-                total.append(goodCount + betterCount)
+                total.append(goodishCount + goodCount + betterCount)
                 testsCount = score[key]["tests"]
                 tests.append(testsCount)
                 size = getKeyFromScore(score, key, "Size", '')
@@ -367,6 +370,7 @@ def saveResultsToSpreadsheet(results, scores):
                 "model": model,
                 'better': better,
                 "good": good,
+                "goodish": goodish,
                 "total": total,
                 "tests": tests,
                 "averageTime": averageTime,
@@ -526,19 +530,23 @@ def getTestScore(mergedResults, score, test, filter=None):
             comment = newComments[i].upper()
             time = float(times[i])
             better = comment.find('BETTER') >= 0
-            good = comment.find('GOOD') >= 0
+            goodish = comment.find('GOODISH') >= 0
+            good = not goodish and comment.find('GOOD') >= 0
 
             model = newModels[i]
             if not model in score:
                 score[model] = {
                     "better": 0,
                     "good": 0,
+                    "goodish": 0,
                     "tests": 0,
                     "time": 0,
                 }
 
             incrementScoreCount(score, model, 'tests')
             incrementScoreCount(score, model, 'time', time)
+            if goodish:
+                incrementScoreCount(score, model, 'goodish')
             if good:
                 incrementScoreCount(score, model, 'good')
             if better:

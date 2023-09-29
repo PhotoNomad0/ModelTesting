@@ -1,28 +1,38 @@
-import math
+# Start by defining the function to check if a number is prime or not
+# Define variables to store numbers from user input
+num1 = int(input("Enter first prime number between 20 and 40:")) # First Prime Number (between 20-40)
+num3 = num1 + 1   # One more than the square of 'num1'
 
-# Given range
-min = 20
-max = 40
+# Check if user input is a prime or not
+def check_prime(n):
+    """Function to determine whether given number n is prime"""
 
-def is_prime(n):
-    if n <= 1:
-        return False
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0:
+    for i in range(2, int(n**0.5)+1):
+        if (n % i) == 0:
             return False
-    return True
 
-# Loop through numbers in the range
-for num in range(min, max+1):
-    # Check if number is one more than a square number
-    previousNum = num - 1
-    sqrtPrevious = math.isqrt(previousNum)
-    previousIsSquare = previousNum == sqrtPrevious * sqrtPrevious
-    currentNumIsPrime = is_prime(num)
-    # num_ = sqrtPrevious * math.isqrt(sqrtPrevious + 1)
+    # If no factor found then it's a Prime Number
+    else:
+        return True
 
-    if previousIsSquare and not currentNumIsPrime:
-        print("The number you are looking for is", num)
+# Check the user input 'num3' whether is prime or not
+if check_prime(num3)==True :
+    print("You are one more than square number.")
+else:
+    num2 = int(input("\nEnter second prime number between 41 and infinity:")) # Second Prime Number (between 40-infinity)
+
+    if ((check_prime(num1+6)<>False or check_prime((3*num1)+7)<>True)):
+        print("You are not a prime number.")
+    else:
+        num2 = int(input("\nEnter second odd positive integer:")) # Second Odd Positive Integer
+
+        while (not ((check_prime(int(((40+6)/5)*(-8)))<>False or check_prime((3*(num1-7))+9)<>True) and
+                    abs((-2*abs((((40/5)**2)+1)-sqrt(((40**2)+(6**2))))+(3*((40/(5))**(1.0/2)))))<=(int(input("Enter the maximum difference between your number and 7:")))
+        )
+        ):
+            num2 = int(input("\nPlease enter a second odd positive integer within given range: ")) # Second Odd Positive Integer
+
+        print ("Your answer is:",num3+num1)
 
 # GOld
 # def format_number(num):

@@ -1,8 +1,28 @@
-def format_number(num):
-    return f"{num:,}"
+import math
 
-print(format_number(10000.1))
+# Given range
+min = 20
+max = 40
 
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(n**0.5) + 1):
+        if n % i == 0:
+            return False
+    return True
+
+# Loop through numbers in the range
+for num in range(min, max+1):
+    # Check if number is one more than a square number
+    previousNum = num - 1
+    sqrtPrevious = math.isqrt(previousNum)
+    previousIsSquare = previousNum == sqrtPrevious * sqrtPrevious
+    currentNumIsPrime = is_prime(num)
+    # num_ = sqrtPrevious * math.isqrt(sqrtPrevious + 1)
+
+    if previousIsSquare and not currentNumIsPrime:
+        print("The number you are looking for is", num)
 
 # GOld
 # def format_number(num):

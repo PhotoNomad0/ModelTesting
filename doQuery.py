@@ -437,7 +437,8 @@ models = [
     # "codellama-13b-instruct.Q4_K_M.gguf",
     # "llama-2-13b-chat.ggmlv3.q4_0",
     # "codellama-13b-python.Q4_K_M.gguf",
-    # "mistral-7b-instruct-v0.1.Q6_K.gguf"
+    # "mistral-7b-instruct-v0.1.Q6_K.gguf",
+    "mistral-7b-openorca.Q6_K.gguf"
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
@@ -498,6 +499,10 @@ modelPromptTemplates = {
     "mistral-7b-instruct-v0.1.Q6_K.gguf": {
         "temperature": 0.8,
         "prompt": "<s>[INST] %prompt% [/INST] ",
+    },
+    "mistral-7b-openorca.Q6_K.gguf": {
+        "temperature": 0.8,
+        "prompt": "<|im_start|>system You are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n<|im_end|> <|im_start|>user %prompt% <|im_end|> <|im_start|>assistant ",
     },
 }
 

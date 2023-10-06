@@ -1,4 +1,11 @@
-# Start by defining the function to check if a number is prime or not
+def find_number(lower, upper):
+    for num in range(lower, upper + 1):
+        if is_prime(num) == False and num > 0:
+            square = (int(num**0.5))**2
+            if num - 1 == square:
+                return str(num)
+    return "No number found."
+
 def is_prime(n):
     if n < 2:
         return False
@@ -6,15 +13,9 @@ def is_prime(n):
         if n % i == 0:
             return False
     return True
-# Define the function to find the number that satisfies the given conditions
-def find_number():
-    for num in range(21, 41):
-        # Check if the number is not prime and one more than a square number
-        if not is_prime(num) and (num - 1)**0.5 == int((num - 1)**0.5):
-            return num
-# Call the function to find the number
-number = find_number()
-print("The number that satisfies the given conditions is:", number)
+
+result = find_number(20, 40)
+print("The number is:", result)
 
 # coefficients = [1, 0, 1, -130]
 # roots = solve_cubic(*coefficients)

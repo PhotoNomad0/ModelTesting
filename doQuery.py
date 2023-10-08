@@ -389,6 +389,10 @@ prompts = [
         "id": "python_number_clues",
         "prompt": "Write a python program to solve this math problem: \"I am not a prime number.\nI am between 20 and 40.\nI am one more than a square number.\nWhat number am I?\""
     },
+    {
+        "id": "python_regex",
+        "prompt":  "Create a python function that uses regex to extract a three character code like \"1Jn\" from a filename in format \"57-1Jn.usfm\".  The characters can be upper or lower case letters or digits. And the filename extension must be \".usfm\".  The function must catch any exceptions and return None",
+    },
 ]
 
 # model = "gpt-3.5-turbo"

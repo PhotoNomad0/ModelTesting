@@ -1,21 +1,21 @@
-def find_number(lower, upper):
-    for num in range(lower, upper + 1):
-        if is_prime(num) == False and num > 0:
-            square = (int(num**0.5))**2
-            if num - 1 == square:
-                return str(num)
-    return "No number found."
+def primes(n):
+    if n <= 1:
+        return []
+    else:
+        prime_numbers = [True] * (n + 1)
+        prime_numbers[0] = False
+        for i in range(2, int(n ** 0.5) + 1):
+            if prime_numbers[i]:
+                prime_numbers[i] = False
+                for j in range(int(i * (i + 1) / 2), n):
+                    prime_numbers[j] = False
+        return prime_numbers
 
-def is_prime(n):
-    if n < 2:
-        return False
-    for i in range(2, int(n**0.5) + 1):
-        if n % i == 0:
-            return False
-    return True
-
-result = find_number(20, 40)
-print("The number is:", result)
+n = 100
+prime_numbers = primes(int(n))
+for p in prime_numbers:
+    if p:
+        print(p)
 
 # coefficients = [1, 0, 1, -130]
 # roots = solve_cubic(*coefficients)

@@ -1,16 +1,25 @@
-let dict = {
-    "zebra": "animal",
-    "apple": "fruit",
-    "banana": "fruit",
-    "carrot": "vegetable"
-};
+function getCode(filename) {
+    let regex = /(\w{3})(?=.*\.[usfm])/;
+    let matches = filename.match(regex);
+    return matches[1];
+}
 
-let sortedDict = {};
-Object.keys(dict).sort().forEach((key) => {
-    sortedDict[key] = dict[key];
-});
+////////////////////
 
-console.log(sortedDict);
+
+const tests = ['66-1jn.usfm', '65-jas.usfm', '66-1JN.usfm', '65-JAS.usfm', 'jas.usfm', '65-jas', '15.jas']
+
+for (const test of tests) {
+    let results
+    try {
+        results = getCode(test)
+        console.log(`'${test}' = '${results}'`)
+    } catch (e) {
+        console.error(`'${test}' failed '`,e)
+    }
+}
+
+
 //
 // This code will create a dictionary with three keys and values, and then use the `sort()` method to sort it based on the difference between each key and its corresponding value. The sorted dictionary will be stored in the `myDict` variable.
 //

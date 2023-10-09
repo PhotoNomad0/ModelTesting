@@ -1,21 +1,33 @@
-def primes(n):
-    if n <= 1:
-        return []
-    else:
-        prime_numbers = [True] * (n + 1)
-        prime_numbers[0] = False
-        for i in range(2, int(n ** 0.5) + 1):
-            if prime_numbers[i]:
-                prime_numbers[i] = False
-                for j in range(int(i * (i + 1) / 2), n):
-                    prime_numbers[j] = False
-        return prime_numbers
+def sieve_of_eratosthenes(end):
+    primes = [True for _ in range(end + 1)]
+    p = 2
+    while (p * p <= end):
+        if (primes[p] == True):
+            for i in range(p * p, end + 1, p):
+                primes[i] = False
 
-n = 100
-prime_numbers = primes(int(n))
-for p in prime_numbers:
-    if p:
-        print(p)
+        p += 1
+
+    return [x for x in range(2, end) if primes[x]]
+
+
+# import re
+#
+# def extract_three_character_code(filename):
+#     try:
+#         match = re.search('^[A-Za-z0-9]{3}$', filename)
+#         if match:
+#             return match.group()
+#     except Exception as e:
+#         print(f"Error on {filename}:", str(e))
+#         return None
+#
+# if __name__ == "__main__":
+#     tests = ['66-1jn.usfm', '65-jas.usfm', '66-1JN.usfm', '65-JAS.usfm', 'jas.usfm', '65-jas', '15.jas']
+#     for test in tests:
+#         result = extract_three_character_code(test)
+#         print(f"Test '{test}'", result)
+
 
 # coefficients = [1, 0, 1, -130]
 # roots = solve_cubic(*coefficients)

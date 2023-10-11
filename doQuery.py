@@ -452,6 +452,7 @@ ORCA_PROMPT = "### System:\nYou are an AI assistant that follows instruction ext
 LM_STUDIO_PROMPT = "Perform the instructions to the best of your ability.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
 SPARSE_PROMPT = "%prompt%"
 LLAMA_PROMPT = "<<SYS>>\nYou are a helpful coding AI assistant.\n<</SYS>>\n\n[INST]\n%prompt%\n[/INST]\n"
+CHAT_ML_PROMPT = "<|im_start|>system\nPerform the task to the best of your ability.\n<|im_end|>\n<|im_start|>user\n%prompt%<|im_end|>\n<|im_start|>assistant\n"
 
 modelPromptTemplates = {
     "default": { "prompt": ALPACA_PROMPT },
@@ -498,8 +499,9 @@ modelPromptTemplates = {
         "prompt": LLAMA_PROMPT,
     },
     "llama2-13b-megacode2-oasst": {
-        "temperature": 0.8,
-        "prompt": SPARSE_PROMPT,
+        "temperature": 0.2,
+        "prompt": CHAT_ML_PROMPT,
+        "stopStrings": ["<|im_end|>", "<|im_start|>"],
     },
     "llama-2-13b-chat": {
         "temperature": 0.4,

@@ -60,10 +60,13 @@ def doQuerySub(model, prompt_, response_, queryConfig, template):
     try:
         temperature = 0.70
         top_p = 0.4
+        stopStrings = None
         if 'top_p' in template:
             top_p = template['top_p']
         if 'temperature' in template:
             temperature = template['temperature']
+        if 'stopStrings' in template:
+            stopStrings = template['stopStrings']
 
         if queryConfig['noModelSelection']:
             url = openai.api_base + '/chat/completions'
@@ -75,6 +78,9 @@ def doQuerySub(model, prompt_, response_, queryConfig, template):
                 'max_tokens': -1,
                 'stream': False
             }
+
+            if stopStrings:
+                data['stop'] = stopStrings
             
             response = requests.post(url, headers=headers, data=json.dumps(data))
 

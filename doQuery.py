@@ -501,7 +501,7 @@ modelPromptTemplates = {
     "llama2-13b-megacode2-oasst": {
         "temperature": 0.2,
         "prompt": CHAT_ML_PROMPT,
-        "stopStrings": ["<|im_end|>", "<|im_start|>"],
+        "stopStrings": ["<|im_end|>", "<|im_start|>", "| |", "\n assistant"],
     },
     "llama-2-13b-chat": {
         "temperature": 0.4,

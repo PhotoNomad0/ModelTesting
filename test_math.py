@@ -1,15 +1,11 @@
-def sieve_of_eratosthenes(end):
-    primes = [True for _ in range(end + 1)]
-    p = 2
-    while (p * p <= end):
-        if (primes[p] == True):
-            for i in range(p * p, end + 1, p):
-                primes[i] = False
+import math
 
-        p += 1
-
-    return [x for x in range(2, end) if primes[x]]
-
+for num in range(21, 41):
+    if num > 1 and all(num % i != 0 for i in range(2, int(math.sqrt(num)) + 1)):
+        if num == int(math.sqrt(num) + 0.5)**2:
+            print("The number is", num)
+            break
+            
 
 # import re
 #

@@ -1,7 +1,12 @@
 function getCode(filename) {
-    let regex = /(\w{3})(?=.*\.[usfm])/;
-    let matches = filename.match(regex);
-    return matches[1];
+    const regex = /(\d{2}-\w{3}).usfm/;
+    const match = filename.match(regex);
+
+    if (match && match[1]) {
+        return match[1];
+    } else {
+        return null;
+    }
 }
 
 ////////////////////

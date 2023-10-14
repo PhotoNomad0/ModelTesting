@@ -303,6 +303,9 @@ def getSavedResultsAsDictionary():
                         if 'message' in choice:
                             response = choice['message']['content']
                         response = response.strip() if response else ""
+                        if response and (response[0] == '='): # this will break spreadsheet
+                            response = '\n' + response
+
                     # response = response.replace('\n', '\\n')
                     time = float(testResults['time'])
                     model_used = testResults['model'].strip()

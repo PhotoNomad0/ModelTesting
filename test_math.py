@@ -1,12 +1,21 @@
-import math
+import re
 
-for num in range(21, 41):
-    if num > 1 and all(num % i != 0 for i in range(2, int(math.sqrt(num)) + 1)):
-        if num == int(math.sqrt(num) + 0.5)**2:
-            print("The number is", num)
-            break
-            
+def extract_three_character_code(filename):
+    try:
+        # Check if the filename has the required format
+        if not re.match(r"^[0-9][0-9a-zA-Z]{2}.usfm$", filename):
+            return None
 
+        # Extract the three-character code using regular expressions
+        match = re.search(r"[0-9a-zA-Z]{3}", filename)
+        if match:
+            return match.group()
+        else:
+            return None
+    except Exception as e:
+        print("Error:", str(e))
+        return None
+    
 # import re
 #
 # def extract_three_character_code(filename):
@@ -18,11 +27,11 @@ for num in range(21, 41):
 #         print(f"Error on {filename}:", str(e))
 #         return None
 #
-# if __name__ == "__main__":
-#     tests = ['66-1jn.usfm', '65-jas.usfm', '66-1JN.usfm', '65-JAS.usfm', 'jas.usfm', '65-jas', '15.jas']
-#     for test in tests:
-#         result = extract_three_character_code(test)
-#         print(f"Test '{test}'", result)
+if __name__ == "__main__":
+    tests = ['66-1jn.usfm', '65-jas.usfm', '66-1JN.usfm', '65-JAS.usfm', 'jas.usfm', '65-jas', '15.jas']
+    for test in tests:
+        result = extract_three_character_code(test)
+        print(f"Test '{test}'", result)
 
 
 # coefficients = [1, 0, 1, -130]

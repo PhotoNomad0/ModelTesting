@@ -1,7 +1,9 @@
 function getCode(filename) {
-    var re = /(\d*[A-Za-z]{3})\.(usfm)/;
-    var result = filename.match(re);
-    return (result && result.length > 0) ? result[1] : '';
+    const pattern = /([0-9A-Za-z]{3})(\.usfm)$/;
+    const match = pattern.exec(filename);
+    if (match && match[1]) {
+        return match[1];
+    }
 }
 
 ////////////////////

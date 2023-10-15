@@ -2,16 +2,10 @@ import re
 
 def extract_three_character_code(filename):
     try:
-        # Check if the filename has the required format
-        if not re.match(r"^[0-9][0-9a-zA-Z]{2}.usfm$", filename):
-            return None
-
-        # Extract the three-character code using regular expressions
-        match = re.search(r"[0-9a-zA-Z]{3}", filename)
+        pattern = r'\d{2}-(\w{3})\.usfm$'
+        match = re.match(pattern, filename)
         if match:
-            return match.group()
-        else:
-            return None
+            return match.group(1)
     except Exception as e:
         print("Error:", str(e))
         return None
@@ -26,7 +20,7 @@ def extract_three_character_code(filename):
 #     except Exception as e:
 #         print(f"Error on {filename}:", str(e))
 #         return None
-#
+
 if __name__ == "__main__":
     tests = ['66-1jn.usfm', '65-jas.usfm', '66-1JN.usfm', '65-JAS.usfm', 'jas.usfm', '65-jas', '15.jas']
     for test in tests:

@@ -444,7 +444,8 @@ models = [
     # "llama2-13b-megacode2-oasst.Q4_K_M.gguf",
     # "mistral-7b-instruct-v0.1.Q6_K.gguf",
     # "mistral-7b-openorca.Q6_K.gguf",
-    "dolphin-2.1-mistral-7b.Q4_K_M.gguf"
+    # "dolphin-2.1-mistral-7b.Q4_K_M.gguf",
+    "zephyr-7b-alpha.Q6_K.gguf"
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
@@ -454,6 +455,7 @@ LM_STUDIO_PROMPT = "Perform the instructions to the best of your ability.\n\n###
 SPARSE_PROMPT = "%prompt%"
 LLAMA_PROMPT = "<<SYS>>\nYou are a helpful coding AI assistant.\n<</SYS>>\n\n[INST]\n%prompt%\n[/INST]\n"
 CHAT_ML_PROMPT = "<|im_start|>system\nPerform the task to the best of your ability.\n<|im_end|>\n<|im_start|>user\n%prompt%<|im_end|>\n<|im_start|>assistant\n"
+ZEPHYR_PROMPT = "<|system|>Perform the task to the best of your ability.</s>\n<|user|>\n%prompt%</s>\n<|assistant|>\n"
 
 modelPromptTemplates = {
     "default": { "prompt": ALPACA_PROMPT },
@@ -464,7 +466,7 @@ modelPromptTemplates = {
     "HyperMantis": { "prompt": ORCA_PROMPT },
     "losslessmegacoder-llama2": { "prompt": ORCA_PROMPT },
     "nous-hermes-llama2": { "prompt": ORCA_PROMPT },
-    # "openassistant-llama2": "<|system|>{system_message}</s><|prompter|>%prompt%</s><|assistant|>",
+    # "openassistant-llama2": ZEPHYR_PROMPT,
     "openassistant-llama2": { "prompt": ALPACA_PROMPT },
     "orca": { "prompt": ORCA_PROMPT },
     "redmond-hermes-coder": { "prompt": ORCA_PROMPT },
@@ -520,6 +522,11 @@ modelPromptTemplates = {
         "temperature": 0.8,
         "prompt": CHAT_ML_PROMPT,
         "stopStrings": ["<|im_end|>", "<|im_start|>", "| |", "\n assistant"],
+    },
+    "zephyr-7b-alpha.Q6_K.gguf": {
+        "temperature": 0.4,
+        "prompt": ZEPHYR_PROMPT,
+        "stopStrings": ["<|system|>","</s>","<|user|>","<|assistant|>"],
     },
 }
 

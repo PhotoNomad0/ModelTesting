@@ -445,7 +445,8 @@ models = [
     # "mistral-7b-instruct-v0.1.Q6_K.gguf",
     # "mistral-7b-openorca.Q6_K.gguf",
     # "dolphin-2.1-mistral-7b.Q4_K_M.gguf",
-    "zephyr-7b-alpha.Q6_K.gguf"
+    # "zephyr-7b-alpha.Q6_K.gguf",
+    "dolphin-2.1-mistral-7b.Q8_0.gguf"
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"

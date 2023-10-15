@@ -1,0 +1,22 @@
+{
+  "id": "chatcmpl-ixfcufx3iffvlm5hhqx71",
+  "object": "chat.completion",
+  "created": 1697317076,
+  "model": "/Users/blm0/.cache/lm-studio/models/TheBloke/zephyr-7B-alpha-GGUF/zephyr-7b-alpha.Q6_K.gguf",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "The result is: 60\n"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 0,
+    "completion_tokens": 8,
+    "total_tokens": 8
+  },
+  "time": "1.13"
+}

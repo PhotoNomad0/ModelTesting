@@ -446,7 +446,9 @@ models = [
     # "mistral-7b-openorca.Q6_K.gguf",
     # "dolphin-2.1-mistral-7b.Q4_K_M.gguf",
     # "zephyr-7b-alpha.Q6_K.gguf",
-    "dolphin-2.1-mistral-7b.Q8_0.gguf"
+    # "dolphin-2.1-mistral-7b.Q8_0.gguf",
+    "dolphin-2.1-mistral-7b.Q6_K.gguf",
+    # "llama2-13b-megacode2-oasst.Q6_K.gguf"
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
@@ -511,20 +513,20 @@ modelPromptTemplates = {
         "temperature": 0.4,
         "prompt": LLAMA_PROMPT,
     },
-    "mistral-7b-instruct-v0.1.Q6_K.gguf": {
+    "mistral-7b-instruct-v0.1.": {
         "temperature": 0.8,
         "prompt": "<s>[INST] %prompt% [/INST] ",
     },
-    "mistral-7b-openorca.Q6_K.gguf": {
+    "mistral-7b-openorca": {
         "temperature": 0.8,
         "prompt": "<|im_start|>system You are an AI assistant that follows instruction extremely well. Help as much as you can.\n\n<|im_end|> <|im_start|>user %prompt% <|im_end|> <|im_start|>assistant ",
     },
-    "dolphin-2.1-mistral-7b.Q4_K_M.gguf": {
+    "dolphin-2.1-mistral-7b": {
         "temperature": 0.8,
         "prompt": CHAT_ML_PROMPT,
         "stopStrings": ["<|im_end|>", "<|im_start|>", "| |", "\n assistant"],
     },
-    "zephyr-7b-alpha.Q6_K.gguf": {
+    "zephyr-7b-alpha": {
         "temperature": 0.4,
         "prompt": ZEPHYR_PROMPT,
         "stopStrings": ["<|system|>","</s>","<|user|>","<|assistant|>"],

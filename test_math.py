@@ -1,15 +1,14 @@
 import re
 
-def extract_three_character_code(filename):
-    try:
-        pattern = r'\d{2}-(\w{3})\.usfm$'
-        match = re.match(pattern, filename)
-        if match:
-            return match.group(1)
-    except Exception as e:
-        print("Error:", str(e))
-        return None
-    
+def format_number(n):
+    return f"{n:,}"
+
+# Example usage:
+number = 123456789
+formatted_number = format_number(number)
+print(formatted_number)
+
+# Output: 123,456,789
 # import re
 #
 # def extract_three_character_code(filename):

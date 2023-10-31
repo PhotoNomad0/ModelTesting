@@ -39,6 +39,7 @@ prompts = [
     {
         "id": "railway",
         "prompt": "Explain origin of standard gauge for railways",
+        "skip": ["airoboros-c34b-3.1.2.Q5_K_M.gguf"]
     },
     {
         "id": "math_X_power",
@@ -48,6 +49,7 @@ prompts = [
     {
         "id": "ai_poem",
         "prompt": "Write a poem about AI with exactly 50 words",
+        "skip": ["airoboros-c34b-3.1.2.Q5_K_M.gguf"]
     },
     {
         "id": "math_eq",

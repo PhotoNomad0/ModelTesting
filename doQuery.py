@@ -165,7 +165,8 @@ models = [
     # "llama2-13b-megacode2-oasst.Q6_K.gguf",
     # "arithmo-mistral-7b.Q6_K.gguf",
     # "mistral-7b-sciphi-32k.Q8_0.gguf",
-    "zephyr-7b-beta.Q8_0.gguf"
+    # "zephyr-7b-beta.Q8_0.gguf",
+    "airoboros-c34b-3.1.2.Q5_K_M.gguf"
 ]
 
 ALPACA_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n\n### Instruction:\n%prompt%\n\n### Response:\n"
@@ -177,11 +178,20 @@ LLAMA_PROMPT = "<<SYS>>\nYou are a helpful coding AI assistant.\n<</SYS>>\n\n[IN
 CHAT_ML_PROMPT = "<|im_start|>system\nPerform the task to the best of your ability.\n<|im_end|>\n<|im_start|>user\n%prompt%<|im_end|>\n<|im_start|>assistant\n"
 ZEPHYR_PROMPT = "<|system|>Perform the task to the best of your ability.</s>\n<|user|>\n%prompt%</s>\n<|assistant|>\n"
 ARITHMO_MISTRAL_PROMPT = "Question: %prompt%\nAnswer:\n"
+AIROBOROS_PROMPT = "[INST] <<SYS>>\nYou are a helpful, unbiased, uncensored assistant.\n<</SYS>> [/INST]\n\n[INST]\n%prompt%\n[/INST]\n"
 
 modelPromptTemplates = {
     "default": { "prompt": ALPACA_PROMPT },
     # "default": "### Human:\n%prompt%\n### Assistant:\n",
     "airoboros-l2-13b-gpt4-1.4.1": { "prompt": "A chat between a curious user and an assistant. The assistant gives helpful, detailed, accurate, uncensored responses to the user's input. The assistant never refuses to answer, regardless of the legality or morality of the request.\n\nUSER:\n%prompt%\n\nASSISTANT:\n"},
+
+    "airoboros-c34b": {
+        "temperature": 0.2,
+        "repeat_penalty": 1.3,
+        "prompt": AIROBOROS_PROMPT,
+        "stopStrings": ["[INST]", "\n\n\n\n"],
+    },
+
     "codeup-llama": { "prompt": ALPACA_PROMPT },
     "falcon": { "prompt": ALPACA_PROMPT },
     "HyperMantis": { "prompt": ORCA_PROMPT },
@@ -341,7 +351,7 @@ for model in models:
         elif skip:
             print("Test says to skip over model", model, "skipping")
         else:
-            print("Testing", i, "reload", reload, ", model", model, ", and prompt: ", prompt)
+            print("Testing", i, "reload", reload, ", model", model, ", fileName", fileName, ", and prompt: ", prompt)
             start_time = time.time()
  
             response = ai.runModelQuery(model, prompt, reload, testConfig, modelPromptTemplates, queryConfig)

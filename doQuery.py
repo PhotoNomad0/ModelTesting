@@ -167,7 +167,8 @@ models = [
     # "arithmo-mistral-7b.Q6_K.gguf",
     # "mistral-7b-sciphi-32k.Q8_0.gguf",
     # "zephyr-7b-beta.Q8_0.gguf",
-    "airoboros-c34b-3.1.2.Q5_K_M.gguf"
+    # "airoboros-c34b-3.1.2.Q5_K_M.gguf",
+    "collectivecognition-v1.1-mistral-7b.Q8_0.gguf"
 ]
 
 testScoreSheets = {

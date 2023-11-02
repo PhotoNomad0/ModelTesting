@@ -1,12 +1,32 @@
-import re
+def case_insensitive_sort(lst):
+    """
+    This function takes a list of strings as an argument and sorts it in a case-insensitive manner.
+    :param lst: List of strings to be sorted
+    :return: Sorted list with case-insensitivity
+    """
+    # Convert all elements to lowercase before sorting
+    lst = [x.lower() for x in lst]
+    # Sort the list using the built-in sort function
+    lst.sort()
+    # Return the sorted list
+    return lst
 
-def format_number(n):
-    return f"{n:,}"
+# Example usage
+my_list = ["Apple", "banana", "Orange"]
+print(case_insensitive_sort(my_list))  # Output: ['apple', 'banana', 'orange']
 
-# Example usage:
-number = 123456789
-formatted_number = format_number(number)
-print(formatted_number)
+
+quit(0)
+        
+# import re
+
+# def format_number(n):
+#     return f"{n:,}"
+# 
+# # Example usage:
+# number = 123456789
+# formatted_number = format_number(number)
+# print(formatted_number)
 
 # Output: 123,456,789
 # import re
@@ -23,9 +43,11 @@ print(formatted_number)
 if __name__ == "__main__":
     tests = ['66-1jn.usfm', '65-jas.usfm', '66-1JN.usfm', '65-JAS.usfm', 'jas.usfm', '65-jas', '15.jas']
     for test in tests:
-        result = extract_three_character_code(test)
-        print(f"Test '{test}'", result)
-
+        try:
+            result = extract_code(test)
+            print(f"Test '{test}'", result)
+        except Exception as e:
+            print(f"Error on '{test}':", str(e))
 
 # coefficients = [1, 0, 1, -130]
 # roots = solve_cubic(*coefficients)

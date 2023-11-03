@@ -1,7 +1,15 @@
-function getCode(filename) {
-    const regex = /^(\d{2})-([a-zA-Z0-9]{3})\.usfm$/;
-    return filename.match(regex)[2];
+// Function to sort an object by its keys
+function sortObjectByKeys(obj) {
+  return Object.keys(obj).sort().reduce((acc, key) => {
+    acc[key] = obj[key];
+    return acc;
+  }, {});
 }
+
+// Example usage:
+let myDict = {c: 3, b: 2, a: 1};
+console.log(sortObjectByKeys(myDict)); // Outputs: {a: 1, b: 2, c: 3}
+
 
 ////////////////////
 

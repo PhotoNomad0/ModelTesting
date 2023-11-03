@@ -1,23 +1,23 @@
-def case_insensitive_sort(lst):
-    """
-    This function takes a list of strings as an argument and sorts it in a case-insensitive manner.
-    :param lst: List of strings to be sorted
-    :return: Sorted list with case-insensitivity
-    """
-    # Convert all elements to lowercase before sorting
-    lst = [x.lower() for x in lst]
-    # Sort the list using the built-in sort function
-    lst.sort()
-    # Return the sorted list
-    return lst
+import re
 
-# Example usage
-my_list = ["Apple", "banana", "Orange"]
-print(case_insensitive_sort(my_list))  # Output: ['apple', 'banana', 'orange']
+def extract_code(filename):
+    try:
+        match = re.search(r'^(\d+)-([a-zA-Z0-9]{3})\.usfm$', filename)
+        if match:
+            return match.group(2)
+        else:
+            return None
+    except Exception as e:
+        print(f"Error: {e}")
+        return None
+    
+    
+# exit()
+
+# If the loop exits without finding a prime number, then the number does not exist in the given range
+print("No prime number found in the given range.")
 
 
-quit(0)
-        
 # import re
 
 # def format_number(n):

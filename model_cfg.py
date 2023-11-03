@@ -101,4 +101,8 @@ modelPromptTemplates = {
         "temperature": 0.8,
         "prompt": ARITHMO_MISTRAL_PROMPT,
     },
+    "collectivecognition-v1.1-mistral-7b": {
+        "temperature": 0.2,
+        "prompt": "USER: %prompt%\nASSISTANT:\n",
+    },
 }

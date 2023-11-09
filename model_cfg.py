@@ -87,6 +87,11 @@ modelPromptTemplates = {
         "prompt": CHAT_ML_PROMPT,
         "stopStrings": ["<|im_end|>", "<|im_start|>", "| |", "\n assistant"],
     },
+    "dolphin-2.2.1-mistral": {
+        "temperature": 0.7,
+        "prompt": CHAT_ML_PROMPT,
+        "stopStrings": ["<|im_end|>", "<|im_start|>", "| |", "\n assistant"],
+    },
     "zephyr-7b-alpha": {
         "temperature": 0.4,
         "prompt": ZEPHYR_PROMPT,
@@ -104,5 +109,35 @@ modelPromptTemplates = {
     "collectivecognition-v1.1-mistral-7b": {
         "temperature": 0.2,
         "prompt": "USER: %prompt%\nASSISTANT:\n",
+    },
+    "yarn-mistral-7b-64k": {
+        "temperature": 0.2,
+        "prompt": SPARSE_PROMPT,
+    },
+    "openhermes-2.5-mistral-7b": {
+        "temperature": 0.2,
+        "prompt": CHAT_ML_PROMPT,
+        "stopStrings": ["<|im_end|>", "<|im_start|>", "| |", "\n assistant"],
+    },
+    "metamath-mistral-7b": {
+        "temperature": 0.2,
+        "prompt": ALPACA_PROMPT,
+    },
+    "openchat_3.5": {
+        "temperature": 0.4,
+        "prompt": "GPT4 User: %prompt%<|end_of_turn|>GPT4 Assistant:\n",
+        "stopStrings": ["<|end_of_turn|>", "GPT4 User:"],
+    },
+    "codebooga-34b-v0.1": {
+        "temperature": 1.31,
+        "top_p": 0.14,
+        "repetition_penalty": 1.17,
+        "top_k": 49,
+        "prompt": ALPACA_PROMPT,
+        "stopStrings": ["<|end_of_turn|>", "GPT4 User:"],
+    },
+    "mistral-7b-codealpaca-lora": {
+        "temperature": 0.7,
+        "prompt": ALPACA_PROMPT,
     },
 }

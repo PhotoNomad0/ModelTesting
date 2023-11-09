@@ -1,21 +1,27 @@
-import re
+def generate_primes(limit):
+    primes = []
+    is_prime = [True] * (limit + 1)
 
-def extract_code(filename):
-    try:
-        match = re.search(r'^(\d+)-([a-zA-Z0-9]{3})\.usfm$', filename)
-        if match:
-            return match.group(2)
-        else:
-            return None
-    except Exception as e:
-        print(f"Error: {e}")
-        return None
-    
-    
-# exit()
+    for num in range(2, limit + 1):
+        if not is_prime[num]:
+            continue
 
-# If the loop exits without finding a prime number, then the number does not exist in the given range
-print("No prime number found in the given range.")
+        primes.append(num)
+
+        # Mark multiples of the current prime as non-prime
+        for multiple in range(num * 2, limit + 1, num):
+            is_prime[multiple] = False
+
+    return primes
+
+
+count = 100000
+primes = generate_primes(count)  # The 100th prime number is less than 8000
+print(f'Number of primes for count {count} is {len(primes)}')
+print(primes)
+    
+exit()
+
 
 
 # import re

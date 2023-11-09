@@ -60,13 +60,10 @@ def doQuerySub(model, prompt_, response_, queryConfig, template):
     try:
         temperature = 0.70
         top_p = 0.4
-        stopStrings = None
         if 'top_p' in template:
             top_p = template['top_p']
         if 'temperature' in template:
             temperature = template['temperature']
-        if 'stopStrings' in template:
-            stopStrings = template['stopStrings']
 
         if queryConfig['noModelSelection']:
             url = openai.api_base + '/chat/completions'
@@ -76,11 +73,16 @@ def doQuerySub(model, prompt_, response_, queryConfig, template):
                 'messages': [{'role': 'assistant', 'content': prompt_}],
                 'temperature': temperature,
                 'max_tokens': -1,
-                'stream': False
+                'stream': False,
+                'top_p': top_p,
             }
 
-            if stopStrings:
-                data['stop'] = stopStrings
+            if 'stopStrings' in template:
+                data['stop'] = template['stopStrings']
+            if 'top_k' in template:
+                data['top_k'] = template['top_k']
+            if 'repetition_penalty' in template:
+                data['repetition_penalty'] = template['repetition_penalty']
             
             response = requests.post(url, headers=headers, data=json.dumps(data))
 

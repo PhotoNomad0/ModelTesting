@@ -1,31 +1,24 @@
-// Function to sort an object by its keys
-function sortObjectByKeys(obj) {
-  return Object.keys(obj).sort().reduce((acc, key) => {
-    acc[key] = obj[key];
-    return acc;
-  }, {});
-}
+function generatePrimes(limit) {
+    const primes = [];
+    const isPrime = new Array(limit + 1).fill(true);
 
-// Example usage:
-let myDict = {c: 3, b: 2, a: 1};
-console.log(sortObjectByKeys(myDict)); // Outputs: {a: 1, b: 2, c: 3}
+    for (let num = 2; num <= limit; num++) {
+        if (!isPrime[num]) continue;
 
+        primes.push(num);
 
-////////////////////
-
-
-const tests = ['66-1jn.usfm', '65-jas.usfm', '66-1JN.usfm', '65-JAS.usfm', 'jas.usfm', '65-jas', '15.jas']
-
-for (const test of tests) {
-    let results
-    try {
-        results = getCode(test)
-        console.log(`'${test}' = '${results}'`)
-    } catch (e) {
-        console.error(`'${test}' failed '`,e)
+        // Mark multiples of the current prime as non-prime
+        for (let multiple = num * 2; multiple <= limit; multiple += num) {
+            isPrime[multiple] = false;
+        }
     }
+
+    return primes;
 }
 
+const count = 100000;
+const primes = generatePrimes(count); // The 100th prime number is less than 8000
+console.log(`Number of primes for count ${count} is ${primes.length}`, primes);
 
 //
 // This code will create a dictionary with three keys and values, and then use the `sort()` method to sort it based on the difference between each key and its corresponding value. The sorted dictionary will be stored in the `myDict` variable.

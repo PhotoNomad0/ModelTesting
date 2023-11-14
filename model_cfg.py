@@ -140,4 +140,9 @@ modelPromptTemplates = {
         "temperature": 0.7,
         "prompt": ALPACA_PROMPT,
     },
+    "mistral_7b_dolphin2.1_lima": {
+        "temperature": 0.7,
+        "prompt": CHAT_ML_PROMPT,
+        "stopStrings": ["<|im_end|>", "<|im_start|>", "| |", "\n assistant"],
+    },
 }

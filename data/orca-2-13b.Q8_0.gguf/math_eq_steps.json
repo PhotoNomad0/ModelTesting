@@ -1,0 +1,1 @@
+{"id": "chatcmpl-8m50lh2ta2rnll1ewv65", "object": "chat.completion", "created": 1700704328, "model": "/Users/blm0/.cache/lm-studio/models/TheBloke/Orca-2-13B-GGUF/orca-2-13b.Q8_0.gguf", "choices": [{"index": 0, "message": {"role": "assistant", "content": "2"}, "finish_reason": "stop"}], "usage": {"prompt_tokens": 0, "completion_tokens": 1, "total_tokens": 1}, "time": "0.37"}

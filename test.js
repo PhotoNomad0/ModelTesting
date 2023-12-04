@@ -1,6 +1,15 @@
 function extractCode(filename) {
-    var pattern = /^(\d+)-([a-zA-Z0-9]{3})\.usfm$/;
-    return filename.match(pattern)[2];
+    // Regular expression pattern for the code and extension
+    var regex = /(\d+)-([A-Za-z0-9]{3})\.usfm$/;
+
+    // Execute regular expression on filename
+    var match = regex.exec(filename);
+
+    if (match) {
+        return match[2];  // Return the three character code
+    } else {
+        throw new Error("Invalid file name format");
+    }
 }
 
 const tests = ['66-1jn.usfm', '65-jas.usfm', '66-1JN.usfm', '65-JAS.usfm', 'jas.usfm', '65-jas', '15.jas']

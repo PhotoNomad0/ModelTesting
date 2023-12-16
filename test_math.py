@@ -2,16 +2,17 @@ import re
 
 def extract_code(filename):
     try:
-        pattern = r"^[0-9]+\-([a-zA-Z0-9]{3})\.usfm$"
-        match = re.match(pattern, filename)
-        if match:
-            return match.group(1)
-        else:
-            return None
+        # Use regex to find the three character code in filename.
+        match = re.search('\d+([a-zA-Z0-9]{3})\.usfm$', filename)
+
+        if match is not None:
+            return match.group(1)  # Return the matched group (the code).
     except Exception as e:
-        print(f"An error occurred: {e}")
-        return None
-    
+        print("An error occurred while trying to extract the code from the filename.")
+        print(f"Error message: {str(e)}")
+
+    return None  # If no match was found or an exception occurred, return None.
+
 # exit()
 
 

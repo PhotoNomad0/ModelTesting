@@ -178,7 +178,8 @@ models = [
     # "deepseek-coder-33b-instruct.Q5_K_S.gguf",
     # "mistral-7b-codealpaca-lora.Q8_0.gguf",
     # "mistral_7b_dolphin2.1_lima0.5.Q8_0.gguf",
-    "orca-2-13b.Q8_0.gguf",
+    # "orca-2-13b.Q8_0.gguf",
+    "mixtral-8x7b-instruct-v0.1.Q4_K_M.gguf"
 ]
 
 testScoreSheets = {

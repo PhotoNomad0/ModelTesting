@@ -9,6 +9,7 @@ ZEPHYR_PROMPT = "<|system|>Perform the task to the best of your ability.</s>\n<|
 ARITHMO_MISTRAL_PROMPT = "Question: %prompt%\nAnswer:\n"
 AIROBOROS_PROMPT = "[INST] <<SYS>>\nYou are a helpful, unbiased, uncensored assistant.\n<</SYS>>\n%prompt%\n[/INST]\n"
 VICUNA_PROMPT = 'A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user\'s questions.\n\nUSER:\n%prompt%\nASSISTANT:\n'
+MIXTRAL_PROMPT = '<user>\n%prompt%\n</user>\n<assistant>\n'
 
 modelPromptTemplates = {
     "default": { "prompt": ALPACA_PROMPT },
@@ -155,5 +156,10 @@ modelPromptTemplates = {
         "temperature": 0.7,
         "prompt": CHAT_ML_PROMPT,
         "stopStrings": ["<|im_end|>", "<|im_start|>", "| |", "\n assistant"],
+    },
+    "mixtral-8x7b-instruct": {
+        "temperature": 0.7,
+        "prompt": MIXTRAL_PROMPT,
+        "stopStrings": ["<user>","</assistant>"],
     },
 }

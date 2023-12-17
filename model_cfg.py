@@ -162,4 +162,14 @@ modelPromptTemplates = {
         "prompt": MIXTRAL_PROMPT,
         "stopStrings": ["<user>","</assistant>"],
     },
+    "mistral-7b-instruct-v0.2-dare": {
+        "temperature": 0.7,
+        "prompt": CHAT_ML_PROMPT,
+        "stopStrings": ["<|im_end|>", "<|im_start|>", "| |", "\n assistant"],
+    },
+    "dolphin-2.5-mixtral": {
+        "temperature": 0.7,
+        "prompt": MIXTRAL_PROMPT,
+        "stopStrings": ["<user>","</assistant>"],
+    },
 }

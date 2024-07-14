@@ -181,7 +181,9 @@ models = [
     # "orca-2-13b.Q8_0.gguf",
     # "mixtral-8x7b-instruct-v0.1.Q4_K_M.gguf",
     # "mistral-7b-instruct-v0.2-dare.Q8_0.gguf",
-    "dolphin-2.5-mixtral-8x7b.Q4_K_M.gguf",
+    # "dolphin-2.5-mixtral-8x7b.Q4_K_M.gguf",
+    # "dolphin-2_6-phi-2.Q8_0.gguf",
+    "Meta-Llama-3-8B-Instruct-Q4_K_M.gguf"
 ]
 
 testScoreSheets = {

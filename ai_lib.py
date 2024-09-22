@@ -1,6 +1,6 @@
 import math
 import openai
-import gpt4all
+# import gpt4all
 import os
 from urllib.request import urlopen
 import json
@@ -8,7 +8,13 @@ import pandas as pd
 import requests
 import difflib
 
+from openai import OpenAI
+
+openai_api_base = "1234"
+
 def set_port(port):
+    global openai_api_base
+    openai_api_base = str(port)
     openai.api_base = "http://localhost:" + str(port) + "/v1"
 
 
@@ -51,12 +57,12 @@ def runModelQuery(model, prompt, reload, testConfig, modelTemplates, queryConfig
     print("Generated prompt:", prompt_)
     response_ = None
 
-    response_ = doQuerySub(model, prompt_, response_, queryConfig, template)
+    response_ = doQuerySub(model, prompt_, response_, queryConfig, template, prompt)
 
     return response_
 
 
-def doQuerySub(model, prompt_, response_, queryConfig, template):
+def doQuerySub(model, prompt_, response_, queryConfig, template, prompt):
     try:
         temperature = 0.70
         top_p = 0.4
@@ -109,48 +115,61 @@ def doQuerySub(model, prompt_, response_, queryConfig, template):
 
             # messages = [{"role": "user", "content": prompt}]
             # # response_ = gptj.chat_completion(messages)
-        elif queryConfig['useGPT4All']:
-            gptj = gpt4all.GPT4All(
-                model_name=model,
-                # model_path=modelPath_,
-                allow_download=False,
-            )
-            # model = GPT4All("orca-mini-3b.ggmlv3.q4_0.bin")
-
-            with gptj.chat_session():
-                tokens = list(model.generate(prompt=prompt_,
-                                             max_tokens=queryConfig['max_tokens'],
-                                             temperature=temperature,
-                                             top_p=top_p,
-                                             n=1,  # this does not seem to be number of cores
-                                             echo=True,
-                                             stream=queryConfig['stream'],
-                                             timeout=800,  # seconds
-                                             allow_download=False,
-                                             thread_count=queryConfig['default_thread_count'],
-                                             streaming=True))
-                model.current_chat_session.append({'role': 'assistant', 'content': ''.join(tokens)})
-
-                # tokens = list(model.generate(prompt='write me a poem about dogs', top_k=1, streaming=True))
-                # model.current_chat_session.append({'role': 'assistant', 'content': ''.join(tokens)})
-
-                response_ = model.current_chat_session
+        # elif queryConfig['useGPT4All']:
+        #     gptj = gpt4all.GPT4All(
+        #         model_name=model,
+        #         # model_path=modelPath_,
+        #         allow_download=False,
+        #     )
+        #     # model = GPT4All("orca-mini-3b.ggmlv3.q4_0.bin")
+        # 
+        #     with gptj.chat_session():
+        #         tokens = list(model.generate(prompt=prompt_,
+        #                                      max_tokens=queryConfig['max_tokens'],
+        #                                      temperature=temperature,
+        #                                      top_p=top_p,
+        #                                      n=1,  # this does not seem to be number of cores
+        #                                      echo=True,
+        #                                      stream=queryConfig['stream'],
+        #                                      timeout=800,  # seconds
+        #                                      allow_download=False,
+        #                                      thread_count=queryConfig['default_thread_count'],
+        #                                      streaming=True))
+        #         model.current_chat_session.append({'role': 'assistant', 'content': ''.join(tokens)})
+        # 
+        #         # tokens = list(model.generate(prompt='write me a poem about dogs', top_k=1, streaming=True))
+        #         # model.current_chat_session.append({'role': 'assistant', 'content': ''.join(tokens)})
+        # 
+        #         response_ = model.current_chat_session
 
         else:
-            response_ = openai.Completion.create(
+            client = OpenAI(base_url=f"http://localhost:{openai_api_base}/v1", api_key="lm-studio")
+
+            chat_completion = client.chat.completions.create(
                 model=model,
-                prompt=prompt_,
-                # reload=reload,
-                max_tokens=queryConfig['max_tokens'],
-                temperature=temperature,
-                top_p=top_p,
-                n=1,  # this does not seem to be number of cores
-                echo=True,
-                stream=queryConfig['stream'],
-                timeout=800,  # seconds
-                allow_download=False,
-                thread_count=queryConfig['default_thread_count']
+                messages=[
+                    {"role": "system", "content": template['prompt']},
+                    {"role": "user", "content": prompt}
+                ],
+                temperature= template['temperature']
             )
+
+            response_ = chat_completion.to_dict()
+
+            # response_ = openai.Completion.create(
+            #     model=model,
+            #     prompt=prompt_,
+            #     # reload=reload,
+            #     max_tokens=queryConfig['max_tokens'],
+            #     temperature=temperature,
+            #     top_p=top_p,
+            #     n=1,  # this does not seem to be number of cores
+            #     echo=True,
+            #     stream=queryConfig['stream'],
+            #     timeout=800,  # seconds
+            #     allow_download=False,
+            #     thread_count=queryConfig['default_thread_count']
+            # )
 
     except Exception as e:
         print("An unexpected error occurred:", e)
@@ -188,11 +207,17 @@ def trimModel(model):
     name = model
     length = len(name)
 
-    if (name.find('.bin') > 0):
-        name = name[0:length-4]
+    _bin = '.bin'
+    if (name.find(_bin) > 0):
+        name = name[0:length-len(_bin)]
 
-    if (name.find('ggml-') == 0):
-        name = name[5:]
+    ggml_ = 'ggml-'
+    if (name.find(ggml_) == 0):
+        name = name[len(ggml_):]
+
+    community_ = 'lmstudio-community/'
+    if (name.find(community_) == 0):
+        name = name[len(community_):]
 
     return name
 

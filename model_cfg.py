@@ -10,7 +10,7 @@ ARITHMO_MISTRAL_PROMPT = "Question: %prompt%\nAnswer:\n"
 AIROBOROS_PROMPT = "[INST] <<SYS>>\nYou are a helpful, unbiased, uncensored assistant.\n<</SYS>>\n%prompt%\n[/INST]\n"
 VICUNA_PROMPT = 'A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user\'s questions.\n\nUSER:\n%prompt%\nASSISTANT:\n'
 MIXTRAL_PROMPT = '<user>\n%prompt%\n</user>\n<assistant>\n'
-LLAMA3_PROMPT = "<<SYS>>\nYou are a helpful, smart, kind, and efficient AI assistant. You always fulfill the user's requests to the best of your ability.\n<</SYS>>\n\n[INST]\n%prompt%\n[/INST]\n"
+LLAMA3_PROMPT = "You are a helpful, smart, kind, and efficient AI assistant. You always fulfill the user's requests to the best of your ability.\n"
 
 modelPromptTemplates = {
     "default": { "prompt": ALPACA_PROMPT },
@@ -178,9 +178,8 @@ modelPromptTemplates = {
         "prompt": CHAT_ML_PROMPT,
         "stopStrings": ["<|im_end|>", "<|im_start|>", "| |", "\n assistant"],
     },
-    "Meta-Llama-3-8B-Instruct": {
+    "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF": {
         "temperature": 0.7,
         "prompt": LLAMA3_PROMPT,
-        "stopStrings": ["<|im_end|>", "<|im_start|>", "| |", "\n assistant"],
     },
 }

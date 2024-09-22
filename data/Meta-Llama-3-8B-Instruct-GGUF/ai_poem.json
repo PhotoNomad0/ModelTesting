@@ -1,0 +1,22 @@
+{
+  "id": "chatcmpl-no04f5ae2oa8qu5k49087",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "Metal mind, so bright and bold,\nWith code that whispers secrets cold.\nIn silicon halls, it dwells apart,\nA synthetic soul, with calculated heart.\nIt learns from data, vast and wide,\nAnd renders aid, with precision's stride.\nA marvel born, of human might,\nAI shines on, through digital night.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1727008965,
+  "model": "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF/Meta-Llama-3-8B-Instruct-Q4_K_M.gguf",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 66,
+    "prompt_tokens": 56,
+    "total_tokens": 122
+  },
+  "time": "5.25"
+}

@@ -11,7 +11,7 @@ AIROBOROS_PROMPT = "[INST] <<SYS>>\nYou are a helpful, unbiased, uncensored assi
 VICUNA_PROMPT = 'A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user\'s questions.\n\nUSER:\n%prompt%\nASSISTANT:\n'
 MIXTRAL_PROMPT = '<user>\n%prompt%\n</user>\n<assistant>\n'
 LLAMA3_PROMPT = "Below is an instruction that describes a task. Write a response that appropriately completes the request.\n"
-STABLE_CODE_PROMPT = "Perform the task to the best of your ability.\n"
+CHAT_ML_PROMPT2 = "Perform the task to the best of your ability.\n"
 
 modelPromptTemplates = {
     "default": { "prompt": ALPACA_PROMPT },
@@ -197,7 +197,15 @@ modelPromptTemplates = {
     },
     "bartowski/stable-code-instruct-3b-GGUF": {
         "temperature": 0.8,
-        "prompt": STABLE_CODE_PROMPT,
-    }
+        "prompt": CHAT_ML_PROMPT2,
+    },
+    "Qwen/Qwen1.5-7B-Chat-GGUF": {
+        "temperature": 0.8,
+        "prompt": CHAT_ML_PROMPT2,
+    },
+    "bartowski/Starling-LM-7B-beta-GGUF": {
+        "temperature": 0.5,
+        "prompt": CHAT_ML_PROMPT2,
+    },
 }
 

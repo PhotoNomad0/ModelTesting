@@ -1,0 +1,22 @@
+{
+  "id": "chatcmpl-2x185l2v0v200z6x08cegej9",
+  "choices": [
+    {
+      "finish_reason": "stop",
+      "index": 0,
+      "message": {
+        "content": "To align a row of `div`s to the right using Flexbox in CSS, you can set the `flex-direction` property to `row-reverse` and apply `justify-content: space-between;`. Here's an example with three `div`s:\n\nHTML:\n```html\n<div class=\"container\">\n  <div>Div 1</div>\n  <div>Div 2</div>\n  <div>Div 3</div>\n</div>\n```\nCSS:\n```css\n.container {\n  display: flex;\n  justify-content: space-between; /* Align items to the right */\n  direction: row-reverse; /* Reverse the order for right alignment */\n}\n\n/* For better visual separation, you can add some padding */\n.container div {\n  padding: 10px;\n}\n```\nIn this example, the `div`s will be stacked from left to right with space between them. By using `row-reverse`, they'll appear in reverse order (rightmost on top) as desired.\n\nRemember that Flexbox is a responsive layout solution, so if you want to make your row\u9002\u5e94 different screen sizes, you may need to add CSS media queries for flexibility.",
+        "role": "assistant"
+      }
+    }
+  ],
+  "created": 1727092249,
+  "model": "Qwen/Qwen1.5-7B-Chat-GGUF/qwen1_5-7b-chat-q5_k_m.gguf",
+  "object": "chat.completion",
+  "usage": {
+    "completion_tokens": 241,
+    "prompt_tokens": 47,
+    "total_tokens": 288
+  },
+  "time": "17.63"
+}

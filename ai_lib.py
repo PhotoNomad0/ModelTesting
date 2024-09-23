@@ -215,7 +215,7 @@ def trimModel(model):
     if (name.find(ggml_) == 0):
         name = name[len(ggml_):]
 
-    pos = name.find('/')
+    pos = name.find('/') # see if there is an account name to remove
     if (pos >= 0):
         name = name[(pos + 1):]
 

@@ -207,5 +207,9 @@ modelPromptTemplates = {
         "temperature": 0.5,
         "prompt": CHAT_ML_PROMPT2,
     },
+    "NousResearch/Hermes-2-Pro-Mistral-7B-GGUF": {
+        "temperature": 0.8,
+        "prompt": CHAT_ML_PROMPT2,
+    }
 }
 

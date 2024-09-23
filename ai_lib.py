@@ -215,9 +215,9 @@ def trimModel(model):
     if (name.find(ggml_) == 0):
         name = name[len(ggml_):]
 
-    community_ = 'lmstudio-community/'
-    if (name.find(community_) == 0):
-        name = name[len(community_):]
+    pos = name.find('/')
+    if (pos >= 0):
+        name = name[(pos + 1):]
 
     return name
 

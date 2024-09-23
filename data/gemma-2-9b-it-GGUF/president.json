@@ -1,0 +1,1 @@
+{"id": "chatcmpl-tzmavpz0jm33qxo34omk", "choices": [{"finish_reason": "stop", "index": 0, "message": {"content": "Bill Clinton \n", "role": "assistant"}}], "created": 1727042523, "model": "lmstudio-community/gemma-2-9b-it-GGUF/gemma-2-9b-it-Q4_K_M.gguf", "object": "chat.completion", "usage": {"completion_tokens": 4, "prompt_tokens": 44, "total_tokens": 48}, "time": "0.45"}

@@ -183,7 +183,10 @@ models = [
     # "mistral-7b-instruct-v0.2-dare.Q8_0.gguf",
     # "dolphin-2.5-mixtral-8x7b.Q4_K_M.gguf",
     # "dolphin-2_6-phi-2.Q8_0.gguf",
-    "lmstudio-community/Meta-Llama-3-8B-Instruct-GGUF"
+    # "lmstudio-community/Meta-Llama-3.1-8B-Instruct-GGUF",
+    # "lmstudio-community/gemma-2-9b-it-GGUF",
+    # "lmstudio-community/Phi-3.1-mini-4k-instruct-GGUF",
+    "bartowski/stable-code-instruct-3b-GGUF"
 ]
 
 testScoreSheets = {

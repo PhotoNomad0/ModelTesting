@@ -1,50 +1,77 @@
+// To sort the keys of a dictionary (JavaScript object) alphabetically and output the corresponding values, you can follow these steps:
+//
+//   1. Create an array of keys from the object.
+// 2. Sort the array of keys alphabetically using `sort()` method.
+// 3. Iterate through the sorted keys and output the corresponding values.
+//
+// Here's a sample JavaScript code to do this:
+//
 // ```javascript
-function extractCode(filename) {
-  const regex = /^(?:.*-)(\w{3})\.usfm$/;
-  const match = filename.match(regex);
-  return match ? match[1] : null;
+// Sample dictionary (JavaScript object)
+const dictionary = {
+  "banana": "yellow",
+  "apple": "red",
+  "orange": "orange",
+  "grape": "purple"
+};
+
+// Create an array of keys from the dictionary
+const keys = Object.keys(dictionary);
+
+// Sort the keys alphabetically
+keys.sort();
+
+// Iterate through the sorted keys and output the corresponding values
+for (let i = 0; i < keys.length; i++) {
+  console.log(`${keys[i]}: ${dictionary[keys[i]]}`);
 }
-
-function getCode(filename) {
-  const code = extractCode(filename);
-  console.log(`${filename} = code: ${code}`); // Output: 1Jn
-}
-
-// Example usage:
-const filenames = [
-  "57-1Jn.usfm",
-  "1-1Jn.usfm",
-  "-1Jn.usfm",
-  "1Jn.usfm",
-  "-1Jn"
-];
-
-for (const filename of filenames) {
-  try {
-    getCode(filename);
-  } catch (e) {
-    console.error(`${filename}, error:`, e)
-  }
-}
-
 // ```
+//
+// Output:
+// ```
+// apple: red
+// banana: yellow
+// grape: purple
+// orange: orange
+// ```
+//
+// In this code snippet, we create an array of keys from the `dictionary` object using `Object.keys()`. Then, we sort the array alphabetically using the `sort()` method. Finally, we iterate through the sorted keys and output the corresponding values with their keys using a `for` loop.
+//  
 
-// **Explanation:**
+///////////////////////////////////////////////////////////////
+
+// const myDictionary = {
+//   "banana": 3,
+//   "apple": 1,
+//   "cherry": 2
+// };
 //
-// * **Function Definition:** The code defines a function called `extractCode` that takes a single argument, `filename`, representing the filename to process.
-// * **Regular Expression:**
-// *  `/^(?:.*-)(\w{3})\.usfm$/`: This regular expression is designed to capture the three-character code. Let's break it down:
-// * `/ ... /`: Defines the regular expression pattern.
-// * `^`: Matches the beginning of the string.
-// * `(?:.*-)`: Matches any character (`.`) zero or more times (`*`), followed by a hyphen (`-`). The `?:` makes this a non-capturing group, meaning we're not interested in matching the characters before the hyphen.
-// * `(\w{3})`: This is the capturing group that we want. It matches three word characters (`\w`, which includes letters, digits, and underscore) and captures them in group 1.
-// * `\.usfm$`: Matches ".usfm" at the end of the string (`$`).
+// // Output the sorted array
+// console.log(entries);
+
+
+///////////////////////////////////////////////////////////////
+
+// function getCode(filename) {
+//   const code = extractThreeCharCode(filename);
+//   console.log(`${filename} = code: ${code}`); // Output: 1Jn
+// }
 //
+// // Example usage:
+// const filenames = [
+//   "57-1Jn.usfm",
+//   "14-tit.usfm",
+//   "1-1Jn.usfm",
+//   "-1Jn.usfm",
+//   "1Jn.usfm",
+//   "-1Jn"
+// ];
 //
-// * **Matching:** `filename.match(regex)` attempts to find a match for the regular expression in the `filename`. If a match is found, it returns an array containing the matched parts (including the captured group); otherwise, it returns `null`.
-// * **Return Value:** The function returns `match[1]`, which is the content of the captured group (the three-character code) if a match was found. Otherwise, it returns `null`.
-//
-//
-//
-//
-//   Let me know if you have any other questions or need further clarification!
+// for (const filename of filenames) {
+//   try {
+//     getCode(filename);
+//   } catch (e) {
+//     console.error(`${filename}, error:`, e)
+//   }
+// }
+

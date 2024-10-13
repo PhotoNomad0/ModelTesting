@@ -210,6 +210,38 @@ modelPromptTemplates = {
     "NousResearch/Hermes-2-Pro-Mistral-7B-GGUF": {
         "temperature": 0.8,
         "prompt": CHAT_ML_PROMPT2,
-    }
+    },
+    "internlm/internlm2_5-20b-chat-gguf": {
+        "temperature": 0.8,
+        "prompt": CHAT_ML_PROMPT2,
+    },
+    "lmstudio-community/Yi-Coder-9B-Chat-GGUF": {
+        "temperature": 0.8,
+        "prompt": CHAT_ML_PROMPT2,
+    },
+    "NousResearch/Hermes-3-Llama-3.1-8B-GGUF": {
+        "temperature": 0.8,
+        "prompt": CHAT_ML_PROMPT2,
+    },
+    "lmstudio-community/openchat-3.6-8b-20240522-GGUF": {
+        "temperature": 0.8,
+        "prompt": CHAT_ML_PROMPT2,
+    },
+    "lmstudio-community/dolphin-2.8-mistral-7b-v02-GGUF": {
+        "temperature": 0.8,
+        "prompt": CHAT_ML_PROMPT2,
+    },
+    "lmstudio-community/Qwen2.5-14B-Instruct-GGUF": {
+        "temperature": 0.7,
+        "prompt": CHAT_ML_PROMPT2,
+    },
+    "lmstudio-community/Yi-Coder-9B-Chat-GGUF": {
+        "temperature": 0.7,
+        "prompt": CHAT_ML_PROMPT2,
+    },
+    "lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF": {
+        "temperature": 0.7,
+        "prompt": CHAT_ML_PROMPT2,
+    },
 }
 

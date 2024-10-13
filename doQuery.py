@@ -189,7 +189,15 @@ models = [
     # "bartowski/stable-code-instruct-3b-GGUF",
     # "Qwen/Qwen1.5-7B-Chat-GGUF",
     # "bartowski/Starling-LM-7B-beta-GGUF",
-    "NousResearch/Hermes-2-Pro-Mistral-7B-GGUF"
+    # "NousResearch/Hermes-2-Pro-Mistral-7B-GGUF",
+    # "internlm/internlm2_5-20b-chat-gguf",
+    # failed to load:     "lmstudio-community/Yi-Coder-9B-Chat-GGUF"
+    # "NousResearch/Hermes-3-Llama-3.1-8B-GGUF",
+    # "lmstudio-community/openchat-3.6-8b-20240522-GGUF",
+    # "lmstudio-community/dolphin-2.8-mistral-7b-v02-GGUF",
+    # "lmstudio-community/Qwen2.5-14B-Instruct-GGUF",
+    "lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF"
+    # too slow:     "lmstudio-community/Yi-Coder-9B-Chat-GGUF"
 ]
 
 testScoreSheets = {

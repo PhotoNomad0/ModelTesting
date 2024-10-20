@@ -235,11 +235,11 @@ modelPromptTemplates = {
         "temperature": 0.7,
         "prompt": CHAT_ML_PROMPT2,
     },
-    "lmstudio-community/Yi-Coder-9B-Chat-GGUF": {
+    "lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF": {
         "temperature": 0.7,
         "prompt": CHAT_ML_PROMPT2,
     },
-    "lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF": {
+    "hugging-quants/Llama-3.2-3B-Instruct-Q8_0-GGUF": {
         "temperature": 0.7,
         "prompt": CHAT_ML_PROMPT2,
     },

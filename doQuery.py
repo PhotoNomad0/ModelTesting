@@ -196,8 +196,9 @@ models = [
     # "lmstudio-community/openchat-3.6-8b-20240522-GGUF",
     # "lmstudio-community/dolphin-2.8-mistral-7b-v02-GGUF",
     # "lmstudio-community/Qwen2.5-14B-Instruct-GGUF",
-    "lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF"
-    # too slow:     "lmstudio-community/Yi-Coder-9B-Chat-GGUF"
+    # "lmstudio-community/Qwen2.5-Coder-7B-Instruct-GGUF"
+    # too slow:     "lmstudio-community/Yi-Coder-9B-Chat-GGUF",
+    "hugging-quants/Llama-3.2-3B-Instruct-Q8_0-GGUF"
 ]
 
 testScoreSheets = {
